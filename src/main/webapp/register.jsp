@@ -48,22 +48,18 @@
                             </a>
                         </div>
                         <div class="login-form">
-                            <form action="" method="post">
-                                <div class="form-group">
-                                    <label>Username</label>
-                                    <input class="au-input au-input--full" type="text" name="username" placeholder="Username">
-                                </div>
+                            <form action="SignUpServlet?action=signup" method="post">
                                 <div class="form-group">
                                     <label>Email Address</label>
-                                    <input class="au-input au-input--full" type="email" name="email" placeholder="Email">
+                                    <input class="au-input au-input--full" type="email" name="userEmail" placeholder="Email">
                                 </div>
                                 <div class="form-group">
                                     <label>Password</label>
-                                    <input class="au-input au-input--full" type="password" name="password" placeholder="Password">
+                                    <input class="au-input au-input--full" type="password" name="userPassword" placeholder="Password">
                                 </div>
                                 <div class="form-group">
                                     <label>Re-Password</label>
-                                    <input class="au-input au-input--full" type="password" name="re-password" placeholder="Re-Password">
+                                    <input class="au-input au-input--full" type="password" name="userRePassword" placeholder="Re-Password">
                                 </div>
                                 <div class="login-checkbox">
                                     <label>

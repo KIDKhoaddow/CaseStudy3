@@ -12,13 +12,33 @@ public class User {
     private String userDOB;
     private String userRegisDate;
     private String userLastLogin;
+    private String userAvatar;
     private  boolean status;
+    private  boolean verify = true;
 
     public User() {
     }
 
-    public User(String userName) {
+    public User(String userEmail, String userPassword) {
+        this.userEmail = userEmail;
+        this.userPassword = userPassword;
+    }
+
+    public User(int userId, String userEmail, String userName, String userPassword,
+                String userAddress, String userPhone, String userDOB, String userRegisDate,
+                String userLastLogin, String userAvatar, boolean status, boolean verify) {
+        this.userId = userId;
+        this.userEmail = userEmail;
         this.userName = userName;
+        this.userPassword = userPassword;
+        this.userAddress = userAddress;
+        this.userPhone = userPhone;
+        this.userDOB = userDOB;
+        this.userRegisDate = userRegisDate;
+        this.userLastLogin = userLastLogin;
+        this.userAvatar = userAvatar;
+        this.status = status;
+        this.verify = verify;
     }
 
     public User(int userId, String userEmail, String userName, String userPassword, String userAddress, String userPhone, String userDOB, String userRegisDate, String userLastLogin, boolean status) {
@@ -134,5 +154,20 @@ public class User {
         this.status = status;
     }
 
+    public String getUserAvatar() {
+        return userAvatar;
+    }
+
+    public void setUserAvatar(String userAvatar) {
+        this.userAvatar = userAvatar;
+    }
+
+    public boolean isVerify() {
+        return verify;
+    }
+
+    public void setVerify(boolean verify) {
+        this.verify = verify;
+    }
 }
 

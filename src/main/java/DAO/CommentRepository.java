@@ -1,9 +1,7 @@
 package DAO;
 
 import connect.ConnectionMySQL;
-import javafx.scene.text.Text;
 import model.Comment;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.sql.Connection;

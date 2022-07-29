@@ -279,20 +279,58 @@
                             <div class="card-body">
                                 <div class="mx-auto d-block">
                                     <img class="rounded-circle mx-auto d-block"
-                                         src="resource/images/icon/avatar-01.jpg" alt="Card image cap">
-                                    <h5 class="text-sm-center mt-2 mb-1">Steven Lee</h5>
+                                         src="${userAvatar}" alt="Card image cap">
+                                    <h5 class="text-sm-center mt-2 mb-1">${userName}</h5>
                                     <div class="location text-sm-center">
-                                        <i class="fa fa-map-marker"></i> California, United States
+                                        <i class="fa fa-map-marker"></i>${userAddress}
                                     </div>
                                 </div>
                                 <hr>
                                 <div class="card-text text-sm-center">
                                     <div class="row form-group">
                                         <div class="col col-md-3">
-                                            <label class=" form-control-label">Static</label>
+                                            <label class=" form-control-label">Name</label>
                                         </div>
                                         <div class="col-12 col-md-9">
-                                            <p class="form-control-static">Username</p>
+                                            <p class="form-control-static">${userName}</p>
+                                        </div>
+                                        <div class="col col-md-3">
+                                            <label class=" form-control-label">Email</label>
+                                        </div>
+                                        <div class="col-12 col-md-9">
+                                            <p class="form-control-static">${userEmail}</p>
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div class="col col-md-3">
+                                            <label class=" form-control-label">Address</label>
+                                        </div>
+                                        <div class="col-12 col-md-9">
+                                            <p class="form-control-static">${userAddress}</p>
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div class="col col-md-3">
+                                            <label class=" form-control-label">Phone</label>
+                                        </div>
+                                        <div class="col-12 col-md-9">
+                                            <p class="form-control-static">${userPhone}</p>
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div class="col col-md-3">
+                                            <label class=" form-control-label">DOB</label>
+                                        </div>
+                                        <div class="col-12 col-md-9">
+                                            <p class="form-control-static">${userDOB}</p>
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div class="col col-md-3">
+                                            <label class=" form-control-label">RegisterDate</label>
+                                        </div>
+                                        <div class="col-12 col-md-9">
+                                            <p class="form-control-static">${userRegisterDate}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -365,26 +403,26 @@
                                             <label class=" form-control-label">UserName</label>
                                         </div>
                                         <div class="col-12 col-md-9">
-                                            <p class="form-control-static">Username</p>
+                                            <input type="email" id="userName-input" name="user-name-input"
+                                                   placeholder="Enter Email" class="form-control" value="${userName}">
+                                            <small class="help-block form-text">Please enter your Name</small>
                                         </div>
                                     </div>
                                     <div class="row form-group">
                                         <div class="col col-md-3">
-                                            <label for="email-input" class=" form-control-label">Email Input</label>
+                                            <label class=" form-control-label">Email</label>
                                         </div>
                                         <div class="col-12 col-md-9">
-                                            <input type="email" id="email-input" name="email-input"
-                                                   placeholder="Enter Email" class="form-control">
-                                            <small class="help-block form-text">Please enter your email</small>
+                                            <p class="form-control-static">${userEmail}</p>
                                         </div>
                                     </div>
                                     <div class="row form-group">
                                         <div class="col col-md-3">
-                                            <label for="password-input" class=" form-control-label">Password</label>
+                                            <label for="password-input" class=" form-control-label" >Password</label>
                                         </div>
                                         <div class="col-12 col-md-9">
                                             <input type="password" id="password-input" name="password-input"
-                                                   placeholder="Password" class="form-control">
+                                                   placeholder="Password" class="form-control" value="${userPassword}">
                                             <small class="help-block form-text">Please enter a complex
                                                 password</small>
                                         </div>
@@ -396,7 +434,7 @@
                                         </div>
                                         <div class="col-12 col-md-9">
                                             <input type="text" id="address-input" name="address-input"
-                                                   placeholder="Enter Address" class="form-control">
+                                                   placeholder="Enter Address" class="form-control" value="${userAddress}">
                                             <small class="help-block form-text">Please enter your address</small>
                                         </div>
                                     </div>
@@ -405,7 +443,8 @@
                                             <label for="phone-input" class=" form-control-label">Phone Input</label>
                                         </div>
                                         <div class="col-12 col-md-9">
-                                            <input type="" id="phone-input" name="phone-input" placeholder="Enter Phone" class="form-control">
+                                            <input type="" id="phone-input" name="phone-input" placeholder="Enter Phone"
+                                                   class="form-control" value="${userPhone}">
                                             <small class="help-block form-text">Please enter your phone</small>
                                         </div>
                                     </div>
@@ -415,7 +454,7 @@
                                         </div>
                                         <div class="col-12 col-md-9">
                                             <input type="date" id="DOB-input" name="DOB-input"
-                                                   placeholder="Enter date of birth" class="form-control">
+                                                   placeholder="Enter date of birth" class="form-control" value="${userDOB}">
                                             <small class="help-block form-text">Please enter your DOB</small>
                                         </div>
                                     </div>
@@ -427,6 +466,7 @@
                                             <input type="file" id="file-input" name="file-input"
                                                    class="form-control-file">
                                         </div>
+                                        <img src="${userAvatar}" alt="..." class="img-thumbnail">
                                     </div>
 
                                 </form>

@@ -20,4 +20,10 @@ public class UserService {
         userList = userRepository.findAll(request, response);
         return userList;
     }
+    public User findUserByEmailAndPassword(String email,String password)throws SQLException{
+        return  userRepository.findUserByEmailAndPassword(email,password);
+    }
+    public boolean addUser(User user){
+        return userRepository.addUser(user);
+    }
 }

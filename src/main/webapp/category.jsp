@@ -246,16 +246,10 @@
                                                         <button class="item" data-toggle="modal" data-placement="top"
                                                                 title="Edit" type="button" style="background: green;">
                                                             <a href="CategoryServlet?action=active&id=${element.getCategoryId()}">
-                                                                <i class="fas fa-check" style="color: white"></i>
+                                                                <i class="fas fa-edit" style="color: white"></i>
                                                             </a>
                                                         </button>
-                                                        <button class="item" data-toggle="modal" data-placement="top"
-                                                                title="Disable" type="button" data-target="#smallModal"
-                                                                style="background: orangered;">
-                                                            <a href="CategoryServlet?action=disable&id=${element.getCategoryId()}">
-                                                                <i class="fas fa-ban" style="color: white"></i>
-                                                            </a>
-                                                        </button>
+
                                                     </div>
                                                 </td>
                                             </tr>
@@ -281,6 +275,52 @@
         </div>
         <!--END PAGE CONTAINER -->
     </div>
+    <c:if test="${requestScope['confirm'] != null}">
+        <!-- modal large -->
+        <div class="modal fade" id="smallModal" tabindex="-1" role="dialog"
+             aria-labelledby="largeModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="form">
+                <div class="card modal-content">
+                    <div class="card-header modal-header">
+                        <div class="table-data-feature">
+                            <strong>Confirm</strong>
+                        </div>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="editTitleForm" action="CategoryServlet?confirm=yes" method="get">
+                            <div class="row form-group">
+                                <div class="col col-md-3">
+                                    <label for="title-input" class=" form-control-label">Title
+                                        Input</label>
+                                </div>
+                                <div class="col-12 col-md-9">
+                                    <input type="text" id="title-input" name="title-input"
+                                           placeholder="Enter title" class="form-control" >
+                                    <small class="help-block form-text">Please enter your title</small>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="card-footer modal-footer">
+                        <button type="submit" form="editTitleForm" class="btn btn-primary">
+                                <i class="fa fa-dot-circle-o" style="color: white;"></i>
+                           Submit
+                        </button>
+                        <button type="button" class="btn btn-danger">
+                            <a href="CategoryServlet?confirm=no">
+                                <i class="fa fa-ban" data-dismiss="modal" style="color: white;" ></i>
+                            </a>Denied
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end modal large -->
+    </c:if>
 
 
     <!-- Jquery JS-->
@@ -306,7 +346,13 @@
 
     <!-- Main JS-->
     <script src="resource/js/main.js"></script>
-
+    <c:if test="${confirm}">
+        <script type="text/javascript">
+            $(window).on('load', function () {
+                $('#smallModal').modal('show');
+            });
+        </script>
+    </c:if>
 </body>
 
 </html>
