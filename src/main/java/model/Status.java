@@ -1,5 +1,5 @@
 package model;
 
 public  enum  Status{
-    ONLINE,OFFLINE
+    ONLINE,OFFLINE,ADMITTED,BANNED,PENDING
 }

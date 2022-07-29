@@ -7,12 +7,14 @@ public class Post {
     private int authorId;
     private String postTitle;
     private String postSummary;
-    private  Text postContent;
+    private  String postContent;
     private String postPicture;
     private String postCreateAt;
     private String postUpdateAt;
+    private  Status postStatus;
 
-    public Post(int postId, int authorId, String postTitle, String postSummary, Text postContent, String postPicture, String postCreateAt, String postUpdateAt) {
+    public Post(int postId, int authorId, String postTitle, String postSummary, String postContent,
+                String postPicture, String postCreateAt, String postUpdateAt) {
         this.postId = postId;
         this.authorId = authorId;
         this.postTitle = postTitle;
@@ -21,6 +23,7 @@ public class Post {
         this.postPicture = postPicture;
         this.postCreateAt = postCreateAt;
         this.postUpdateAt = postUpdateAt;
+        this.postStatus=Status.PENDING;
     }
 
     public int getPostId() {
@@ -39,7 +42,7 @@ public class Post {
         return postSummary;
     }
 
-    public Text getPostContent() {
+    public String getPostContent() {
         return postContent;
     }
 
@@ -71,7 +74,7 @@ public class Post {
         this.postSummary = postSummary;
     }
 
-    public void setPostContent(Text postContent) {
+    public void setPostContent(String postContent) {
         this.postContent = postContent;
     }
 
@@ -85,5 +88,13 @@ public class Post {
 
     public void setPostUpdateAt(String postUpdateAt) {
         this.postUpdateAt = postUpdateAt;
+    }
+
+    public Status getPostStatus() {
+        return postStatus;
+    }
+
+    public void setPostStatus(Status postStatus) {
+        this.postStatus = postStatus;
     }
 }
