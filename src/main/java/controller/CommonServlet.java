@@ -15,7 +15,7 @@ import java.util.List;
 public class CommonServlet extends HttpServlet {
     static public List<User> userList=createDemo();
     static  public  List<Category> categoryList=createCategory();
-    static  public  List<Post> postList=createPost();
+//    static  public  List<Post> postList=createPost();
     private String page="/adminView.jsp";
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -32,10 +32,10 @@ public class CommonServlet extends HttpServlet {
                 request.setAttribute("categoryList",categoryList);
                 page= "/category.jsp";
                 break;
-            case "posts":
-                request.setAttribute("blogList",postList);
-                page="/blogs.jsp";
-                break;
+//            case "posts":
+//                request.setAttribute("blogList",postList);
+//                page="/blogs.jsp";
+//                break;
             default:
                 page= "/adminView.jsp";
                 break;
@@ -64,23 +64,23 @@ public class CommonServlet extends HttpServlet {
         return categoryList;
 
     }
-    public  static List<Post> createPost(){
-        List<Post> list=new ArrayList<>();
-        list.add(new Post(1,1,"gà","hahahahahhaha","savbahdbvasdvuiasdiuva",
-                "aaaaaaaaaaaaaaa","07/22/2007","07/22/2027"));
-
-        list.add(new Post(2,2,"gà","hahahahahhaha","savbahdbvasdvuiasdiuva",
-                "aaaaaaaaaaaaaaa","07/22/2007","07/22/2027"));
-        list.add(new Post(3,3,"gà","hahahahahhaha","savbahdbvasdvuiasdiuva",
-                "aaaaaaaaaaaaaaa","07/22/2007","07/22/2027"));
-        list.add(new Post(4,4,"gà","hahahahahhaha","savbahdbvasdvuiasdiuva",
-                "aaaaaaaaaaaaaaa","07/22/2007","07/22/2027"));
-        list.add(new Post(5,5,"gà","hahahahahhaha","savbahdbvasdvuiasdiuva",
-                "aaaaaaaaaaaaaaa","07/22/2007","07/22/2027"));
-        list.add(new Post(6,5,"gà","hahahahahhaha","savbahdbvasdvuiasdiuva",
-                "aaaaaaaaaaaaaaa","07/22/2007","07/22/2027"));
-        return list;
-    }
+//    public  static List<Post> createPost(){
+//        List<Post> list=new ArrayList<>();
+//        list.add(new Post(1,1,"gà","hahahahahhaha","savbahdbvasdvuiasdiuva",
+//                "aaaaaaaaaaaaaaa","07/22/2007","07/22/2027"));
+//
+//        list.add(new Post(2,2,"gà","hahahahahhaha","savbahdbvasdvuiasdiuva",
+//                "aaaaaaaaaaaaaaa","07/22/2007","07/22/2027"));
+//        list.add(new Post(3,3,"gà","hahahahahhaha","savbahdbvasdvuiasdiuva",
+//                "aaaaaaaaaaaaaaa","07/22/2007","07/22/2027"));
+//        list.add(new Post(4,4,"gà","hahahahahhaha","savbahdbvasdvuiasdiuva",
+//                "aaaaaaaaaaaaaaa","07/22/2007","07/22/2027"));
+//        list.add(new Post(5,5,"gà","hahahahahhaha","savbahdbvasdvuiasdiuva",
+//                "aaaaaaaaaaaaaaa","07/22/2007","07/22/2027"));
+//        list.add(new Post(6,5,"gà","hahahahahhaha","savbahdbvasdvuiasdiuva",
+//                "aaaaaaaaaaaaaaa","07/22/2007","07/22/2027"));
+//        return list;
+//    }
 
 
     private static List<User> createDemo(){
@@ -125,5 +125,8 @@ public class CommonServlet extends HttpServlet {
         userList.add(new User(16,"khoa1@gmail.com","khoa16","12345678",
                 "hanoi","0978264830","07/26/1997","26-07-2022","12-05-2022",true));
         return userList;
+    }
+    public void checkPostByUser(){
+
     }
 }

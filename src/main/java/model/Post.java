@@ -1,6 +1,8 @@
 package model;
 
-import javax.xml.soap.Text;
+
+import java.sql.Date;
+import java.time.LocalDateTime;
 
 public class Post {
     private   int postId;
@@ -12,6 +14,23 @@ public class Post {
     private String postCreateAt;
     private String postUpdateAt;
     private  Status postStatus;
+
+    public Post(int authorId,String postTitle, String postContent, String postPicture, String postCreateAt) {
+        this.authorId = authorId;
+        this.postTitle = postTitle;
+        this.postContent = postContent;
+        this.postPicture = postPicture;
+        this.postCreateAt = postCreateAt;
+    }
+
+    public Post(int postId, int authorId, String postTitle, String postContent, String postPicture, String postCreateAt) {
+        this.postId = postId;
+        this.authorId = authorId;
+        this.postTitle = postTitle;
+        this.postContent = postContent;
+        this.postPicture = postPicture;
+        this.postCreateAt = postCreateAt;
+    }
 
     public Post(int postId, int authorId, String postTitle, String postSummary, String postContent,
                 String postPicture, String postCreateAt, String postUpdateAt) {
