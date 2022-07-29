@@ -24,13 +24,6 @@ public class Post {
         this.postCreateAt = postCreateAt;
     }
 
-    public Post(int authorId,String postTitle, String postContent, String postPicture, String postCreateAt) {
-        this.authorId = authorId;
-        this.postTitle = postTitle;
-        this.postContent = postContent;
-        this.postPicture = postPicture;
-        this.postCreateAt = postCreateAt;
-    }
 
     public Post(int postId, int authorId, String postTitle, String postContent, String postPicture, String postCreateAt) {
         this.postId = postId;
@@ -41,15 +34,7 @@ public class Post {
         this.postCreateAt = postCreateAt;
     }
 
-    public Post(int postId, int authorId, String postTitle, String postSummary, String postContent,
-                String postPicture, String postCreateAt, String postUpdateAt) {
-        this.postId = postId;
-        this.authorId = authorId;
-        this.postTitle = postTitle;
-        this.postContent = postContent;
-        this.postPicture = postPicture;
-        this.postCreateAt = postCreateAt;
-    }
+
 
     public Post(int postId, int authorId, String postTitle, String postSummary, String postContent,
                 String postPicture, String postCreateAt, String postUpdateAt) {

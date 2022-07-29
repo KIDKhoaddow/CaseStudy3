@@ -1,6 +1,7 @@
 package controller;
 
 import model.Post;
+import service.PostService;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
