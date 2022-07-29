@@ -8,7 +8,6 @@ public class Post {
     private   int postId;
     private int authorId;
     private String postTitle;
-
     private  String postContent;
     private String postPicture;
     private String postCreateAt;
@@ -119,5 +118,14 @@ public class Post {
 
     public void setPostStatus(Status postStatus) {
         this.postStatus = postStatus;
+    }
+    public int getPostLikes(){
+        return 0;
+    }
+    public int getPostComment(){
+        return 0;
+    }
+    public String getPostAuthor(){
+        return null;
     }
 }
