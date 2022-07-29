@@ -15,6 +15,12 @@ public class Comment {
         this.createAt = createAt;
     }
 
+    public Comment(int postId, String commentContent, String createAt) {
+        this.postId = postId;
+        this.commentContent = commentContent;
+        this.createAt = createAt;
+    }
+
     public int getCommentId() {
         return commentId;
     }
