@@ -66,18 +66,19 @@ public class CommonServlet extends HttpServlet {
     }
     public  static List<Post> createPost(){
         List<Post> list=new ArrayList<>();
-        list.add(new Post(1,1,"gà","hahahahahhaha","savbahdbvasdvuiasdiuva","07/22/2007","07/22/2027"));
+        list.add(new Post(1,1,"gà","hahahahahhaha","savbahdbvasdvuiasdiuva",
+                "aaaaaaaaaaaaaaa","07/22/2007","07/22/2027"));
 
         list.add(new Post(2,2,"gà","hahahahahhaha","savbahdbvasdvuiasdiuva",
-               "07/22/2007","07/22/2027"));
+                "aaaaaaaaaaaaaaa","07/22/2007","07/22/2027"));
         list.add(new Post(3,3,"gà","hahahahahhaha","savbahdbvasdvuiasdiuva",
-                "07/22/2007","07/22/2027"));
+                "aaaaaaaaaaaaaaa","07/22/2007","07/22/2027"));
         list.add(new Post(4,4,"gà","hahahahahhaha","savbahdbvasdvuiasdiuva",
-               "07/22/2007","07/22/2027"));
+                "aaaaaaaaaaaaaaa","07/22/2007","07/22/2027"));
         list.add(new Post(5,5,"gà","hahahahahhaha","savbahdbvasdvuiasdiuva",
-               "07/22/2007","07/22/2027"));
+                "aaaaaaaaaaaaaaa","07/22/2007","07/22/2027"));
         list.add(new Post(6,5,"gà","hahahahahhaha","savbahdbvasdvuiasdiuva",
-              "07/22/2007","07/22/2027"));
+                "aaaaaaaaaaaaaaa","07/22/2007","07/22/2027"));
         return list;
     }
 

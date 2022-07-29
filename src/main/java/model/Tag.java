@@ -1,13 +1,12 @@
 package model;
 
-import javax.xml.soap.Text;
 
 public class Tag {
     private int tagId;
     private String tagTitle;
-    private Text tagContent;
+    private String tagContent;
 
-    public Tag(int tagId, String tagTitle, Text tagContent) {
+    public Tag(int tagId, String tagTitle, String tagContent) {
         this.tagId = tagId;
         this.tagTitle = tagTitle;
         this.tagContent = tagContent;
@@ -29,11 +28,11 @@ public class Tag {
         this.tagTitle = tagTitle;
     }
 
-    public Text getTagContent() {
+    public String getTagContent() {
         return tagContent;
     }
 
-    public void setTagContent(Text tagContent) {
+    public void setTagContent(String tagContent) {
         this.tagContent = tagContent;
     }
 }

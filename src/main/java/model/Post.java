@@ -1,18 +1,36 @@
 package model;
 
-import javax.xml.soap.Text;
+
 
 public class Post {
     private   int postId;
     private int authorId;
     private String postTitle;
+    private String postSummary;
     private  String postContent;
     private String postPicture;
     private String postCreateAt;
     private String postUpdateAt;
     private  Status postStatus;
 
-    public Post(int postId, int authorId, String postTitle, String postContent,
+    public Post(int authorId,String postTitle, String postContent, String postPicture, String postCreateAt) {
+        this.authorId = authorId;
+        this.postTitle = postTitle;
+        this.postContent = postContent;
+        this.postPicture = postPicture;
+        this.postCreateAt = postCreateAt;
+    }
+
+    public Post(int postId, int authorId, String postTitle, String postContent, String postPicture, String postCreateAt) {
+        this.postId = postId;
+        this.authorId = authorId;
+        this.postTitle = postTitle;
+        this.postContent = postContent;
+        this.postPicture = postPicture;
+        this.postCreateAt = postCreateAt;
+    }
+
+    public Post(int postId, int authorId, String postTitle, String postSummary, String postContent,
                 String postPicture, String postCreateAt, String postUpdateAt) {
         this.postId = postId;
         this.authorId = authorId;
@@ -22,15 +40,6 @@ public class Post {
         this.postPicture = postPicture;
         this.postCreateAt = postCreateAt;
         this.postUpdateAt = postUpdateAt;
-        this.postStatus=Status.PENDING;
-    }
-
-    public Post(int authorId, String postTitle,  String postContent, String postPicture, String postCreateAt) {
-        this.authorId = authorId;
-        this.postTitle = postTitle;
-        this.postContent = postContent;
-        this.postPicture = postPicture;
-        this.postCreateAt = postCreateAt;
         this.postStatus=Status.PENDING;
     }
 
@@ -46,7 +55,9 @@ public class Post {
         return postTitle;
     }
 
-
+    public String getPostSummary() {
+        return postSummary;
+    }
 
     public String getPostContent() {
         return postContent;
