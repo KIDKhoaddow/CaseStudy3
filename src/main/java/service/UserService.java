@@ -1,4 +1,4 @@
-package Service;
+package service;
 
 import DAO.UserRepository;
 import model.User;
