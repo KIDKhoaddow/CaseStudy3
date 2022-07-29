@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -268,7 +269,8 @@
                     </div>
 
                 </div>
-                <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+                <div class="tab-pane fade" id="v-pills-profile" role="tabpanel"
+                     aria-labelledby="v-pills-profile-tab">
                     <div class="col-md-4" style="max-width: 80%">
                         <div class="card">
                             <div class="card-header">
@@ -277,10 +279,12 @@
                             </div>
                             <div class="card-body">
                                 <div class="mx-auto d-block">
-                                    <img class="rounded-circle mx-auto d-block" src="resource/images/icon/avatar-01.jpg" alt="Card image cap">
+                                    <img class="rounded-circle mx-auto d-block"
+                                         src="resource/images/icon/avatar-01.jpg" alt="Card image cap">
                                     <h5 class="text-sm-center mt-2 mb-1">Steven Lee</h5>
                                     <div class="location text-sm-center">
-                                        <i class="fa fa-map-marker"></i> California, United States</div>
+                                        <i class="fa fa-map-marker"></i> California, United States
+                                    </div>
                                 </div>
                                 <hr>
                                 <div class="card-text text-sm-center">
@@ -297,8 +301,9 @@
                         </div>
                     </div>
                 </div>
-                <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab"
-                    >
+                <div class="tab-pane fade" id="v-pills-messages" role="tabpanel"
+                     aria-labelledby="v-pills-messages-tab"
+                >
                     <div class="col-12" style="max-width: 100%;">
                         <div class="card">
                             <div class="card-header">
@@ -311,7 +316,8 @@
                                             <label for="title-input" class=" form-control-label">Titile</label>
                                         </div>
                                         <div class="col-12 col-md-9">
-                                            <input type="text" id="title-input" name="text-input" placeholder="Text" class="form-control">
+                                            <input type="text" id="title-input" name="title-input" placeholder="Text"
+                                                   class="form-control">
                                             <small class="form-text text-muted">This is a help text</small>
                                         </div>
                                     </div>
@@ -320,7 +326,8 @@
                                             <label for="content-input" class=" form-control-label">Content</label>
                                         </div>
                                         <div class="col-12 col-md-9">
-                                            <textarea name="textarea-input" id="content-input" rows="9" placeholder="Content..." class="form-control"></textarea>
+                                                <textarea name="textarea-input" id="content-input" rows="9"
+                                                          placeholder="Content..." class="form-control"></textarea>
                                         </div>
                                     </div>
                                     <div class="row form-group">
@@ -328,7 +335,8 @@
                                             <label for="file-input" class=" form-control-label">Image</label>
                                         </div>
                                         <div class="col-12 col-md-9">
-                                            <input type="file" id="picture-input" name="file-input" class="form-control-file">
+                                            <input type="file" id="picture-input" name="file-input"
+                                                   class="form-control-file">
                                         </div>
                                     </div>
                                 </form>
@@ -344,9 +352,10 @@
                         </div>
                     </div>
                 </div>
-                <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
+                <div class="tab-pane fade" id="v-pills-settings" role="tabpanel"
+                     aria-labelledby="v-pills-settings-tab">
                     <div class="col-lg-6" style="max-width: 80%;">
-                        <div class="card" >
+                        <div class="card">
                             <div class="card-header">
                                 <strong>Edit Profile Form</strong>
                             </div>
@@ -365,7 +374,8 @@
                                             <label for="email-input" class=" form-control-label">Email Input</label>
                                         </div>
                                         <div class="col-12 col-md-9">
-                                            <input type="email" id="email-input" name="email-input" placeholder="Enter Email" class="form-control">
+                                            <input type="email" id="email-input" name="email-input"
+                                                   placeholder="Enter Email" class="form-control">
                                             <small class="help-block form-text">Please enter your email</small>
                                         </div>
                                     </div>
@@ -374,16 +384,20 @@
                                             <label for="password-input" class=" form-control-label">Password</label>
                                         </div>
                                         <div class="col-12 col-md-9">
-                                            <input type="password" id="password-input" name="password-input" placeholder="Password" class="form-control">
-                                            <small class="help-block form-text">Please enter a complex password</small>
+                                            <input type="password" id="password-input" name="password-input"
+                                                   placeholder="Password" class="form-control">
+                                            <small class="help-block form-text">Please enter a complex
+                                                password</small>
                                         </div>
                                     </div>
                                     <div class="row form-group">
                                         <div class="col col-md-3">
-                                            <label for="address-input" class=" form-control-label">Address Input</label>
+                                            <label for="address-input" class=" form-control-label">Address
+                                                Input</label>
                                         </div>
                                         <div class="col-12 col-md-9">
-                                            <input type="text" id="address-input" name="address-input" placeholder="Enter Address" class="form-control">
+                                            <input type="text" id="address-input" name="address-input"
+                                                   placeholder="Enter Address" class="form-control">
                                             <small class="help-block form-text">Please enter your address</small>
                                         </div>
                                     </div>
@@ -392,7 +406,8 @@
                                             <label for="phone-input" class=" form-control-label">Phone Input</label>
                                         </div>
                                         <div class="col-12 col-md-9">
-                                            <input type="" id="phone-input" name="phone-input" placeholder="Enter Phone" class="form-control">
+                                            <input type="" id="phone-input" name="phone-input"
+                                                   placeholder="Enter Phone" class="form-control">
                                             <small class="help-block form-text">Please enter your phone</small>
                                         </div>
                                     </div>
@@ -401,7 +416,8 @@
                                             <label for="DOB-input" class=" form-control-label">DOB Input</label>
                                         </div>
                                         <div class="col-12 col-md-9">
-                                            <input type="date" id="DOB-input" name="DOB-input" placeholder="Enter date of birth" class="form-control">
+                                            <input type="date" id="DOB-input" name="DOB-input"
+                                                   placeholder="Enter date of birth" class="form-control">
                                             <small class="help-block form-text">Please enter your DOB</small>
                                         </div>
                                     </div>
@@ -410,7 +426,8 @@
                                             <label for="file-input" class=" form-control-label">Avatar input</label>
                                         </div>
                                         <div class="col-12 col-md-9">
-                                            <input type="file" id="file-input" name="file-input" class="form-control-file">
+                                            <input type="file" id="file-input" name="file-input"
+                                                   class="form-control-file">
                                         </div>
                                     </div>
 
@@ -430,7 +447,7 @@
             </div>
         </div>
     </div>
-
+    </div>
 
 </section>
 <!-- ****** Archive Area End ****** -->

@@ -44,8 +44,8 @@ public class ServletHome extends HttpServlet {
         LocalDateTime date = LocalDateTime.now();
 //        int authorId = findIdByUser(request);
         int authorId = 1;
-        String postTitle = request.getParameter("a");
-        String postContent = request.getParameter("b");
+        String postTitle = request.getParameter("title-input");
+        String postContent = request.getParameter("content-input");
         String postPicture = request.getParameter("file-input");
         String postCreateAt = date.toString();
         Post post = new Post(authorId,postTitle,postContent,postPicture,postCreateAt);
