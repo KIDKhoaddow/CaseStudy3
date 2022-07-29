@@ -305,13 +305,13 @@
                                 <strong>Basic Form</strong> Elements
                             </div>
                             <div class="card-body card-block">
-                                <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
+                                <form action="/ServletHome?action=creatPost" method="get" id="formCreatPost" enctype="multipart/form-data" class="form-horizontal">
                                     <div class="row form-group">
                                         <div class="col col-md-3">
-                                            <label for="title-input" class=" form-control-label">Titile</label>
+                                            <label for="title-input" class=" form-control-label">Title</label>
                                         </div>
                                         <div class="col-12 col-md-9">
-                                            <input type="text" id="title-input" name="text-input" placeholder="Text" class="form-control">
+                                            <input type="text" id="title-input" name="a" placeholder="Text" class="form-control">
                                             <small class="form-text text-muted">This is a help text</small>
                                         </div>
                                     </div>
@@ -320,7 +320,9 @@
                                             <label for="content-input" class=" form-control-label">Content</label>
                                         </div>
                                         <div class="col-12 col-md-9">
-                                            <textarea name="textarea-input" id="content-input" rows="9" placeholder="Content..." class="form-control"></textarea>
+                                            <textarea name="b" id="content-input" rows="9" placeholder="Content..." class="form-control">
+
+                                            </textarea>
                                         </div>
                                     </div>
                                     <div class="row form-group">
@@ -334,8 +336,8 @@
                                 </form>
                             </div>
                             <div class="card-footer">
-                                <button type="submit" class="btn btn-primary btn-sm">
-                                    <i class="fa fa-dot-circle-o"></i> Submit
+                                <button type="submit" value="submit" class="btn btn-primary btn-sm" form="formCreatPost">
+                                   <i class="fa fa-dot-circle-o"></i> Submit
                                 </button>
                                 <button type="reset" class="btn btn-danger btn-sm">
                                     <i class="fa fa-ban"></i> Reset

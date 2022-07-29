@@ -35,7 +35,6 @@ public class Post {
         this.postId = postId;
         this.authorId = authorId;
         this.postTitle = postTitle;
-
         this.postContent = postContent;
         this.postPicture = postPicture;
         this.postCreateAt = postCreateAt;
@@ -86,7 +85,6 @@ public class Post {
     public void setPostTitle(String postTitle) {
         this.postTitle = postTitle;
     }
-
 
     public void setPostContent(String postContent) {
         this.postContent = postContent;
