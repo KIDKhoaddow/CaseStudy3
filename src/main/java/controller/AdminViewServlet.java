@@ -1,7 +1,7 @@
 package controller;
 
-import Service.CategoryService;
-import Service.UserService;
+import service.CategoryService;
+import service.UserService;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
