@@ -18,7 +18,7 @@ public class UsersServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         id=Integer.parseInt(request.getParameter("id"));
         action=request.getParameter("action");
-        request.setAttribute("userList",CommonServlet.userList);
+        request.setAttribute("userList", CommentServlet.userList);
         if(action.equals("active")){
             request.setAttribute("confirm",true);
         }else {

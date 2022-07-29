@@ -12,7 +12,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 @WebServlet(name = "CommonServlet", value = "/CommonServlet")
-public class CommonServlet extends HttpServlet {
+public class
+
+
+CommentServlet extends HttpServlet {
     static public List<User> userList=createDemo();
     static  public  List<Category> categoryList=createCategory();
     static  public  List<Post> postList=createPost();
