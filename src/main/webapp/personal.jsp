@@ -161,71 +161,35 @@
                 <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel"
                      aria-labelledby="v-pills-home-tab">
                     <div class="row" style="display: flex; flex-wrap: wrap">
-                        <!-- Single Post -->
-                        <div class="col-12 col-md-6 col-lg-4">
-                            <div class="single-post wow fadeInUp" data-wow-delay="0.1s">
-                                <!-- Post Thumb -->
-                                <div class="post-thumb">
-                                    <img src="yummy-master/img/blog-img/2.jpg" alt="">
-                                </div>
-                                <c:forEach items="PostsOfUser" var="element">
-                                <div class="post-content">
-                                    <div class="post-meta d-flex">
-                                        <div class="post-author-date-area d-flex">
-                                            <!-- Post Author -->
-                                            <div class="post-author">
-                                                <a href="#">By ${element.getAuthorName()}</a>
-                                            </div>
-                                            <!-- Post Date -->
-                                            <div class="post-date">
-                                                <a href="#">${element.getPostCreateAt()}</a>
-                                            </div>
-                                        </div>
-                                        <!-- Post Comment & Share Area -->
-                                        <div class="post-comment-share-area d-flex">
-                                            <!-- Post Favourite -->
-                                            <div class="post-favourite">
-                                                <a href="#"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
-                                            </div>
-                                            <!-- Post Comments -->
-                                            <div class="post-comments">
-                                                <a href="#"><i class="fa fa-comment-o" aria-hidden="true"></i> 12</a>
-                                            </div>
-                                            <!-- Post Share -->
-                                            <div class="post-share">
-                                                <a href="#"><i class="fa fa-share-alt" aria-hidden="true"></i></a>
-                                            </div>
-                                        </div>
+                        <c:forEach items="${posts}" var="element">
+                            <div class="col-12 col-md-6 col-lg-4">
+                                <div class="single-post wow fadeInUp" data-wow-delay="0.1s">
+                                    <!-- Post Thumb -->
+                                    <div class="post-thumb">
+                                        <img src="yummy-master/img/blog-img/2.jpg" alt="">
                                     </div>
-
-                                    </c:forEach>
                                     <!-- Post Content -->
                                     <div class="post-content">
                                         <div class="post-meta d-flex">
                                             <div class="post-author-date-area d-flex">
                                                 <!-- Post Author -->
                                                 <div class="post-author">
-                                                    <a href="#">By Marian</a>
+                                                    <a href="#">${element.getPostAuthor()}</a>
                                                 </div>
                                                 <!-- Post Date -->
                                                 <div class="post-date">
-                                                    <a href="#">May 19, 2017</a>
+                                                    <a href="#">${element.getPostCreateAt()}</a>
                                                 </div>
                                             </div>
                                             <!-- Post Comment & Share Area -->
                                             <div class="post-comment-share-area d-flex">
                                                 <!-- Post Favourite -->
                                                 <div class="post-favourite">
-                                                    <a href="#"><i class="fa fa-heart-o" aria-hidden="true"></i> 10</a>
+                                                    <a href="#"><i class="fa fa-heart-o" aria-hidden="true"></i>${element.getPostLikes()}</a>
                                                 </div>
                                                 <!-- Post Comments -->
                                                 <div class="post-comments">
-                                                    <a href="#"><i class="fa fa-comment-o" aria-hidden="true"></i>
-                                                        12</a>
-                                                </div>
-                                                <!-- Post Share -->
-                                                <div class="post-share">
-                                                    <a href="#"><i class="fa fa-share-alt" aria-hidden="true"></i></a>
+                                                    <a href="#"><i class="fa fa-comment-o" aria-hidden="true"></i>${element.getPostComment()}</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -236,340 +200,253 @@
                                     </div>
                                 </div>
                             </div>
-                            <!-- Single Post -->
-                            <div class="col-12 col-md-6 col-lg-4">
-                                <div class="single-post wow fadeInUp" data-wow-delay="0.2s">
-                                    <!-- Post Thumb -->
-                                    <div class="post-thumb">
-                                        <img src="yummy-master/img/blog-img/3.jpg" alt="">
-                                    </div>
-                                    <!-- Post Content -->
-                                    <div class="post-content">
-                                        <div class="post-meta d-flex">
-                                            <div class="post-author-date-area d-flex">
-                                                <!-- Post Author -->
-                                                <div class="post-author">
-                                                    <a href="#">By Marian</a>
-                                                </div>
-                                                <!-- Post Date -->
-                                                <div class="post-date">
-                                                    <a href="#">May 19, 2017</a>
-                                                </div>
+                        </c:forEach>
+                        <!-- Single Post -->
+                        <div class="col-12 col-md-6 col-lg-4">
+                            <div class="single-post wow fadeInUp" data-wow-delay="0.4s">
+                                <!-- Post Thumb -->
+                                <div class="post-thumb">
+                                    <img src="yummy-master/img/blog-img/5.jpg" alt="">
+                                </div>
+                                <!-- Post Content -->
+                                <div class="post-content">
+                                    <div class="post-meta d-flex">
+                                        <div class="post-author-date-area d-flex">
+                                            <!-- Post Author -->
+                                            <div class="post-author">
+                                                <a href="#">By Marian</a>
                                             </div>
-                                            <!-- Post Comment & Share Area -->
-                                            <div class="post-comment-share-area d-flex">
-                                                <!-- Post Favourite -->
-                                                <div class="post-favourite">
-                                                    <a href="#"><i class="fa fa-heart-o" aria-hidden="true"></i> 10</a>
-                                                </div>
-                                                <!-- Post Comments -->
-                                                <div class="post-comments">
-                                                    <a href="#"><i class="fa fa-comment-o" aria-hidden="true"></i>
-                                                        12</a>
-                                                </div>
-                                                <!-- Post Share -->
-                                                <div class="post-share">
-                                                    <a href="#"><i class="fa fa-share-alt" aria-hidden="true"></i></a>
-                                                </div>
+                                            <!-- Post Date -->
+                                            <div class="post-date">
+                                                <a href="#">May 19, 2017</a>
                                             </div>
                                         </div>
-                                        <a href="#">
-                                            <h4 class="post-headline">The Top Breakfast And Brunch Spots In Hove,
-                                                Brighton</h4>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Single Post -->
-                            <div class="col-12 col-md-6 col-lg-4">
-                                <div class="single-post wow fadeInUp" data-wow-delay="0.3s">
-                                    <!-- Post Thumb -->
-                                    <div class="post-thumb">
-                                        <img src="yummy-master/img/blog-img/4.jpg" alt="">
-                                    </div>
-                                    <!-- Post Content -->
-                                    <div class="post-content">
-                                        <div class="post-meta d-flex">
-                                            <div class="post-author-date-area d-flex">
-                                                <!-- Post Author -->
-                                                <div class="post-author">
-                                                    <a href="#">By Marian</a>
-                                                </div>
-                                                <!-- Post Date -->
-                                                <div class="post-date">
-                                                    <a href="#">May 19, 2017</a>
-                                                </div>
+                                        <!-- Post Comment & Share Area -->
+                                        <div class="post-comment-share-area d-flex">
+                                            <!-- Post Favourite -->
+                                            <div class="post-favourite">
+                                                <a href="#"><i class="fa fa-heart-o" aria-hidden="true"></i> 10</a>
                                             </div>
-                                            <!-- Post Comment & Share Area -->
-                                            <div class="post-comment-share-area d-flex">
-                                                <!-- Post Favourite -->
-                                                <div class="post-favourite">
-                                                    <a href="#"><i class="fa fa-heart-o" aria-hidden="true"></i> 10</a>
-                                                </div>
-                                                <!-- Post Comments -->
-                                                <div class="post-comments">
-                                                    <a href="#"><i class="fa fa-comment-o" aria-hidden="true"></i>
-                                                        12</a>
-                                                </div>
-                                                <!-- Post Share -->
-                                                <div class="post-share">
-                                                    <a href="#"><i class="fa fa-share-alt" aria-hidden="true"></i></a>
-                                                </div>
+                                            <!-- Post Comments -->
+                                            <div class="post-comments">
+                                                <a href="#"><i class="fa fa-comment-o" aria-hidden="true"></i>
+                                                    12</a>
+                                            </div>
+                                            <!-- Post Share -->
+                                            <div class="post-share">
+                                                <a href="#"><i class="fa fa-share-alt" aria-hidden="true"></i></a>
                                             </div>
                                         </div>
-                                        <a href="#">
-                                            <h4 class="post-headline">The 10 Best Pubs In The Lake District,
-                                                Cumbria</h4>
-                                        </a>
                                     </div>
-                                </div>
-                            </div>
-                            <!-- Single Post -->
-                            <div class="col-12 col-md-6 col-lg-4">
-                                <div class="single-post wow fadeInUp" data-wow-delay="0.4s">
-                                    <!-- Post Thumb -->
-                                    <div class="post-thumb">
-                                        <img src="yummy-master/img/blog-img/5.jpg" alt="">
-                                    </div>
-                                    <!-- Post Content -->
-                                    <div class="post-content">
-                                        <div class="post-meta d-flex">
-                                            <div class="post-author-date-area d-flex">
-                                                <!-- Post Author -->
-                                                <div class="post-author">
-                                                    <a href="#">By Marian</a>
-                                                </div>
-                                                <!-- Post Date -->
-                                                <div class="post-date">
-                                                    <a href="#">May 19, 2017</a>
-                                                </div>
-                                            </div>
-                                            <!-- Post Comment & Share Area -->
-                                            <div class="post-comment-share-area d-flex">
-                                                <!-- Post Favourite -->
-                                                <div class="post-favourite">
-                                                    <a href="#"><i class="fa fa-heart-o" aria-hidden="true"></i> 10</a>
-                                                </div>
-                                                <!-- Post Comments -->
-                                                <div class="post-comments">
-                                                    <a href="#"><i class="fa fa-comment-o" aria-hidden="true"></i>
-                                                        12</a>
-                                                </div>
-                                                <!-- Post Share -->
-                                                <div class="post-share">
-                                                    <a href="#"><i class="fa fa-share-alt" aria-hidden="true"></i></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <a href="#">
-                                            <h4 class="post-headline">The 10 Best Brunch Spots In Newcastle,
-                                                England</h4>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                <div class="pagination-area d-sm-flex mt-15">
-                                    <nav aria-label="#">
-                                        <ul class="pagination">
-                                            <li class="page-item active">
-                                                <a class="page-link" href="#">1 <span
-                                                        class="sr-only">(current)</span></a>
-                                            </li>
-                                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                            <li class="page-item">
-                                                <a class="page-link" href="#">Next <i class="fa fa-angle-double-right"
-                                                                                      aria-hidden="true"></i></a>
-                                            </li>
-                                        </ul>
-                                    </nav>
-                                    <div class="page-status">
-                                        <p>Page 1 of 60 results</p>
-                                    </div>
+                                    <a href="#">
+                                        <h4 class="post-headline">The 10 Best Brunch Spots In Newcastle,
+                                            England</h4>
+                                    </a>
                                 </div>
                             </div>
                         </div>
+                        <div class="col-12">
+                            <div class="pagination-area d-sm-flex mt-15">
+                                <nav aria-label="#">
+                                    <ul class="pagination">
+                                        <li class="page-item active">
+                                            <a class="page-link" href="#">1 <span
+                                                    class="sr-only">(current)</span></a>
+                                        </li>
+                                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                        <li class="page-item">
+                                            <a class="page-link" href="#">Next <i class="fa fa-angle-double-right"
+                                                                                  aria-hidden="true"></i></a>
+                                        </li>
+                                    </ul>
+                                </nav>
+                                <div class="page-status">
+                                    <p>Page 1 of 60 results</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-                    </div>
-                    <div class="tab-pane fade" id="v-pills-profile" role="tabpanel"
-                         aria-labelledby="v-pills-profile-tab">
-                        <div class="col-md-4" style="max-width: 80%">
-                            <div class="card">
-                                <div class="card-header">
-                                    <i class="fa fa-user"></i>
-                                    <strong class="card-title pl-2">Profile Card</strong>
-                                </div>
-                                <div class="card-body">
-                                    <div class="mx-auto d-block">
-                                        <img class="rounded-circle mx-auto d-block"
-                                             src="resource/images/icon/avatar-01.jpg" alt="Card image cap">
-                                        <h5 class="text-sm-center mt-2 mb-1">Steven Lee</h5>
-                                        <div class="location text-sm-center">
-                                            <i class="fa fa-map-marker"></i> California, United States
-                                        </div>
+                </div>
+                <div class="tab-pane fade" id="v-pills-profile" role="tabpanel"
+                     aria-labelledby="v-pills-profile-tab">
+                    <div class="col-md-4" style="max-width: 80%">
+                        <div class="card">
+                            <div class="card-header">
+                                <i class="fa fa-user"></i>
+                                <strong class="card-title pl-2">Profile Card</strong>
+                            </div>
+                            <div class="card-body">
+                                <div class="mx-auto d-block">
+                                    <img class="rounded-circle mx-auto d-block"
+                                         src="resource/images/icon/avatar-01.jpg" alt="Card image cap">
+                                    <h5 class="text-sm-center mt-2 mb-1">Steven Lee</h5>
+                                    <div class="location text-sm-center">
+                                        <i class="fa fa-map-marker"></i> California, United States
                                     </div>
-                                    <hr>
-                                    <div class="card-text text-sm-center">
-                                        <div class="row form-group">
-                                            <div class="col col-md-3">
-                                                <label class=" form-control-label">Static</label>
-                                            </div>
-                                            <div class="col-12 col-md-9">
-                                                <p class="form-control-static">Username</p>
-                                            </div>
+                                </div>
+                                <hr>
+                                <div class="card-text text-sm-center">
+                                    <div class="row form-group">
+                                        <div class="col col-md-3">
+                                            <label class=" form-control-label">Static</label>
+                                        </div>
+                                        <div class="col-12 col-md-9">
+                                            <p class="form-control-static">Username</p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="tab-pane fade" id="v-pills-messages" role="tabpanel"
-                         aria-labelledby="v-pills-messages-tab"
-                    >
-                        <div class="col-12" style="max-width: 100%;">
-                            <div class="card">
-                                <div class="card-header">
-                                    <strong>Basic Form</strong> Elements
-                                </div>
-                                <div class="card-body card-block">
-                                    <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
-                                        <div class="row form-group">
-                                            <div class="col col-md-3">
-                                                <label for="title-input" class=" form-control-label">Titile</label>
-                                            </div>
-                                            <div class="col-12 col-md-9">
-                                                <input type="text" id="title-input" name="text-input" placeholder="Text"
-                                                       class="form-control">
-                                                <small class="form-text text-muted">This is a help text</small>
-                                            </div>
+                </div>
+                <div class="tab-pane fade" id="v-pills-messages" role="tabpanel"
+                     aria-labelledby="v-pills-messages-tab"
+                >
+                    <div class="col-12" style="max-width: 100%;">
+                        <div class="card">
+                            <div class="card-header">
+                                <strong>Basic Form</strong> Elements
+                            </div>
+                            <div class="card-body card-block">
+                                <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
+                                    <div class="row form-group">
+                                        <div class="col col-md-3">
+                                            <label for="title-input" class=" form-control-label">Titile</label>
                                         </div>
-                                        <div class="row form-group">
-                                            <div class="col col-md-3">
-                                                <label for="content-input" class=" form-control-label">Content</label>
-                                            </div>
-                                            <div class="col-12 col-md-9">
+                                        <div class="col-12 col-md-9">
+                                            <input type="text" id="title-input" name="text-input" placeholder="Text"
+                                                   class="form-control">
+                                            <small class="form-text text-muted">This is a help text</small>
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div class="col col-md-3">
+                                            <label for="content-input" class=" form-control-label">Content</label>
+                                        </div>
+                                        <div class="col-12 col-md-9">
                                                 <textarea name="textarea-input" id="content-input" rows="9"
                                                           placeholder="Content..." class="form-control"></textarea>
-                                            </div>
                                         </div>
-                                        <div class="row form-group">
-                                            <div class="col col-md-3">
-                                                <label for="file-input" class=" form-control-label">Image</label>
-                                            </div>
-                                            <div class="col-12 col-md-9">
-                                                <input type="file" id="picture-input" name="file-input"
-                                                       class="form-control-file">
-                                            </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div class="col col-md-3">
+                                            <label for="file-input" class=" form-control-label">Image</label>
                                         </div>
-                                    </form>
-                                </div>
-                                <div class="card-footer">
-                                    <button type="submit" class="btn btn-primary btn-sm">
-                                        <i class="fa fa-dot-circle-o"></i> Submit
-                                    </button>
-                                    <button type="reset" class="btn btn-danger btn-sm">
-                                        <i class="fa fa-ban"></i> Reset
-                                    </button>
-                                </div>
+                                        <div class="col-12 col-md-9">
+                                            <input type="file" id="picture-input" name="file-input"
+                                                   class="form-control-file">
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="card-footer">
+                                <button type="submit" class="btn btn-primary btn-sm">
+                                    <i class="fa fa-dot-circle-o"></i> Submit
+                                </button>
+                                <button type="reset" class="btn btn-danger btn-sm">
+                                    <i class="fa fa-ban"></i> Reset
+                                </button>
                             </div>
                         </div>
                     </div>
-                    <div class="tab-pane fade" id="v-pills-settings" role="tabpanel"
-                         aria-labelledby="v-pills-settings-tab">
-                        <div class="col-lg-6" style="max-width: 80%;">
-                            <div class="card">
-                                <div class="card-header">
-                                    <strong>Edit Profile Form</strong>
-                                </div>
-                                <div class="card-body card-block">
-                                    <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
-                                        <div class="row form-group">
-                                            <div class="col col-md-3">
-                                                <label class=" form-control-label">UserName</label>
-                                            </div>
-                                            <div class="col-12 col-md-9">
-                                                <p class="form-control-static">Username</p>
-                                            </div>
+                </div>
+                <div class="tab-pane fade" id="v-pills-settings" role="tabpanel"
+                     aria-labelledby="v-pills-settings-tab">
+                    <div class="col-lg-6" style="max-width: 80%;">
+                        <div class="card">
+                            <div class="card-header">
+                                <strong>Edit Profile Form</strong>
+                            </div>
+                            <div class="card-body card-block">
+                                <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
+                                    <div class="row form-group">
+                                        <div class="col col-md-3">
+                                            <label class=" form-control-label">UserName</label>
                                         </div>
-                                        <div class="row form-group">
-                                            <div class="col col-md-3">
-                                                <label for="email-input" class=" form-control-label">Email Input</label>
-                                            </div>
-                                            <div class="col-12 col-md-9">
-                                                <input type="email" id="email-input" name="email-input"
-                                                       placeholder="Enter Email" class="form-control">
-                                                <small class="help-block form-text">Please enter your email</small>
-                                            </div>
+                                        <div class="col-12 col-md-9">
+                                            <p class="form-control-static">Username</p>
                                         </div>
-                                        <div class="row form-group">
-                                            <div class="col col-md-3">
-                                                <label for="password-input" class=" form-control-label">Password</label>
-                                            </div>
-                                            <div class="col-12 col-md-9">
-                                                <input type="password" id="password-input" name="password-input"
-                                                       placeholder="Password" class="form-control">
-                                                <small class="help-block form-text">Please enter a complex
-                                                    password</small>
-                                            </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div class="col col-md-3">
+                                            <label for="email-input" class=" form-control-label">Email Input</label>
                                         </div>
-                                        <div class="row form-group">
-                                            <div class="col col-md-3">
-                                                <label for="address-input" class=" form-control-label">Address
-                                                    Input</label>
-                                            </div>
-                                            <div class="col-12 col-md-9">
-                                                <input type="text" id="address-input" name="address-input"
-                                                       placeholder="Enter Address" class="form-control">
-                                                <small class="help-block form-text">Please enter your address</small>
-                                            </div>
+                                        <div class="col-12 col-md-9">
+                                            <input type="email" id="email-input" name="email-input"
+                                                   placeholder="Enter Email" class="form-control">
+                                            <small class="help-block form-text">Please enter your email</small>
                                         </div>
-                                        <div class="row form-group">
-                                            <div class="col col-md-3">
-                                                <label for="phone-input" class=" form-control-label">Phone Input</label>
-                                            </div>
-                                            <div class="col-12 col-md-9">
-                                                <input type="" id="phone-input" name="phone-input"
-                                                       placeholder="Enter Phone" class="form-control">
-                                                <small class="help-block form-text">Please enter your phone</small>
-                                            </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div class="col col-md-3">
+                                            <label for="password-input" class=" form-control-label">Password</label>
                                         </div>
-                                        <div class="row form-group">
-                                            <div class="col col-md-3">
-                                                <label for="DOB-input" class=" form-control-label">DOB Input</label>
-                                            </div>
-                                            <div class="col-12 col-md-9">
-                                                <input type="date" id="DOB-input" name="DOB-input"
-                                                       placeholder="Enter date of birth" class="form-control">
-                                                <small class="help-block form-text">Please enter your DOB</small>
-                                            </div>
+                                        <div class="col-12 col-md-9">
+                                            <input type="password" id="password-input" name="password-input"
+                                                   placeholder="Password" class="form-control">
+                                            <small class="help-block form-text">Please enter a complex
+                                                password</small>
                                         </div>
-                                        <div class="row form-group">
-                                            <div class="col col-md-3">
-                                                <label for="file-input" class=" form-control-label">Avatar input</label>
-                                            </div>
-                                            <div class="col-12 col-md-9">
-                                                <input type="file" id="file-input" name="file-input"
-                                                       class="form-control-file">
-                                            </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div class="col col-md-3">
+                                            <label for="address-input" class=" form-control-label">Address
+                                                Input</label>
                                         </div>
+                                        <div class="col-12 col-md-9">
+                                            <input type="text" id="address-input" name="address-input"
+                                                   placeholder="Enter Address" class="form-control">
+                                            <small class="help-block form-text">Please enter your address</small>
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div class="col col-md-3">
+                                            <label for="phone-input" class=" form-control-label">Phone Input</label>
+                                        </div>
+                                        <div class="col-12 col-md-9">
+                                            <input type="" id="phone-input" name="phone-input"
+                                                   placeholder="Enter Phone" class="form-control">
+                                            <small class="help-block form-text">Please enter your phone</small>
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div class="col col-md-3">
+                                            <label for="DOB-input" class=" form-control-label">DOB Input</label>
+                                        </div>
+                                        <div class="col-12 col-md-9">
+                                            <input type="date" id="DOB-input" name="DOB-input"
+                                                   placeholder="Enter date of birth" class="form-control">
+                                            <small class="help-block form-text">Please enter your DOB</small>
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div class="col col-md-3">
+                                            <label for="file-input" class=" form-control-label">Avatar input</label>
+                                        </div>
+                                        <div class="col-12 col-md-9">
+                                            <input type="file" id="file-input" name="file-input"
+                                                   class="form-control-file">
+                                        </div>
+                                    </div>
 
-                                    </form>
-                                </div>
-                                <div class="card-footer">
-                                    <button type="submit" class="btn btn-primary btn-sm">
-                                        <i class="fa fa-dot-circle-o"></i> Submit
-                                    </button>
-                                    <button type="reset" class="btn btn-danger btn-sm">
-                                        <i class="fa fa-ban"></i> Reset
-                                    </button>
-                                </div>
+                                </form>
+                            </div>
+                            <div class="card-footer">
+                                <button type="submit" class="btn btn-primary btn-sm">
+                                    <i class="fa fa-dot-circle-o"></i> Submit
+                                </button>
+                                <button type="reset" class="btn btn-danger btn-sm">
+                                    <i class="fa fa-ban"></i> Reset
+                                </button>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
     </div>
 
 </section>
