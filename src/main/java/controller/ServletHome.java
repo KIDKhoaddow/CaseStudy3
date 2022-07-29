@@ -1,17 +1,12 @@
 package controller;
 
 import model.Post;
-import service.PostService;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.Date;
 
 @WebServlet(name = "ServletHome", value = "/ServletHome")
 public class ServletHome extends HttpServlet {
@@ -49,8 +44,8 @@ public class ServletHome extends HttpServlet {
         LocalDateTime date = LocalDateTime.now();
 //        int authorId = findIdByUser(request);
         int authorId = 1;
-        String postTitle = request.getParameter("a");
-        String postContent = request.getParameter("b");
+        String postTitle = request.getParameter("title-input");
+        String postContent = request.getParameter("content-input");
         String postPicture = request.getParameter("file-input");
         String postCreateAt = date.toString();
         Post post = new Post(authorId,postTitle,postContent,postPicture,postCreateAt);
