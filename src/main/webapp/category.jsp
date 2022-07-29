@@ -59,19 +59,19 @@
                 <div class="container-fluid">
                     <ul class="navbar-mobile__list list-unstyled">
                         <li class="active has-sub">
-                            <a class="js-arrow" href="CommonServlet?action=dashboard">
+                            <a class="js-arrow" href="AdminViewServlet?action=dashboard">
                                 <i class="fas fa-tachometer-alt"></i>Dashboard</a>
                         </li>
                         <li>
-                            <a href="CommonServlet?action=users">
+                            <a href="AdminViewServlet?action=users">
                                 <i class="fas fa-user"></i>User</a>
                         </li>
                         <li>
-                            <a href="CommonServlet?action=category">
+                            <a href="AdminViewServlet?action=category">
                                 <i class="fas fa-list"></i>Category</a>
                         </li>
                         <li>
-                            <a href="CommonServlet?action=posts">
+                            <a href="AdminViewServlet?action=posts">
                                 <i class="far fa-file"></i>Blog</a>
                         </li>
                     </ul>
@@ -91,19 +91,19 @@
                 <nav class="navbar-sidebar">
                     <ul class="list-unstyled navbar__list">
                         <li class="has-sub">
-                            <a class="js-arrow" href="CommonServlet?action=dashboard">
+                            <a class="js-arrow" href="AdminViewServlet?action=dashboard">
                                 <i class="fas fa-tachometer-alt"></i>Dashboard</a>
                         </li>
                         <li>
-                            <a href="CommonServlet?action=users">
+                            <a href="AdminViewServlet?action=users">
                                 <i class="fas fa-user"></i>User</a>
                         </li>
                         <li>
-                            <a href="CommonServlet?action=category">
+                            <a href="AdminViewServlet?action=category">
                                 <i class="fas fa-list"></i>Category</a>
                         </li>
                         <li>
-                            <a href="CommonServlet?action=posts">
+                            <a href="AdminViewServlet?action=posts">
                                 <i class="far fa-file"></i>Blog</a>
                         </li>
                     </ul>
@@ -239,20 +239,20 @@
                                         <c:forEach items="${categoryList}" var="element">
                                             <tr class="tr-shadow">
                                                 <td class="name">${element.getCategoryId()}</td>
-                                                <td class="name">${element.getTitle()}</td>
+                                                <td class="name">${element.getCategoryTitle()}</td>
                                                 <td class="name">${element.getCategoryContent()}</td>
                                                 <td>
                                                     <div class="table-data-feature">
                                                         <button class="item" data-toggle="modal" data-placement="top"
                                                                 title="Edit" type="button" style="background: green;">
-                                                            <a href="UsersServlet?action=active&id=${element.getCategoryId()}">
+                                                            <a href="CategoryServlet?action=active&id=${element.getCategoryId()}">
                                                                 <i class="fas fa-check" style="color: white"></i>
                                                             </a>
                                                         </button>
                                                         <button class="item" data-toggle="modal" data-placement="top"
                                                                 title="Disable" type="button" data-target="#smallModal"
                                                                 style="background: orangered;">
-                                                            <a href="UsersServlet?action=disable&id=${element.getCategoryId()}">
+                                                            <a href="CategoryServlet?action=disable&id=${element.getCategoryId()}">
                                                                 <i class="fas fa-ban" style="color: white"></i>
                                                             </a>
                                                         </button>
@@ -280,8 +280,8 @@
             </div>
         </div>
         <!--END PAGE CONTAINER -->
-
     </div>
+
 
     <!-- Jquery JS-->
     <script src="resource/vendor/jquery-3.2.1.min.js"></script>
