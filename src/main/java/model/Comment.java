@@ -1,6 +1,6 @@
 package model;
 
-import javax.xml.soap.Text;
+
 
 public class Comment {
     private int commentId;

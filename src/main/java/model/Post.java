@@ -1,6 +1,6 @@
 package model;
 
-import javax.xml.soap.Text;
+
 
 public class Post {
     private   int postId;
@@ -13,12 +13,29 @@ public class Post {
     private String postUpdateAt;
     private  Status postStatus;
 
+    public Post(int authorId,String postTitle, String postContent, String postPicture, String postCreateAt) {
+        this.authorId = authorId;
+        this.postTitle = postTitle;
+        this.postContent = postContent;
+        this.postPicture = postPicture;
+        this.postCreateAt = postCreateAt;
+    }
+
+    public Post(int postId, int authorId, String postTitle, String postContent, String postPicture, String postCreateAt) {
+        this.postId = postId;
+        this.authorId = authorId;
+        this.postTitle = postTitle;
+        this.postContent = postContent;
+        this.postPicture = postPicture;
+        this.postCreateAt = postCreateAt;
+    }
+
     public Post(int postId, int authorId, String postTitle, String postSummary, String postContent,
                 String postPicture, String postCreateAt, String postUpdateAt) {
         this.postId = postId;
         this.authorId = authorId;
         this.postTitle = postTitle;
-        this.postSummary = postSummary;
+
         this.postContent = postContent;
         this.postPicture = postPicture;
         this.postCreateAt = postCreateAt;
@@ -70,9 +87,6 @@ public class Post {
         this.postTitle = postTitle;
     }
 
-    public void setPostSummary(String postSummary) {
-        this.postSummary = postSummary;
-    }
 
     public void setPostContent(String postContent) {
         this.postContent = postContent;
@@ -96,5 +110,14 @@ public class Post {
 
     public void setPostStatus(Status postStatus) {
         this.postStatus = postStatus;
+    }
+    public int getPostLikes(){
+        return 0;
+    }
+    public int getPostComment(){
+        return 0;
+    }
+    public String getPostAuthor(){
+        return null;
     }
 }
