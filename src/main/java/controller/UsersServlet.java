@@ -1,13 +1,9 @@
-package Controller;
-
-import model.User;
+package controller;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 @WebServlet(name = "UsersServlet", value = "/UsersServlet")
 public class UsersServlet extends HttpServlet {

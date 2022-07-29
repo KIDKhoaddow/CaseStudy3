@@ -1,4 +1,4 @@
-package Controller;
+package controller;
 
 import model.Category;
 import model.Post;
@@ -10,7 +10,6 @@ import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Stack;
 
 @WebServlet(name = "CommonServlet", value = "/CommonServlet")
 public class CommonServlet extends HttpServlet {
