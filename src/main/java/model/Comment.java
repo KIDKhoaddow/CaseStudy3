@@ -1,7 +1,6 @@
 package model;
 
 
-
 public class Comment {
     private int commentId;
     private int postId;
