@@ -35,6 +35,11 @@ public class LoginServlet extends HttpServlet {
         RequestDispatcher requestDispatcher;
         switch (action) {
             case "logout":
+                try{
+                    userService.changeStatusUserOffline(FilterUser.userLogin);
+                }catch (Exception e){
+                    System.out.println(e.getMessage());
+                }
                 FilterUser.userLogin = null;
                 FilterAdmin.user=null;
                 requestDispatcher = req.getRequestDispatcher("login.jsp");
@@ -67,12 +72,18 @@ public class LoginServlet extends HttpServlet {
     }
 
 
-    public boolean checkAccountExit(String userEmail,String userPassword) throws ServletException, IOException {
-        User user = userRepository.findUserByEmailAndPassword(userEmail, userPassword);
-        if (user != null) {
-            FilterUser.userLogin = user;
-            return true;
-        }
+    public boolean checkAccountExit(String userEmail,String userPassword)  {
+       try {
+           User user = userService.findUserByEmailAndPassword(userEmail, userPassword);
+           if (user != null) {
+               FilterUser.userLogin = user;
+               return true;
+           }
+       }catch (Exception e){
+           System.err.println(e.getMessage());
+       }
+
+
         return false;
     }
 

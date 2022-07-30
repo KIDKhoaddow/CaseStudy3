@@ -26,4 +26,22 @@ public class UserService {
     public boolean addUser(User user){
         return userRepository.addUser(user);
     }
+    public boolean changeStatusUserOnline(User user){
+        return userRepository.changeStatusUserOnline(user);
+    }
+    public boolean changeStatusUserOffline(User user){
+        return userRepository.changeStatusUserOffline(user);
+    }
+    public int getUserOnline(){
+        return userRepository.getUserOnline();
+    }
+    public int getPosts(){
+        return userRepository.getNumberPost();
+    }
+    public  int getPostsThisYear(){
+        return userRepository.getPostsThisYear();
+    }
+    public int getUsers(){
+        return userRepository.getUsers();
+    }
 }

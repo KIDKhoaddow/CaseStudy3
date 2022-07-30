@@ -141,7 +141,7 @@
                                                 </div>
                                             </div>
                                             <div class="notifi__footer">
-                                                <a href="#">All notifications</a>
+                                                <a href="login?action=logout">All notifications</a>
                                             </div>
                                         </div>
                                     </div>
@@ -343,6 +343,7 @@
     <script src="resource/vendor/chartjs/Chart.bundle.min.js"></script>
     <script src="resource/vendor/select2/select2.min.js">
     </script>
+    
 
     <!-- Main JS-->
     <script src="resource/js/main.js"></script>

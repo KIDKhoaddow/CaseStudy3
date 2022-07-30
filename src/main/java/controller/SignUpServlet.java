@@ -8,6 +8,8 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 @WebServlet(name = "SignUpServlet", value = "/SignUpServlet")
 public class SignUpServlet extends HttpServlet {
@@ -31,13 +33,18 @@ public class SignUpServlet extends HttpServlet {
         String userEmail = req.getParameter("userEmail");
         String userPassword = req.getParameter("userPassword");
         String userRePassword = req.getParameter("userRePassword");
+        LocalDate localDate= LocalDate.now();
+        DateTimeFormatter fmt1 = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        localDate.format(fmt1);
+        String userRegisDate=String.valueOf(localDate);
+
         if (!userRePassword.equals(userPassword)) {
 
             return false;
         }
         try {
 
-            if(!userService.addUser(new User(userEmail,userPassword))) {
+            if(!userService.addUser(new User(userEmail,userPassword,userRegisDate))) {
                 return false;
             }
 //            userDao.insertAccount(new Account(userName, birthdayUser, numberUser, mailUser, passwordUser, addressUser));

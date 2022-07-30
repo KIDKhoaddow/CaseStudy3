@@ -19,9 +19,11 @@ public class FilterUser implements Filter {
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
            if(userLogin ==null){
+
                RequestDispatcher requestDispatcher = request.getRequestDispatcher("userView.jsp");
                requestDispatcher.forward(request,response);
            }else {
+
                chain.doFilter(request,response);
            }
 

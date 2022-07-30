@@ -16,16 +16,7 @@ public class UsersServlet extends HttpServlet {
     }
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        id=Integer.parseInt(request.getParameter("id"));
-        action=request.getParameter("action");
-        request.setAttribute("userList", CommentServlet.userList);
-        if(action.equals("active")){
-            request.setAttribute("confirm",true);
-        }else {
-            request.setAttribute("confirm",true);
-        }
-        RequestDispatcher requestDispatcher=request.getRequestDispatcher("/users.jsp");
-        requestDispatcher.forward(request,response);
+
     }
 
     @Override

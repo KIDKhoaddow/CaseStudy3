@@ -24,6 +24,12 @@ public class User {
         this.userPassword = userPassword;
     }
 
+    public User(String userEmail, String userPassword, String userRegisDate) {
+        this.userEmail = userEmail;
+        this.userPassword = userPassword;
+        this.userRegisDate = userRegisDate;
+    }
+
     public User(int userId, String userEmail, String userName, String userPassword,
                 String userAddress, String userPhone, String userDOB, String userRegisDate,
                 String userLastLogin, String userAvatar, boolean status, boolean verify) {

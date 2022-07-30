@@ -3,6 +3,8 @@ package controller;
 
 import controller.Filter.FilterUser;
 import model.User;
+import service.PostService;
+import service.UserService;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -16,6 +18,8 @@ import java.util.List;
 
 @WebServlet(urlPatterns = "/ViewUser")
 public class ViewUser extends HttpServlet {
+    UserService userService=new UserService();
+    PostService postService=new PostService();
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 //        req.setAttribute("films", FilmService.films);
@@ -27,6 +31,25 @@ public class ViewUser extends HttpServlet {
 //        ArrayList<Ve> listVeByIdUser = VeService.listVeByIdUser(idUser);
 //        req.setAttribute("quantity",listVeByIdUser.size());
         //đẩy data lên vào trang chủ
+        try{
+            userService.changeStatusUserOnline(FilterUser.userLogin);
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+        int authorId = FilterUser.userLogin.getUserId();
+        req.setAttribute("posts",postService.findAllBYUser(authorId));
+        setUser(req);
+        RequestDispatcher requestDispatcher = req.getRequestDispatcher("/personal.jsp");
+        requestDispatcher.forward(req,resp);
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        //đẩy data lên trên
+        RequestDispatcher requestDispatcher = req.getRequestDispatcher("/ViewUser.jsp");
+        requestDispatcher.forward(req,resp);
+    }
+    public void setUser(HttpServletRequest req)throws  ServletException{
         User user= FilterUser.userLogin;
         req.setAttribute("userName",user.getUserName());
         req.setAttribute("userAddress",user.getUserAddress());
@@ -36,24 +59,5 @@ public class ViewUser extends HttpServlet {
         req.setAttribute("userEmail",user.getUserEmail());
         req.setAttribute("userRegisterDate",user.getUserRegisDate());
         req.setAttribute("userPassword",user.getUserPassword());
-        RequestDispatcher requestDispatcher = req.getRequestDispatcher("/personal.jsp");
-        requestDispatcher.forward(req,resp);
-    }
-
-    @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-//        String ten = req.getParameter("search");
-//        List<Film> filmList = SearchDao.getSearch(ten);
-//        req.setAttribute("films", filmList);
-//        req.setAttribute("idUser",  AccountService.findIdAccountByName(FilterUser.account.getUserName()));
-//        req.setAttribute("username", FilterUser.account.getUserName());
-//        int idUser = AccountService.findIdAccountByName(FilterUser.account.getUserName());
-//        ArrayList<Ve> listVeByIdUser = VeService.listVeByIdUser(idUser);
-//        req.setAttribute("quantity",listVeByIdUser.size());
-        //đẩy data lên trên
-
-
-        RequestDispatcher requestDispatcher = req.getRequestDispatcher("/ViewUser.jsp");
-        requestDispatcher.forward(req,resp);
     }
 }

@@ -174,7 +174,7 @@
                                             </div>
                                         </div>
                                         <div class="account-dropdown__footer">
-                                            <a href="#">
+                                            <a href="login?action=logout">
                                                 <i class="zmdi zmdi-power"></i>Logout</a>
                                         </div>
                                     </div>
@@ -247,7 +247,11 @@
                                     </thead>
                                     <tbody>
                                     <c:forEach items="${userList}" var="element">
-                                        <tr class="tr-shadow">
+                                        <tr class="tr-shadow"
+                                                <c:if test="${!element.isVerify()}">
+                                                    style="background:#FA1E0E"
+                                                </c:if>
+                                        >
                                             <td class="name">${element.getUserId()}</td>
                                             <td class="name">${element.getUserName()}</td>
                                             <td>
@@ -267,14 +271,10 @@
                                                             class="status--inactive">${element.getStatus()}</span></td>
                                                 </c:when>
                                             </c:choose>
+                                            <c:choose>
+                                                <c:when test="${element.isVerify()}">
                                             <td>
                                                 <div class="table-data-feature">
-                                                    <button class="item" data-toggle="modal" data-placement="top"
-                                                            title="Edit" type="button" style="background: green;">
-                                                        <a href="UsersServlet?action=active&id=${element.getUserId()}">
-                                                            <i class="fas fa-check" style="color: white"></i>
-                                                        </a>
-                                                    </button>
                                                     <button class="item" data-toggle="modal" data-placement="top"
                                                             title="Disable" type="button" data-target="#smallModal"
                                                             style="background: orangered;">
@@ -284,6 +284,21 @@
                                                     </button>
                                                 </div>
                                             </td>
+                                                </c:when>
+                                                <c:when test="${!element.isVerify()}">
+                                                    <td>
+                                                        <div class="table-data-feature">
+                                                            <button class="item" data-toggle="modal" data-placement="top"
+                                                                    title="Edit" type="button" style="background: green;">
+                                                                <a href="UsersServlet?action=active&id=${element.getUserId()}">
+                                                                    <i class="fas fa-check" style="color: white"></i>
+                                                                </a>
+                                                            </button>
+                                                        </div>
+                                                    </td>
+                                                </c:when>
+                                            </c:choose>
+
                                         </tr>
                                         <tr class="spacer"></tr>
                                     </c:forEach>
@@ -335,7 +350,7 @@
                     </button>
                     <button type="reset" class="btn btn-danger">
                         <a href="UsersServlet?confirm=no">
-                            <i class="fa fa-ban" data-dismiss="modal" style="color: white;" ></i>
+                            <i class="fa fa-ban" data-dismiss="modal" style="color: white;"></i>
                         </a>Denied
                     </button>
                 </div>
@@ -369,14 +384,13 @@
 <!-- Main JS-->
 <script src="resource/js/main.js"></script>
 
-    <c:if test="${confirm}">
-        <script type="text/javascript">
-            $(window).on('load', function () {
-                $('#smallModal').modal('show');
-            });
-        </script>
-    </c:if>
-
+<c:if test="${confirm}">
+    <script type="text/javascript">
+        $(window).on('load', function () {
+            $('#smallModal').modal('show');
+        });
+    </script>
+</c:if>
 
 
 </body>

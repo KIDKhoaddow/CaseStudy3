@@ -4,36 +4,33 @@ package model;
 
 public class Post {
     private   int postId;
-    private int authorId;
+    private  int postCategoryId;
     private String postTitle;
-    private String postSummary;
     private  String postContent;
     private String postPicture;
     private String postCreateAt;
     private String postUpdateAt;
     private  Status postStatus;
 
-    public Post(int authorId,String postTitle, String postContent, String postPicture, String postCreateAt) {
-        this.authorId = authorId;
+    public Post(String postTitle, String postContent, String postPicture, String postCreateAt) {
         this.postTitle = postTitle;
         this.postContent = postContent;
         this.postPicture = postPicture;
         this.postCreateAt = postCreateAt;
     }
 
-    public Post(int postId, int authorId, String postTitle, String postContent, String postPicture, String postCreateAt) {
+    public Post(int postId, String postTitle, String postContent, String postPicture, String postCreateAt) {
         this.postId = postId;
-        this.authorId = authorId;
         this.postTitle = postTitle;
         this.postContent = postContent;
         this.postPicture = postPicture;
         this.postCreateAt = postCreateAt;
+        this.postStatus=Status.PENDING;
     }
 
-    public Post(int postId, int authorId, String postTitle, String postSummary, String postContent,
+    public Post(int postId, String postTitle, String postContent,
                 String postPicture, String postCreateAt, String postUpdateAt) {
         this.postId = postId;
-        this.authorId = authorId;
         this.postTitle = postTitle;
         this.postContent = postContent;
         this.postPicture = postPicture;
@@ -42,20 +39,24 @@ public class Post {
         this.postStatus=Status.PENDING;
     }
 
+    public Post(int postId, int postCategoryId, String postTitle, String postContent, String postPicture, String postCreateAt, String postUpdateAt, Status postStatus) {
+        this.postId = postId;
+        this.postCategoryId = postCategoryId;
+        this.postTitle = postTitle;
+        this.postContent = postContent;
+        this.postPicture = postPicture;
+        this.postCreateAt = postCreateAt;
+        this.postUpdateAt = postUpdateAt;
+        this.postStatus = postStatus;
+    }
+
     public int getPostId() {
         return postId;
     }
 
-    public int getAuthorId() {
-        return authorId;
-    }
 
     public String getPostTitle() {
         return postTitle;
-    }
-
-    public String getPostSummary() {
-        return postSummary;
     }
 
     public String getPostContent() {
@@ -78,9 +79,6 @@ public class Post {
         this.postId = postId;
     }
 
-    public void setAuthorId(int authorId) {
-        this.authorId = authorId;
-    }
 
     public void setPostTitle(String postTitle) {
         this.postTitle = postTitle;
@@ -115,7 +113,5 @@ public class Post {
     public int getPostComment(){
         return 0;
     }
-    public String getPostAuthor(){
-        return null;
-    }
+
 }

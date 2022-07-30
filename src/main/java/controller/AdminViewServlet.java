@@ -22,6 +22,10 @@ public class AdminViewServlet extends HttpServlet {
         try{
             switch (action){
                 case "dashboard":
+                    request.setAttribute("memberOnline", userService.getUserOnline());
+                    request.setAttribute("numberPost",userService.getPosts());
+                    request.setAttribute("postsThisYear",userService.getPostsThisYear());
+                    request.setAttribute("numberUser",userService.getUsers());
                     page = "/adminView.jsp";
                     break;
                 case "users":
