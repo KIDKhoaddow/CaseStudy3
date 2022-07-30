@@ -18,8 +18,8 @@ import java.util.List;
 
 @WebServlet(urlPatterns = "/ViewUser")
 public class ViewUser extends HttpServlet {
-    UserService userService=new UserService();
-    PostService postService=new PostService();
+    UserService userService=UserService.Instance();
+    PostService postService=PostService.getInstance();
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 //        req.setAttribute("films", FilmService.films);

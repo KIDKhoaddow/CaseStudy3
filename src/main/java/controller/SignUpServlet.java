@@ -13,7 +13,7 @@ import java.time.format.DateTimeFormatter;
 
 @WebServlet(name = "SignUpServlet", value = "/SignUpServlet")
 public class SignUpServlet extends HttpServlet {
-    UserService userService =new UserService();
+    UserService userService =UserService.Instance();
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 

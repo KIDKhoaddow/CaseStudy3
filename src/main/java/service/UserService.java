@@ -6,14 +6,18 @@ import model.User;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 public class UserService {
     UserRepository userRepository = new UserRepository();
+    private  static  UserService instance = new UserService();
 
-    ArrayList<User> users = new ArrayList<>();
+    public static UserService Instance(){
+        return instance;
+    }
+    private UserService() {
 
+    }
 
     public List<User> findAllUser(HttpServletRequest request, HttpServletResponse response) throws SQLException {
         List<User> userList;

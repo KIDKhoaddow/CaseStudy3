@@ -12,7 +12,7 @@ import java.sql.SQLException;
 @WebServlet(name = "AdminViewServlet", value = "/AdminViewServlet")
 public class AdminViewServlet extends HttpServlet {
 
-    private final UserService userService = new UserService();
+    private final UserService userService = UserService.Instance() ;
 
     private final CategoryService categoryService = new CategoryService();
     private String page="/adminView.jsp";

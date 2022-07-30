@@ -208,6 +208,12 @@
                                                     <i class="fa fa-edit" style="color: white"></i>
                                                 </a>
                                             </button>
+                                            <button class="item" data-toggle="modal" data-placement="top"
+                                                    title="Edit" type="button" style="background: red;">
+                                                <a href="PersonalServlet?action=openFormDelete&id=${element.getPostId()}">
+                                                    <i class="fa fa-close" style="color: white"></i>
+                                                </a>
+                                            </button>
                                         </div>
                                     </div>
 
@@ -353,15 +359,17 @@
                         <div class="card">
                             <div class="card-header">
                                 <strong>Edit Profile Form</strong>
+
                             </div>
                             <div class="card-body card-block">
-                                <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
+                                    <form enctype="multipart/form-data" class="form-horizontal" id="EditForm" data-action="edit">
                                     <div class="row form-group">
                                         <div class="col col-md-3">
+                                            <input type="text" name="action" value="edit" style="display: none">
                                             <label for="file-input" class=" form-control-label">Avatar input</label>
                                         </div>
                                         <div class="col-12 col-md-9">
-                                            <input type="file" id="file-input" name="file-input"
+                                            <input type="file" id="file-input" name="post-picture-input"
                                                    class="form-control-file">
                                         </div>
                                         <img src="${userAvatar}" class="rounded-circle mx-auto d-block"
@@ -372,7 +380,7 @@
                                             <label class=" form-control-label">UserName</label>
                                         </div>
                                         <div class="col-12 col-md-9">
-                                            <input type="email" id="userName-input" name="user-name-input"
+                                            <input type="text" id="userName-input" name="user-name-input"
                                                    placeholder="Enter Email" class="form-control"
                                                    value="${userName}">
                                             <small class="help-block form-text">Please enter your Name</small>
@@ -383,7 +391,7 @@
                                             <label class=" form-control-label">Email</label>
                                         </div>
                                         <div class="col-12 col-md-9">
-                                            <p class="form-control-static">${userEmail}</p>
+                                            <p class="form-control-static" name="user-email">${userEmail}</p>
                                         </div>
                                     </div>
                                     <div class="row form-group">
@@ -392,7 +400,7 @@
                                                 Input</label>
                                         </div>
                                         <div class="col-12 col-md-9">
-                                            <input type="text" id="address-input" name="address-input"
+                                            <input type="text" id="address-input" name="user-address-input"
                                                    placeholder="Enter Address" class="form-control"
                                                    value="${userAddress}">
                                             <small class="help-block form-text">Please enter your address</small>
@@ -403,7 +411,7 @@
                                             <label for="phone-input" class=" form-control-label">Phone Input</label>
                                         </div>
                                         <div class="col-12 col-md-9">
-                                            <input type="" id="phone-input" name="phone-input"
+                                            <input type="" id="phone-input" name="user-phone-input"
                                                    placeholder="Enter Phone"
                                                    class="form-control" value="${userPhone}">
                                             <small class="help-block form-text">Please enter your phone</small>
@@ -414,20 +422,21 @@
                                             <label for="DOB-input" class=" form-control-label">DOB Input</label>
                                         </div>
                                         <div class="col-12 col-md-9">
-                                            <input type="date" id="DOB-input" name="DOB-input"
+                                            <input type="date" id="DOB-input" name="user-DOB-input"
                                                    placeholder="Enter date of birth" class="form-control"
                                                    value="${userDOB}">
                                             <small class="help-block form-text">Please enter your DOB</small>
                                         </div>
                                     </div>
-
                                 </form>
                             </div>
                             <div class="card-footer">
-                                <button type="submit" class="btn btn-primary btn-sm">
+                                <button type="submit" class="btn btn-primary btn-sm" form="EditForm"
+                                        formmethod="get" formaction="PersonalServlet?action=edit"
+                                        data-action="PersonalServlet?action=edit">
                                     <i class="fa fa-dot-circle-o"></i> Submit
                                 </button>
-                                <button type="reset" class="btn btn-danger btn-sm">
+                                <button type="reset" class="btn btn-danger btn-sm" form="EditForm">
                                     <i class="fa fa-ban"></i> Reset
                                 </button>
                             </div>
@@ -491,6 +500,7 @@
                                     <i class="fa fa-ban"></i> Reset
                                 </button>
                             </div>
+
                         </div>
                     </div>
                 </div>
@@ -553,9 +563,10 @@
     </div>
 </footer>
 <!-- ****** Footer Menu Area End ****** -->
+<%--  ***** Modal Area *******--%>
 <c:if test="${requestScope['post'] != null}">
-    <!-- modal large -->
-    <div class="modal fade" id="smallModal" tabindex="-1" role="dialog"
+    <!-- modal edit -->
+    <div class="modal fade" id="modalEdit" tabindex="-1" role="dialog"
          aria-labelledby="largeModalLabel"
          aria-hidden="true">
         <div class="modal-dialog modal-lg" role="form">
@@ -595,7 +606,7 @@
                                     Input</label>
                             </div>
                             <div class="col-12 col-md-9">
-                                <input type="text" id="post-edit" name="title-input"
+                                <input type="text" id="post-edit" name="post-title-input"
                                        placeholder="Enter title" class="form-control" value="${post.getPostTitle()}">
                                 <small class="help-block form-text">Please enter your title</small>
                             </div>
@@ -606,7 +617,7 @@
                                     Input</label>
                             </div>
                             <div class="col-12 col-md-9">
-                                <textarea  id="content-edit" name="content-input"
+                                <textarea  id="content-edit" name="post-content-input"
                                        placeholder="Enter title" class="form-control" >
                                         ${post.getPostContent()}
                                 </textarea>
@@ -637,8 +648,42 @@
             </div>
         </div>
     </div>
-    <!-- end modal large -->
+    <!-- end modal edit -->
 </c:if>
+<c:if test="${requestScope['post'] != null}">
+    <!-- modal delete -->
+    <div class="modal fade" id="modalDelete" tabindex="-1" role="dialog"
+         aria-labelledby="largeModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="form">
+            <div class="card modal-content">
+                <div class="card-header modal-header">
+                    <div class="table-data-feature">
+                        <strong>Confirm</strong>
+                    </div>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Are you sure to delete this post ?!</p>
+                </div>
+                <div class="card-footer modal-footer">
+                    <a href="" role="button" class="btn btn-primary">
+                        <i class="fa fa-dot-circle-o" style="color: white;"></i>
+                        Confirm
+                    </a>
+                    <a role="button" class="btn btn-danger" data-dismiss="modal">
+                        <i class="fa fa-dot-circle-o" style="color: white;"></i>
+                        Denied
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end modal delete -->
+</c:if>
+<%--  ***** End Modal Area *******--%>
 <!-- Jquery-2.2.4 js -->
 <script src="yummy-master/js/jquery/jquery-2.2.4.min.js"></script>
 <!-- Popper js -->
@@ -649,10 +694,17 @@
 <script src="yummy-master/js/others/plugins.js"></script>
 <!-- Active JS -->
 <script src="yummy-master/js/active.js"></script>
-<c:if test="${confirm}">
+<c:if test="${confirmEdit}">
     <script type="text/javascript">
         $(window).on('load', function () {
-            $('#smallModal').modal('show');
+            $('#modalEdit').modal('show');
+        });
+    </script>
+</c:if>
+<c:if test="${confirmDelete}">
+    <script type="text/javascript">
+        $(window).on('load', function () {
+            $('#modalDelete').modal('show');
         });
     </script>
 </c:if>

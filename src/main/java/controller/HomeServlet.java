@@ -13,9 +13,14 @@ import java.time.LocalDateTime;
 
 @WebServlet(name = "ServletHome", value = "/ServletHome")
 public class HomeServlet extends HttpServlet {
-    private final PostService postService = new PostService();
+    private final PostService postService =PostService.getInstance();
     String action="";
     String page="personal.jsp";
+
+    @Override
+    public void init() throws ServletException {
+        super.init();
+    }
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

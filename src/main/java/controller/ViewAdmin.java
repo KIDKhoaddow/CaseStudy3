@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 @WebServlet(urlPatterns = "/viewAdmin")
 public class ViewAdmin extends HttpServlet {
-    UserService userService=new UserService();
+    UserService userService=UserService.Instance();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

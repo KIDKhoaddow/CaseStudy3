@@ -23,7 +23,7 @@ import java.util.ArrayList;
 @WebServlet(urlPatterns = "/login")
 public class LoginServlet extends HttpServlet {
     UserRepository userRepository = new UserRepository();
-    UserService userService = new UserService();
+    UserService userService = UserService.Instance();
 
 
     @Override
