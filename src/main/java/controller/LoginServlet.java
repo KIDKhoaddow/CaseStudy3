@@ -36,7 +36,12 @@ public class LoginServlet extends HttpServlet {
         switch (action) {
             case "logout":
                 try{
-                    userService.changeStatusUserOffline(FilterUser.userLogin);
+                   boolean resultChange= userService.changeStatusUserOffline(FilterUser.userLogin);
+                   boolean resultUpdate=userService.updateLastLogin();
+                   if(!resultChange||!resultUpdate){
+                       System.out.println("log out fail");
+                       break;
+                   }
                 }catch (Exception e){
                     System.out.println(e.getMessage());
                 }
@@ -58,10 +63,10 @@ public class LoginServlet extends HttpServlet {
         String userPassword = req.getParameter("userPassword");
         if (userEmail.equals("admin") && userPassword.equals("admin")) {
             FilterAdmin.user=new User(userEmail,userPassword);
-            resp.sendRedirect("/viewAdmin");
+            resp.sendRedirect("viewAdmin");
         } else {
             if (checkAccountExit(userEmail,userPassword)) {
-                resp.sendRedirect("/ViewUser");
+                resp.sendRedirect("viewUser");
             } else {
                 String message = "Check password again !";
                 req.setAttribute("message", message);
@@ -82,8 +87,6 @@ public class LoginServlet extends HttpServlet {
        }catch (Exception e){
            System.err.println(e.getMessage());
        }
-
-
         return false;
     }
 

@@ -3,6 +3,7 @@ package DAO;
 import connect.ConnectionMySQL;
 import model.Post;
 import model.Status;
+import org.omg.CORBA.PUBLIC_MEMBER;
 
 import java.sql.*;
 import java.time.LocalDateTime;
@@ -14,6 +15,8 @@ public class PostRepo {
     private final String SELECT_ALL_BY_USER = "select * from post where author_id=?";
     private final String INSERT_POST = "insert into post (post_create_at,post_title,post_content,post_picture) value (?,?,?,?); ";
     private final String SELECT_POST_BY_ID = "select * from post where post_id=?;";
+    private final  String VIEW_TABLE_LIKE_OF_POST=" select* from table_like_of_post;";
+    private  final  String VIEW_TABLE_TOP_TEN_AUTHOR="select* from top_ten_post_user;";
 
     public void insertPost(Post post) {
         try {
@@ -95,6 +98,51 @@ public class PostRepo {
         }
     }
 
+    public ArrayList<ArrayList<String>>  findPostLike(){
+        try {
+            ArrayList<ArrayList<String>> postLikeList =new ArrayList<>();
+            Connection connection = connectionMySQL.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(VIEW_TABLE_LIKE_OF_POST);
+            ResultSet resultSet= preparedStatement.executeQuery();
+            while(resultSet.next()){
+                ArrayList<String> post=new ArrayList<>();
+                post.add(String.valueOf(resultSet.getInt("post_id")));
+                post.add(resultSet.getString("post_title"));
+                post.add(resultSet.getString("category_title"));
+                post.add(resultSet.getString("user_name"));
+                post.add(resultSet.getString("post_create_at"));
+                post.add(resultSet.getString("count_like"));
+                postLikeList.add(post);
+            }
+            return postLikeList;
+
+
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+            return null;
+        }
+    }
+    public ArrayList<ArrayList<String>> findTopTenAuthor(){
+        try {
+            ArrayList<ArrayList<String>> topTenAuthor =new ArrayList<>();
+            Connection connection = connectionMySQL.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(VIEW_TABLE_TOP_TEN_AUTHOR);
+            ResultSet resultSet= preparedStatement.executeQuery();
+            while(resultSet.next()){
+                ArrayList<String> post=new ArrayList<>();
+                post.add(String.valueOf(resultSet.getInt("user_id")));
+                post.add(resultSet.getString("user_name"));
+                post.add(resultSet.getString("count_like"));
+                topTenAuthor.add(post);
+            }
+            return topTenAuthor;
+
+
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+            return null;
+        }
+    }
     public int findIdByUser(String name) {
         return 1;
     }

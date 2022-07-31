@@ -23,6 +23,7 @@ public class UserRepository {
     private  final String SELECT_POSTS="SELECT * FROM blogs.count_post;";
     private  final String SELECT_POST_THIS_YEAR="SELECT * FROM blogs.count_post_year;";
     private  final String SELECT_USERS="SELECT * FROM blogs.count_user;";
+    private  final String UPDATE_LAST_LOGIN="update blogs.user set last_login=? where(user_id = ?);";
     private final ConnectionMySQL connectionMySQL = new ConnectionMySQL();
     public  int getUsers(){
         int count=0;
@@ -200,7 +201,19 @@ public class UserRepository {
             System.err.println(e.getMessage());
             return false;
         }
-
+    }
+    public boolean updateLastLogin(User user){
+        try{
+            Connection connection= connectionMySQL.getConnection();
+            PreparedStatement preparedStatement= connection.prepareStatement(UPDATE_LAST_LOGIN);
+            preparedStatement.setString(1, user.getUserLastLogin());
+            preparedStatement.setInt(2,user.getUserId());
+            preparedStatement.executeUpdate();
+            return true;
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+            return false;
+        }
     }
 
 }

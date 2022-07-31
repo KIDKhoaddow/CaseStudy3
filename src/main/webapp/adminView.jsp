@@ -37,7 +37,7 @@
 
 </head>
 
-<body class="animsition" data-animsition-in-duration="100"data-animsition-out-duration="100">
+<body class="animsition" data-animsition-in-duration="100" data-animsition-out-duration="100">
 <div class="page-wrapper">
     <!-- HEADER MOBILE-->
     <header class="header-mobile d-block d-lg-none">
@@ -45,7 +45,7 @@
             <div class="container-fluid">
                 <div class="header-mobile-inner">
                     <a class="logo" href="resource/index.html">
-                        <img src="resource/images/icon/logo.png" alt="CoolAdmin" />
+                        <img src="resource/images/icon/logo.png" alt="CoolAdmin"/>
                     </a>
                     <button class="hamburger hamburger--slider" type="button">
                             <span class="hamburger-box">
@@ -119,11 +119,7 @@
             <div class="section__content section__content--p30">
                 <div class="container-fluid">
                     <div class="header-wrap">
-                        <form class="form-header" action="" method="POST" >
-<%--                            <input class="au-input au-input--xl" type="text" name="search" placeholder="Search for datas &amp; reports..." />--%>
-<%--                            <button class="au-btn--submit" type="submit">--%>
-<%--                                <i class="zmdi zmdi-search"></i>--%>
-<%--                            </button>--%>
+                        <form class="form-header" action="" method="POST">
                         </form>
                         <div class="header-button">
                             <div class="noti-wrap">
@@ -149,7 +145,7 @@
                             <div class="account-wrap">
                                 <div class="account-item clearfix js-item-menu">
                                     <div class="image">
-                                        <img src="resource/images/icon/avatar-01.jpg" alt="John Doe" />
+                                        <img src="resource/images/icon/avatar-01.jpg" alt="John Doe"/>
                                     </div>
                                     <div class="content">
                                         <a class="js-acc-btn" href="#">Admin</a>
@@ -158,7 +154,7 @@
                                         <div class="info clearfix">
                                             <div class="image">
                                                 <a href="#">
-                                                    <img src="resource/images/icon/avatar-01.jpg" alt="Admin" />
+                                                    <img src="resource/images/icon/avatar-01.jpg" alt="Admin"/>
                                                 </a>
                                             </div>
                                             <div class="content">
@@ -189,9 +185,6 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="overview-wrap">
-<%--                                <h2 class="title-1">overview</h2>--%>
-<%--                                <button class="au-btn au-btn-icon au-btn--blue">--%>
-<%--                                    <i class="zmdi zmdi-plus"></i>add item</button>--%>
                             </div>
                         </div>
                     </div>
@@ -269,68 +262,6 @@
                             </div>
                         </div>
                     </div>
-<%--                    <div class="row">--%>
-<%--                        <div class="col-lg-6">--%>
-<%--                            <div class="au-card recent-report">--%>
-<%--                                <div class="au-card-inner">--%>
-<%--                                    <h3 class="title-2">recent reports</h3>--%>
-<%--                                    <div class="chart-info">--%>
-<%--                                        <div class="chart-info__left">--%>
-<%--                                            <div class="chart-note">--%>
-<%--                                                <span class="dot dot--blue"></span>--%>
-<%--                                                <span>products</span>--%>
-<%--                                            </div>--%>
-<%--                                            <div class="chart-note mr-0">--%>
-<%--                                                <span class="dot dot--green"></span>--%>
-<%--                                                <span>services</span>--%>
-<%--                                            </div>--%>
-<%--                                        </div>--%>
-<%--                                        <div class="chart-info__right">--%>
-<%--                                            <div class="chart-statis">--%>
-<%--                                                    <span class="index incre">--%>
-<%--                                                        <i class="zmdi zmdi-long-arrow-up"></i>25%</span>--%>
-<%--                                                <span class="label">products</span>--%>
-<%--                                            </div>--%>
-<%--                                            <div class="chart-statis mr-0">--%>
-<%--                                                    <span class="index decre">--%>
-<%--                                                        <i class="zmdi zmdi-long-arrow-down"></i>10%</span>--%>
-<%--                                                <span class="label">services</span>--%>
-<%--                                            </div>--%>
-<%--                                        </div>--%>
-<%--                                    </div>--%>
-<%--                                    <div class="recent-report__chart">--%>
-<%--                                        <canvas id="recent-rep-chart"></canvas>--%>
-<%--                                    </div>--%>
-<%--                                </div>--%>
-<%--                            </div>--%>
-<%--                        </div>--%>
-<%--                        <div class="col-lg-6">--%>
-<%--                            <div class="au-card chart-percent-card">--%>
-<%--                                <div class="au-card-inner">--%>
-<%--                                    <h3 class="title-2 tm-b-5">char by %</h3>--%>
-<%--                                    <div class="row no-gutters">--%>
-<%--                                        <div class="col-xl-6">--%>
-<%--                                            <div class="chart-note-wrap">--%>
-<%--                                                <div class="chart-note mr-0 d-block">--%>
-<%--                                                    <span class="dot dot--blue"></span>--%>
-<%--                                                    <span>products</span>--%>
-<%--                                                </div>--%>
-<%--                                                <div class="chart-note mr-0 d-block">--%>
-<%--                                                    <span class="dot dot--red"></span>--%>
-<%--                                                    <span>services</span>--%>
-<%--                                                </div>--%>
-<%--                                            </div>--%>
-<%--                                        </div>--%>
-<%--                                        <div class="col-xl-6">--%>
-<%--                                            <div class="percent-chart">--%>
-<%--                                                <canvas id="percent-chart"></canvas>--%>
-<%--                                            </div>--%>
-<%--                                        </div>--%>
-<%--                                    </div>--%>
-<%--                                </div>--%>
-<%--                            </div>--%>
-<%--                        </div>--%>
-<%--                    </div>--%>
                     <div class="row">
                         <div class="col-lg-9">
                             <h2 class="title-1 m-b-25">Posts with lots of likes</h2>
@@ -340,62 +271,44 @@
                                     <tr>
                                         <th>Id</th>
                                         <th>Title</th>
+                                        <th>Category</th>
                                         <th>Author</th>
-                                        <th >Create at</th>
-                                        <th >Likes</th>
+                                        <th>Create at</th>
+                                        <th>Likes</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-<%--                                    <c:forEach items="postList"  var="element">--%>
-<%--                                        <th>${element.getPostId()}</th>--%>
-<%--                                        <th>${element.getPostTitle()}</th>--%>
-<%--                                        <th>${authorList.get(element.getPostId()-1).getUserName()}</th>--%>
-<%--                                        <th class="text-right">${element.getPostCreateAt()}</th>--%>
-<%--                                        <th class="text-right">${likeList.get(element.getPostId()-1)}</th>--%>
-<%--                                    </c:forEach>--%>
+                                    <c:forEach items="${postLikeList}" var="element">
+
+                                            <tr>
+                                                <th>${element.get(0)}</th>
+                                                <th>${element.get(1)}</th>
+                                                <th>${element.get(2)}</th>
+                                                <th>${element.get(3)}</th>
+                                                <th>${element.get(4)}</th>
+                                                <th>${element.get(5)}</th>
+                                            </tr>
+
+
+                                    </c:forEach>
                                     </tbody>
                                 </table>
                             </div>
                         </div>
                         <div class="col-lg-3">
-                            <h2 class="title-1 m-b-25">Top posts per month</h2>
+                            <h2 class="title-1 m-b-25">Top Ten Author </h2>
                             <div class="au-card au-card--bg-blue au-card-top-countries m-b-40">
                                 <div class="au-card-inner">
                                     <div class="table-responsive">
                                         <table class="table table-top-countries">
                                             <tbody>
-                                            <tr>
-                                                <td>United States</td>
-                                                <td class="text-right">$119,366.96</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Australia</td>
-                                                <td class="text-right">$70,261.65</td>
-                                            </tr>
-                                            <tr>
-                                                <td>United Kingdom</td>
-                                                <td class="text-right">$46,399.22</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Turkey</td>
-                                                <td class="text-right">$35,364.90</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Germany</td>
-                                                <td class="text-right">$20,366.96</td>
-                                            </tr>
-                                            <tr>
-                                                <td>France</td>
-                                                <td class="text-right">$10,366.96</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Australia</td>
-                                                <td class="text-right">$5,366.96</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Italy</td>
-                                                <td class="text-right">$1639.32</td>
-                                            </tr>
+                                            <c:forEach items="${topTenAuthor}" var="element" >
+                                                <tr>
+                                                    <td>${element.get(0)}</td>
+                                                    <td>${element.get(1)}</td>
+                                                    <td>${element.get(2)}</td>
+                                                </tr>
+                                            </c:forEach>
                                             </tbody>
                                         </table>
                                     </div>

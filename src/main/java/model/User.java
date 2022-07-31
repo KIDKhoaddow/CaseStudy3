@@ -3,7 +3,7 @@ package model;
 import javax.print.DocFlavor;
 
 public class User {
-   private int userId;
+    private int userId;
     private String userEmail;
     private String userName;
     private String userPassword;
@@ -13,8 +13,8 @@ public class User {
     private String userRegisDate;
     private String userLastLogin;
     private String userAvatar;
-    private  boolean status;
-    private  boolean verify = true;
+    private boolean status;
+    private boolean verify = true;
 
     public User() {
     }
@@ -77,68 +77,90 @@ public class User {
         return userId;
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
-    }
-
     public String getUserEmail() {
         return userEmail;
-    }
-
-    public void setUserEmail(String userEmail) {
-        this.userEmail = userEmail;
     }
 
     public String getUserName() {
         return userName;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
     public String getUserPassword() {
         return userPassword;
-    }
-
-    public void setUserPassword(String userPassword) {
-        this.userPassword = userPassword;
     }
 
     public String getUserAddress() {
         return userAddress;
     }
 
-    public void setUserAddress(String userAddress) {
-        this.userAddress = userAddress;
-    }
-
     public String getUserPhone() {
         return userPhone;
-    }
-
-    public void setUserPhone(String userPhone) {
-        this.userPhone = userPhone;
     }
 
     public String getUserDOB() {
         return userDOB;
     }
 
-    public void setUserDOB(String userDOB) {
-        this.userDOB = userDOB;
-    }
-
     public String getUserRegisDate() {
         return userRegisDate;
     }
 
-    public void setUserRegisDate(String userRegisDate) {
-        this.userRegisDate = userRegisDate;
-    }
-
     public String getUserLastLogin() {
         return userLastLogin;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
+
+    public void setUserEmail(String userEmail) {
+        this.userEmail = userEmail;
+    }
+
+    public void setUserName(String userName) {
+        if(userName!=null){
+            this.userName = userName;
+        }else {
+            this.userName="";
+        }
+    }
+
+    public void setUserPassword(String userPassword) {
+        if (userPassword != null) {
+            this.userPassword = userPassword;
+        }
+    }
+
+    public void setUserAddress(String userAddress) {
+        if(userAddress!=null){
+            this.userAddress = userAddress;
+        }else {
+            this.userAddress="";
+        }
+    }
+
+    public void setUserPhone(String userPhone) {
+        if(userPhone!=null){
+            this.userPhone = userPhone;
+        }else {
+            this.userPhone="";
+        }
+    }
+
+    public void setUserDOB(String userDOB) {
+        if(userDOB!=null){
+            this.userDOB = userDOB;
+        }else {
+            this.userDOB="";
+        }
+    }
+
+    public void setUserRegisDate(String userRegisDate) {
+        if(userRegisDate!=null){
+            this.userRegisDate = userRegisDate;
+        }else {
+            this.userRegisDate="";
+        }
     }
 
     public void setUserLastLogin(String userLastLogin) {
@@ -149,8 +171,8 @@ public class User {
         return status;
     }
 
-    public Status getStatus(){
-        if(isStatus()){
+    public Status getStatus() {
+        if (isStatus()) {
             return Status.ONLINE;
         }
         return Status.OFFLINE;

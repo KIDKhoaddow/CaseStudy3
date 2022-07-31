@@ -19,12 +19,17 @@ public class FilterUser implements Filter {
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
            if(userLogin ==null){
-
                RequestDispatcher requestDispatcher = request.getRequestDispatcher("userView.jsp");
                requestDispatcher.forward(request,response);
            }else {
-
-               chain.doFilter(request,response);
+               if(userLogin.isVerify()){
+                   chain.doFilter(request,response);
+               }else {
+                   String message = "Your account hac been banned by admin!";
+                   request.setAttribute("message", message);
+                   RequestDispatcher requestDispatcher = request.getRequestDispatcher("login.jsp");
+                   requestDispatcher.forward(request, response);
+               }
            }
 
     }

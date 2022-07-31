@@ -1,11 +1,15 @@
 package service;
 
 import DAO.UserRepository;
+import controller.Filter.FilterUser;
 import model.User;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 public class UserService {
@@ -47,5 +51,14 @@ public class UserService {
     }
     public int getUsers(){
         return userRepository.getUsers();
+    }
+
+    public boolean updateLastLogin(){
+        User user = FilterUser.userLogin;
+        LocalDateTime localDateTime= LocalDateTime.now();
+        DateTimeFormatter fmt1 = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        String userLastLogin= localDateTime.format(fmt1);
+        user.setUserLastLogin(userLastLogin);
+        return userRepository.updateLastLogin(user);
     }
 }

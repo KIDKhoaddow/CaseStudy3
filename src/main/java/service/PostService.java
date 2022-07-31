@@ -24,7 +24,9 @@ public class PostService {
         return postRepo.findPostById(postID);
     }
 
-//    public int findIdByUser(String name) {
-//        return postRepo.findIdByUser(name);
-//    }
+    public ArrayList<ArrayList<String>> findTablePostLike(){
+        return  postRepo.findPostLike();
+    }
+    public   ArrayList<ArrayList<String>> findTableTopTenAuthor(){
+        return  postRepo.findTopTenAuthor();}
 }

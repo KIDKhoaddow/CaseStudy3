@@ -16,20 +16,12 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-@WebServlet(urlPatterns = "/ViewUser")
+@WebServlet(urlPatterns = "/viewUser")
 public class ViewUser extends HttpServlet {
     UserService userService=UserService.Instance();
     PostService postService=PostService.getInstance();
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-//        req.setAttribute("films", FilmService.films);
-//        req.setAttribute("idUser",  AccountService.findIdAccountByName(FilterUser.account.getUserName()));
-//        req.setAttribute("username", FilterUser.account1.getUserName());
-//        req.setAttribute("img", FilterUser.account1.getImg());
-//        req.setAttribute("idname", FilterUser.account.getId());
-//        int idUser = AccountService.findIdAccountByName(FilterUser.account.getUserName());
-//        ArrayList<Ve> listVeByIdUser = VeService.listVeByIdUser(idUser);
-//        req.setAttribute("quantity",listVeByIdUser.size());
         //đẩy data lên vào trang chủ
         try{
             userService.changeStatusUserOnline(FilterUser.userLogin);

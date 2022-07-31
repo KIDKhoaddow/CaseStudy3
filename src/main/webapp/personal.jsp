@@ -11,7 +11,7 @@
     <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
     <!-- Title -->
-    <title>Yummy Blog - Food Blog Template</title>
+    <title>Team 2  Blog - Food Blog </title>
 
     <!-- Favicon -->
     <link rel="icon" href="yummy-master/img/core-img/favicon.ico">

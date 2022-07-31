@@ -43,7 +43,6 @@ public class SignUpServlet extends HttpServlet {
             return false;
         }
         try {
-
             if(!userService.addUser(new User(userEmail,userPassword,userRegisDate))) {
                 return false;
             }

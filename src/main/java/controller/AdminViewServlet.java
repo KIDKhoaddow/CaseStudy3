@@ -1,6 +1,7 @@
 package controller;
 
 import service.CategoryService;
+import service.PostService;
 import service.UserService;
 
 import javax.servlet.*;
@@ -15,6 +16,7 @@ public class AdminViewServlet extends HttpServlet {
     private final UserService userService = UserService.Instance() ;
 
     private final CategoryService categoryService = new CategoryService();
+    private  final PostService postService=PostService.getInstance();
     private String page="/adminView.jsp";
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -26,6 +28,8 @@ public class AdminViewServlet extends HttpServlet {
                     request.setAttribute("numberPost",userService.getPosts());
                     request.setAttribute("postsThisYear",userService.getPostsThisYear());
                     request.setAttribute("numberUser",userService.getUsers());
+                    request.setAttribute("postLikeList",postService.findTablePostLike());
+                    request.setAttribute("topTenAuthor", postService.findTableTopTenAuthor());
                     page = "/adminView.jsp";
                     break;
                 case "users":
