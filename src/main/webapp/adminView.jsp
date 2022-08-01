@@ -281,12 +281,12 @@
                                     <c:forEach items="${postLikeList}" var="element">
 
                                             <tr>
-                                                <th>${element.get(0)}</th>
-                                                <th>${element.get(1)}</th>
-                                                <th>${element.get(2)}</th>
-                                                <th>${element.get(3)}</th>
-                                                <th>${element.get(4)}</th>
-                                                <th>${element.get(5)}</th>
+                                                <th class="text-center">${element.get(0)}</th>
+                                                <th class="text-left">${element.get(1)}</th>
+                                                <th class="text-left">${element.get(2)}</th>
+                                                <th class="text-left">${element.get(3)}</th>
+                                                <th class="text-center">${element.get(4)}</th>
+                                                <th class="text-center">${element.get(5)}</th>
                                             </tr>
 
 
@@ -298,7 +298,7 @@
                         <div class="col-lg-3">
                             <h2 class="title-1 m-b-25">Top Ten Author </h2>
                             <div class="au-card au-card--bg-blue au-card-top-countries m-b-40">
-                                <div class="au-card-inner">
+                                <div class="au-card-infner">
                                     <div class="table-responsive">
                                         <table class="table table-top-countries">
                                             <tbody>

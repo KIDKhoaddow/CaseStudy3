@@ -17,7 +17,22 @@ public class PostRepo {
     private final String SELECT_POST_BY_ID = "select * from post where post_id=?;";
     private final  String VIEW_TABLE_LIKE_OF_POST=" select* from table_like_of_post;";
     private  final  String VIEW_TABLE_TOP_TEN_AUTHOR="select* from top_ten_post_user;";
+    private  final static String VIEW_POST_LIKE_BY_ID="SELECT count_like FROM blogs.like_of_post where post_id=?;";
 
+    public static int countLikeOfPostById(int idPost){
+        try {
+            Connection connection = ConnectionMySQL.getConnectionStatic();
+            PreparedStatement preparedStatement = connection.prepareStatement(VIEW_POST_LIKE_BY_ID);
+            preparedStatement.setInt(1,idPost);
+            ResultSet resultSet= preparedStatement.executeQuery();
+            resultSet.next();
+            return resultSet.getInt("count_like");
+
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+            return 0;
+        }
+    }
     public void insertPost(Post post) {
         try {
             Connection connection = connectionMySQL.getConnection();
@@ -75,8 +90,7 @@ public class PostRepo {
                     status=Status.BANNED; break;
             }
 
-            return new Post(post_id,category_id,post_title,post_content,
-                    post_picture,post_create_at,post_update_at,status);
+            return new Post(post_id,post_title,post_content,post_picture,post_create_at,post_update_at,status);
 
         }catch (Exception e){
             System.out.println(e.getMessage());
@@ -122,6 +136,7 @@ public class PostRepo {
             return null;
         }
     }
+
     public ArrayList<ArrayList<String>> findTopTenAuthor(){
         try {
             ArrayList<ArrayList<String>> topTenAuthor =new ArrayList<>();

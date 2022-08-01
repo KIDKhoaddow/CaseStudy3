@@ -21,30 +21,38 @@ public class PersonalServlet extends HttpServlet {
     private int id;
     private String action;
     String page = "personal.jsp";
+    String avatar;
     int authorId;
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         action = request.getParameter("action");
         authorId = FilterUser.userLogin.getUserId();
-
         try {
+
             switch (action) {
                 case "openFormEdit":
                     id = Integer.parseInt(request.getParameter("id"));
+                    request.setAttribute("post", postService.findPostById(id));
                     request.setAttribute("confirmEdit", true);
-
+                    page = "personal.jsp";
                     break;
                 case "openFormDelete":
                     id = Integer.parseInt(request.getParameter("id"));
+                    request.setAttribute("post", postService.findPostById(id));
                     request.setAttribute("confirmDelete", true);
+                    page = "personal.jsp";
                     break;
                 case "edit":
                     getUser(request);
-
+                    break;
+                case"openSinglePost":
+                    id = Integer.parseInt(request.getParameter("id"));
+                    request.setAttribute("post", postService.findPostById(id));
+                    page="singlePost.jsp";
                     break;
             }
-            request.setAttribute("post", postService.findPostById(id));
+
             request.setAttribute("posts", postService.findAllBYUser(authorId));
             setUser(request);
         } catch (Exception e) {
@@ -57,9 +65,8 @@ public class PersonalServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher(page);
-        requestDispatcher.forward(request, response);
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher(page);
+            requestDispatcher.forward(request, response);
     }
 
     public void creatPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -93,7 +100,10 @@ public class PersonalServlet extends HttpServlet {
             user.setUserName(req.getParameter("user-name-input"));
             user.setUserAddress(req.getParameter("user-address-input"));
             user.setUserPhone(req.getParameter("user-phone-input"));
-            user.setUserAvatar(req.getParameter("user-avatar-input"));
+            avatar=req.getParameter("user-picture-input");
+            if(avatar!=null){
+                user.setUserAvatar(req.getParameter("user-picture-input"));
+            }
             user.setUserDOB(req.getParameter("user-DOB-input"));
             LocalDate localDate = LocalDate.now();
             DateTimeFormatter fmt1 = DateTimeFormatter.ofPattern("yyyy-MM-dd");

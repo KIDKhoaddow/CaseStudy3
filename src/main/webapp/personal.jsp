@@ -11,7 +11,7 @@
     <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
     <!-- Title -->
-    <title>Team 2  Blog - Food Blog </title>
+    <title>Team 2 Blog - Food Blog </title>
 
     <!-- Favicon -->
     <link rel="icon" href="yummy-master/img/core-img/favicon.ico">
@@ -50,25 +50,26 @@
             </div>
             <!--  Account-wrap -->
             <c:choose>
-            <c:when test="${userEmail!=null}">
-                <a class="btn btn-primary btn-sm " href="login?action=logout" role="button">log out</a>
-            </c:when>
-            <c:when test="${userEmail==null}">
-            <div class="signup-search-area d-flex align-items-center justify-content-end">
-                <div class="login_register_area d-flex">
-                    <div class="login" role="button">
-                        <a href="login.jsp">Sign in</a>
-                    </div>
-                    <div class="register" role="button">
-                        <a href="register.jsp">Sign up</a>
-                    </div>
-                </div>
+                <c:when test="${userEmail!=null}">
+                    <a class="btn btn-primary btn-sm " href="login?action=logout" role="button">log out</a>
                 </c:when>
-                </c:choose>
+                <c:when test="${userEmail==null}">
+                    <div class="signup-search-area d-flex align-items-center justify-content-end">
+                        <div class="login_register_area d-flex">
+                            <div class="login" role="button">
+                                <a href="login.jsp">Sign in</a>
+                            </div>
+                            <div class="register" role="button">
+                                <a href="register.jsp">Sign up</a>
+                            </div>
+                        </div>
+                    </div>
+                </c:when>
+            </c:choose>
 
-            </div>
         </div>
     </div>
+</div>
 </div>
 <!-- ****** Top Header Area End ****** -->
 
@@ -169,7 +170,9 @@
                                 <div class="single-post wow fadeInUp" data-wow-delay="0.1s">
                                     <!-- Post Thumb -->
                                     <div class="post-thumb">
-                                        <img src="yummy-master/img/blog-img/2.jpg" alt="mất ảnh rồi">
+                                        <a href="PersonalServlet?action=openSinglePost&id=${element.getPostId()}">
+                                            <img src="yummy-master/img/blog-img/2.jpg" alt="mất ảnh rồi">
+                                        </a>
                                     </div>
                                     <!-- Post Content -->
                                     <div class="post-content">
@@ -177,11 +180,11 @@
                                             <div class="post-author-date-area d-flex">
                                                 <!-- Post Author -->
                                                 <div class="post-author">
-                                                    <a href="#">${userName}</a>
+                                                    <a href="PersonalServlet?action=openSinglePost&id=${element.getPostId()}">${userName}</a>
                                                 </div>
                                                 <!-- Post Date -->
                                                 <div class="post-date">
-                                                    <a href="#">${element.getPostCreateAt()}</a>
+                                                    <a href="PersonalServlet?action=openSinglePost&id=${element.getPostId()}">${element.getPostCreateAt()}</a>
                                                 </div>
                                             </div>
                                             <!-- Post Comment & Share Area -->
@@ -362,7 +365,8 @@
 
                             </div>
                             <div class="card-body card-block">
-                                    <form enctype="multipart/form-data" class="form-horizontal" id="EditForm" data-action="edit">
+                                <form enctype="multipart/form-data" class="form-horizontal" id="EditForm"
+                                      data-action="edit">
                                     <div class="row form-group">
                                         <div class="col col-md-3">
                                             <input type="text" name="action" value="edit" style="display: none">
@@ -370,7 +374,7 @@
                                         </div>
                                         <div class="col-12 col-md-9">
                                             <input type="file" id="file-input" name="post-picture-input"
-                                                   class="form-control-file">
+                                                   class="form-control" accept="image/*">
                                         </div>
                                         <img src="${userAvatar}" class="rounded-circle mx-auto d-block"
                                              style="height: 300px;width: 300px;">
@@ -563,6 +567,8 @@
     </div>
 </footer>
 <!-- ****** Footer Menu Area End ****** -->
+
+
 <%--  ***** Modal Area *******--%>
 <c:if test="${requestScope['post'] != null}">
     <!-- modal edit -->
@@ -617,8 +623,8 @@
                                     Input</label>
                             </div>
                             <div class="col-12 col-md-9">
-                                <textarea  id="content-edit" name="post-content-input"
-                                       placeholder="Enter title" class="form-control" >
+                                <textarea id="content-edit" name="post-content-input"
+                                          placeholder="Enter title" class="form-control">
                                         ${post.getPostContent()}
                                 </textarea>
                                 <small class="help-block form-text">Please enter your title</small>

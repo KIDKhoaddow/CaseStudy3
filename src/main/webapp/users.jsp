@@ -278,7 +278,7 @@
                                                     <button class="item" data-toggle="modal" data-placement="top"
                                                             title="Disable" type="button" data-target="#smallModal"
                                                             style="background: orangered;">
-                                                        <a href="UsersServlet?action=disable&id=${element.getUserId()}">
+                                                        <a href="UsersServlet?action=openFormDisable&id=${element.getUserId()}">
                                                             <i class="fas fa-ban" style="color: white"></i>
                                                         </a>
                                                     </button>
@@ -290,7 +290,7 @@
                                                         <div class="table-data-feature">
                                                             <button class="item" data-toggle="modal" data-placement="top"
                                                                     title="Edit" type="button" style="background: green;">
-                                                                <a href="UsersServlet?action=active&id=${element.getUserId()}">
+                                                                <a href="UsersServlet?action=openFormActive&id=${element.getUserId()}">
                                                                     <i class="fas fa-check" style="color: white"></i>
                                                                 </a>
                                                             </button>
@@ -343,16 +343,31 @@
                     <p> Are you sure?</p>
                 </div>
                 <div class="card-footer modal-footer">
-                    <button type="submit" class="btn btn-primary">
-                        <a href="UsersServlet?confirm=yes">
-                            <i class="fa fa-dot-circle-o" style="color: white;"></i>
-                        </a> Submit
-                    </button>
-                    <button type="reset" class="btn btn-danger">
-                        <a href="UsersServlet?confirm=no">
-                            <i class="fa fa-ban" data-dismiss="modal" style="color: white;"></i>
-                        </a>Denied
-                    </button>
+                   <c:choose>
+                       <c:when test="${formOpen}">
+                           <button type="submit" class="btn btn-primary" >
+                               <a href="UsersServlet?action=active&id=${idAction}">
+                                   <i class="fa fa-dot-circle-o" style="color: white;"></i>
+                               </a> Submit
+                           </button>
+                           <button type="button" class="btn btn-danger close" data-dismiss="modal">
+                                   <i class="fa fa-ban" style="color: white;"></i>
+                               Denied
+                           </button>
+                       </c:when>
+                       <c:when test="${!formOpen}">
+                           <button type="submit" class="btn btn-primary">
+                               <a href="UsersServlet?action=ban&id=${idAction}">
+                                   <i class="fa fa-dot-circle-o" style="color: white;"></i>
+                               </a> Submit
+                           </button>
+                           <button type="button" class="btn btn-danger close" data-dismiss="modal" >
+                               <i class="fa fa-ban" style="color: white;"></i>
+                               Close
+                           </button>
+                       </c:when>
+                   </c:choose>
+
                 </div>
             </div>
         </div>

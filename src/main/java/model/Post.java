@@ -1,16 +1,18 @@
 package model;
 
 
+import DAO.PostRepo;
 
 public class Post {
-    private   int postId;
-    private  int postCategoryId;
+    private int postId;
+    private String postCategory;
+    private String postAuthor;
     private String postTitle;
-    private  String postContent;
+    private String postContent;
     private String postPicture;
     private String postCreateAt;
     private String postUpdateAt;
-    private  Status postStatus;
+    private Status postStatus;
 
     public Post(String postTitle, String postContent, String postPicture, String postCreateAt) {
         this.postTitle = postTitle;
@@ -25,30 +27,21 @@ public class Post {
         this.postContent = postContent;
         this.postPicture = postPicture;
         this.postCreateAt = postCreateAt;
-        this.postStatus=Status.PENDING;
+        this.postStatus = Status.PENDING;
     }
 
     public Post(int postId, String postTitle, String postContent,
-                String postPicture, String postCreateAt, String postUpdateAt) {
+                String postPicture, String postCreateAt, String postUpdateAt,Status status) {
         this.postId = postId;
         this.postTitle = postTitle;
         this.postContent = postContent;
         this.postPicture = postPicture;
         this.postCreateAt = postCreateAt;
         this.postUpdateAt = postUpdateAt;
-        this.postStatus=Status.PENDING;
+        this.postStatus = status;
     }
 
-    public Post(int postId, int postCategoryId, String postTitle, String postContent, String postPicture, String postCreateAt, String postUpdateAt, Status postStatus) {
-        this.postId = postId;
-        this.postCategoryId = postCategoryId;
-        this.postTitle = postTitle;
-        this.postContent = postContent;
-        this.postPicture = postPicture;
-        this.postCreateAt = postCreateAt;
-        this.postUpdateAt = postUpdateAt;
-        this.postStatus = postStatus;
-    }
+
 
     public int getPostId() {
         return postId;
@@ -107,10 +100,12 @@ public class Post {
     public void setPostStatus(Status postStatus) {
         this.postStatus = postStatus;
     }
-    public int getPostLikes(){
-        return 0;
+
+    public int getPostLikes() {
+        return PostRepo.countLikeOfPostById(postId);
     }
-    public int getPostComment(){
+
+    public int getPostComment() {
         return 0;
     }
 

@@ -8,6 +8,7 @@ public class Comment {
     private String commentContent;
     private String createAt;
 
+
     public Comment(int commentId, int postId, String commentContent, String createAt) {
         this.commentId = commentId;
         this.postId = postId;

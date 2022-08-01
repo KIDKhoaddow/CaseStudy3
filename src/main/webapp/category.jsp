@@ -120,10 +120,6 @@
                     <div class="container-fluid">
                         <div class="header-wrap">
                             <form class="form-header" action="" method="POST">
-                                <%--                            <input class="au-input au-input--xl" type="text" name="search" placeholder="Search for datas &amp; reports..." />--%>
-                                <%--                            <button class="au-btn--submit" type="submit">--%>
-                                <%--                                <i class="zmdi zmdi-search"></i>--%>
-                                <%--                            </button>--%>
                             </form>
                             <div class="header-button">
                                 <div class="noti-wrap">
@@ -169,7 +165,7 @@
                                                 </div>
                                             </div>
                                             <div class="account-dropdown__footer">
-                                                <a href="#">
+                                                <a href="login?action=logout">
                                                     <i class="zmdi zmdi-power"></i>Logout</a>
                                             </div>
                                         </div>
@@ -245,7 +241,7 @@
                                                     <div class="table-data-feature">
                                                         <button class="item" data-toggle="modal" data-placement="top"
                                                                 title="Edit" type="button" style="background: green;">
-                                                            <a href="CategoryServlet?action=active&id=${element.getCategoryId()}">
+                                                            <a href="CategoryServlet?action=openFormEdit&id=${element.getCategoryId()}&title=${element.getCategoryTitle()}">
                                                                 <i class="fas fa-edit" style="color: white"></i>
                                                             </a>
                                                         </button>
@@ -291,29 +287,31 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form id="editTitleForm" action="CategoryServlet?confirm=yes" method="get">
+                        <form id="editTitleForm" action="CategoryServlet" method="get">
+                            <input type="text"  name="action"
+                                   placeholder="Enter title" class="form-control" value="edit" style="display:none">
+
                             <div class="row form-group">
                                 <div class="col col-md-3">
                                     <label for="title-input" class=" form-control-label">Title
                                         Input</label>
                                 </div>
                                 <div class="col-12 col-md-9">
-                                    <input type="text" id="title-input" name="title-input"
+                                    <input type="text" id="title-input" name="title_input"
                                            placeholder="Enter title" class="form-control" >
-                                    <small class="help-block form-text">Please enter your title</small>
+                                    <small class="help-block form-text" >Please enter your title</small>
                                 </div>
                             </div>
                         </form>
                     </div>
                     <div class="card-footer modal-footer">
-                        <button type="submit" form="editTitleForm" class="btn btn-primary">
+                        <button type="submit" form="editTitleForm" class="btn btn-primary" formmethod="get">
                                 <i class="fa fa-dot-circle-o" style="color: white;"></i>
                            Submit
                         </button>
-                        <button type="button" class="btn btn-danger">
-                            <a href="CategoryServlet?confirm=no">
+                        <button type="reset" form="editTitleForm" class="btn btn-danger" >
                                 <i class="fa fa-ban" data-dismiss="modal" style="color: white;" ></i>
-                            </a>Denied
+                            Denied
                         </button>
                     </div>
                 </div>

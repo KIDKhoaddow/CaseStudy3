@@ -19,6 +19,7 @@ public class UserRepository {
     private final String SELECT_USER_BY_EMAIL = "select user_id from user where user_email=?;";
     private final String INSERT_USER = "insert into blogs.user (user_email,user_password,regis_date) values (? , ? , ?);";
     private  final String CHANGE_STATUS_USER="UPDATE blogs.user SET user_status = ? WHERE (user_id = ?);";
+    private final String  CHANGE_VERIFY_USER="update user set user_verify=? where user_id=? ;";
     private  final String SELECT_USER_ONLINE="SELECT * FROM blogs.user_online;";
     private  final String SELECT_POSTS="SELECT * FROM blogs.count_post;";
     private  final String SELECT_POST_THIS_YEAR="SELECT * FROM blogs.count_post_year;";
@@ -208,6 +209,19 @@ public class UserRepository {
             PreparedStatement preparedStatement= connection.prepareStatement(UPDATE_LAST_LOGIN);
             preparedStatement.setString(1, user.getUserLastLogin());
             preparedStatement.setInt(2,user.getUserId());
+            preparedStatement.executeUpdate();
+            return true;
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+            return false;
+        }
+    }
+    public  boolean updateVerify(int id,String verify){
+        try{
+            Connection connection= connectionMySQL.getConnection();
+            PreparedStatement preparedStatement= connection.prepareStatement(CHANGE_VERIFY_USER);
+            preparedStatement.setString(1, verify);
+            preparedStatement.setInt(2,id);
             preparedStatement.executeUpdate();
             return true;
         }catch (Exception e){

@@ -16,4 +16,7 @@ public class CategoryService {
         categoryList = categoryRepository.findAll(request , response);
         return categoryList;
     }
+    public  boolean updateTitleCategoryById(int categoryId,String title){
+        return categoryRepository.updateTitleCategoryById(categoryId,title);
+    }
 }

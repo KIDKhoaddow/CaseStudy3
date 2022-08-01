@@ -61,4 +61,10 @@ public class UserService {
         user.setUserLastLogin(userLastLogin);
         return userRepository.updateLastLogin(user);
     }
+    public boolean updateVerifyActive(int id){
+        return userRepository.updateVerify(id,"active");
+    }
+    public  boolean updateVerifyBan(int id){
+        return userRepository.updateVerify(id,"banned");
+    }
 }
