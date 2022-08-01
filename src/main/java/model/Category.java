@@ -1,15 +1,15 @@
 package model;
 
-import javax.xml.soap.Text;
+
 
 public class Category {
     private int categoryId;
-    private String title;
+    private String categoryTitle;
     private String categoryContent;
 
-    public Category(int categoryId, String title, String categoryContent) {
+    public Category(int categoryId, String categoryTitle, String categoryContent) {
         this.categoryId = categoryId;
-        this.title = title;
+        this.categoryTitle = categoryTitle;
         this.categoryContent = categoryContent;
     }
 
@@ -17,8 +17,8 @@ public class Category {
         return categoryId;
     }
 
-    public String getTitle() {
-        return title;
+    public String getCategoryTitle() {
+        return categoryTitle;
     }
 
     public String getCategoryContent() {
@@ -29,8 +29,8 @@ public class Category {
         this.categoryId = categoryId;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setCategoryTitle(String categoryTitle) {
+        this.categoryTitle = categoryTitle;
     }
 
     public void setCategoryContent(String categoryContent) {

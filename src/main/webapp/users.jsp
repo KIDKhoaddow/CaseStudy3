@@ -64,19 +64,19 @@
             <div class="container-fluid">
                 <ul class="navbar-mobile__list list-unstyled">
                     <li class="active has-sub">
-                        <a class="js-arrow" href="CommonServlet?action=dashboard">
+                        <a class="js-arrow" href="AdminViewServlet?action=dashboard">
                             <i class="fas fa-tachometer-alt"></i>Dashboard</a>
                     </li>
                     <li>
-                        <a href="CommonServlet?action=users">
+                        <a href="AdminViewServlet?action=users">
                             <i class="fas fa-user"></i>User</a>
                     </li>
                     <li>
-                        <a href="CommonServlet?action=category">
+                        <a href="AdminViewServlet?action=category">
                             <i class="fas fa-list"></i>Category</a>
                     </li>
                     <li>
-                        <a href="CommonServlet?action=posts">
+                        <a href="AdminViewServlet?action=posts">
                             <i class="far fa-file"></i>Blog</a>
                     </li>
                 </ul>
@@ -96,19 +96,19 @@
             <nav class="navbar-sidebar">
                 <ul class="list-unstyled navbar__list">
                     <li class="has-sub">
-                        <a class="js-arrow" href="CommonServlet?action=dashboard">
+                        <a class="js-arrow" href="AdminViewServlet?action=dashboard">
                             <i class="fas fa-tachometer-alt"></i>Dashboard</a>
                     </li>
                     <li>
-                        <a href="CommonServlet?action=users">
+                        <a href="AdminViewServlet?action=users">
                             <i class="fas fa-user"></i>User</a>
                     </li>
                     <li>
-                        <a href="CommonServlet?action=category">
+                        <a href="AdminViewServlet?action=category">
                             <i class="fas fa-list"></i>Category</a>
                     </li>
                     <li>
-                        <a href="CommonServlet?action=posts">
+                        <a href="AdminViewServlet?action=posts">
                             <i class="far fa-file"></i>Blog</a>
                     </li>
                 </ul>
@@ -174,7 +174,7 @@
                                             </div>
                                         </div>
                                         <div class="account-dropdown__footer">
-                                            <a href="#">
+                                            <a href="login?action=logout">
                                                 <i class="zmdi zmdi-power"></i>Logout</a>
                                         </div>
                                     </div>
@@ -247,7 +247,11 @@
                                     </thead>
                                     <tbody>
                                     <c:forEach items="${userList}" var="element">
-                                        <tr class="tr-shadow">
+                                        <tr class="tr-shadow"
+                                                <c:if test="${!element.isVerify()}">
+                                                    style="background:#FA1E0E"
+                                                </c:if>
+                                        >
                                             <td class="name">${element.getUserId()}</td>
                                             <td class="name">${element.getUserName()}</td>
                                             <td>
@@ -267,23 +271,34 @@
                                                             class="status--inactive">${element.getStatus()}</span></td>
                                                 </c:when>
                                             </c:choose>
+                                            <c:choose>
+                                                <c:when test="${element.isVerify()}">
                                             <td>
                                                 <div class="table-data-feature">
                                                     <button class="item" data-toggle="modal" data-placement="top"
-                                                            title="Edit" type="button" style="background: green;">
-                                                        <a href="UsersServlet?action=active&id=${element.getUserId()}">
-                                                            <i class="fas fa-check" style="color: white"></i>
-                                                        </a>
-                                                    </button>
-                                                    <button class="item" data-toggle="modal" data-placement="top"
                                                             title="Disable" type="button" data-target="#smallModal"
                                                             style="background: orangered;">
-                                                        <a href="UsersServlet?action=disable&id=${element.getUserId()}">
+                                                        <a href="UsersServlet?action=openFormDisable&id=${element.getUserId()}">
                                                             <i class="fas fa-ban" style="color: white"></i>
                                                         </a>
                                                     </button>
                                                 </div>
                                             </td>
+                                                </c:when>
+                                                <c:when test="${!element.isVerify()}">
+                                                    <td>
+                                                        <div class="table-data-feature">
+                                                            <button class="item" data-toggle="modal" data-placement="top"
+                                                                    title="Edit" type="button" style="background: green;">
+                                                                <a href="UsersServlet?action=openFormActive&id=${element.getUserId()}">
+                                                                    <i class="fas fa-check" style="color: white"></i>
+                                                                </a>
+                                                            </button>
+                                                        </div>
+                                                    </td>
+                                                </c:when>
+                                            </c:choose>
+
                                         </tr>
                                         <tr class="spacer"></tr>
                                     </c:forEach>
@@ -328,16 +343,31 @@
                     <p> Are you sure?</p>
                 </div>
                 <div class="card-footer modal-footer">
-                    <button type="submit" class="btn btn-primary">
-                        <a href="UsersServlet?confirm=yes">
-                            <i class="fa fa-dot-circle-o" style="color: white;"></i>
-                        </a> Submit
-                    </button>
-                    <button type="reset" class="btn btn-danger">
-                        <a href="UsersServlet?confirm=no">
-                            <i class="fa fa-ban" data-dismiss="modal" style="color: white;" ></i>
-                        </a>Denied
-                    </button>
+                   <c:choose>
+                       <c:when test="${formOpen}">
+                           <button type="submit" class="btn btn-primary" >
+                               <a href="UsersServlet?action=active&id=${idAction}">
+                                   <i class="fa fa-dot-circle-o" style="color: white;"></i>
+                               </a> Submit
+                           </button>
+                           <button type="button" class="btn btn-danger close" data-dismiss="modal">
+                                   <i class="fa fa-ban" style="color: white;"></i>
+                               Denied
+                           </button>
+                       </c:when>
+                       <c:when test="${!formOpen}">
+                           <button type="submit" class="btn btn-primary">
+                               <a href="UsersServlet?action=ban&id=${idAction}">
+                                   <i class="fa fa-dot-circle-o" style="color: white;"></i>
+                               </a> Submit
+                           </button>
+                           <button type="button" class="btn btn-danger close" data-dismiss="modal" >
+                               <i class="fa fa-ban" style="color: white;"></i>
+                               Close
+                           </button>
+                       </c:when>
+                   </c:choose>
+
                 </div>
             </div>
         </div>
@@ -367,16 +397,15 @@
 </script>
 
 <!-- Main JS-->
-<script src="AdminView/js/main.js"></script>
+<script src="resource/js/main.js"></script>
 
-    <c:if test="${confirm}">
-        <script type="text/javascript">
-            $(window).on('load', function () {
-                $('#smallModal').modal('show');
-            });
-        </script>
-    </c:if>
-
+<c:if test="${confirm}">
+    <script type="text/javascript">
+        $(window).on('load', function () {
+            $('#smallModal').modal('show');
+        });
+    </script>
+</c:if>
 
 
 </body>

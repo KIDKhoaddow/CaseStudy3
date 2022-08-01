@@ -1,3 +1,5 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,7 +11,7 @@
     <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
     <!-- Title -->
-    <title>Yummy Blog - Food Blog Template</title>
+    <title>Team 2 Blog - Food Blog </title>
 
     <!-- Favicon -->
     <link rel="icon" href="yummy-master/img/core-img/favicon.ico">
@@ -47,9 +49,27 @@
                 </div>
             </div>
             <!--  Account-wrap -->
+            <c:choose>
+                <c:when test="${userEmail!=null}">
+                    <a class="btn btn-primary btn-sm " href="login?action=logout" role="button">log out</a>
+                </c:when>
+                <c:when test="${userEmail==null}">
+                    <div class="signup-search-area d-flex align-items-center justify-content-end">
+                        <div class="login_register_area d-flex">
+                            <div class="login" role="button">
+                                <a href="login.jsp">Sign in</a>
+                            </div>
+                            <div class="register" role="button">
+                                <a href="register.jsp">Sign up</a>
+                            </div>
+                        </div>
+                    </div>
+                </c:when>
+            </c:choose>
 
         </div>
     </div>
+</div>
 </div>
 <!-- ****** Top Header Area End ****** -->
 
@@ -60,7 +80,7 @@
             <!-- Logo Area Start -->
             <div class="col-12">
                 <div class="logo_area text-center">
-                    <a href="userView.jsp" class="yummy-logo">Yummy Blog</a>
+                    <a href="ServletHome?action=home" class="yummy-logo">Team 2 Blog</a>
                 </div>
             </div>
         </div>
@@ -74,36 +94,18 @@
                     </button>
                     <!-- Menu Area Start -->
                     <div class="collapse navbar-collapse justify-content-center" id="yummyfood-nav">
-                        <ul class="navbar-nav" id="yummy-nav">
-                            <li class="nav-item">
-                                <a class="nav-link" href="userView.jsp">Home <span class="sr-only">(current)</span></a>
-                            </li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="yummyDropdown" role="button"
-                                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pages</a>
-                                <div class="dropdown-menu" aria-labelledby="yummyDropdown">
-                                    <a class="dropdown-item" href="userView.jsp">Home</a>
-                                    <a class="dropdown-item" href="personal.jsp">Archive</a>
-                                    <a class="dropdown-item" href="yummy-master/single.html">Single Blog</a>
-                                    <a class="dropdown-item" href="yummy-master/static.html">Static Page</a>
-                                    <a class="dropdown-item" href="yummy-master/contact.html">Contact</a>
-                                </div>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Features</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Categories</a>
-                            </li>
+                        <ul class="navbar-nav">
                             <li class="nav-item active">
-                                <a class="nav-link" href="personal.jsp">Archive</a>
+                                <a class="nav-link" href="ServletHome?action=home">Home <span
+                                        class="sr-only">(current)</span></a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">About</a>
+                                <a class="nav-link" href="ServletHome?action=personal">Personal</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="yummy-master/contact.html">Contact</a>
+                                <a class="nav-link" href="ServletHome?action=category">Category</a>
                             </li>
+
                         </ul>
                     </div>
                 </nav>
@@ -131,7 +133,8 @@
             <div class="col-12">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="#"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
+                        <li class="breadcrumb-item"><a href="#"><i class="fa fa-home" aria-hidden="true"></i>
+                            Home</a>
                         </li>
                         <li class="breadcrumb-item active" aria-current="page">Archive Page</li>
                     </ol>
@@ -145,7 +148,7 @@
 <!-- ****** Archive Area Start ****** -->
 <section class="archive-area section_padding_80">
     <div class="container">
-        <div class="row"style="flex-wrap: nowrap;">
+        <div class="row" style="flex-wrap: nowrap;">
             <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                 <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab"
                    aria-controls="v-pills-home" aria-selected="true">Posts</a>
@@ -155,203 +158,83 @@
                    aria-controls="v-pills-messages" aria-selected="false">New Post</a>
                 <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab"
                    aria-controls="v-pills-settings" aria-selected="false">Setting Profile</a>
+                <a class="nav-link" id="v-pills-reset-password-tab" data-toggle="pill" href="#v-pills-reset" role="tab"
+                   aria-controls="v-pills-settings" aria-selected="false">Reset Password</a>
             </div>
             <div class="tab-content" id="v-pills-tabContent" style="width:1000em">
                 <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel"
-                     aria-labelledby="v-pills-home-tab" >
+                     aria-labelledby="v-pills-home-tab">
                     <div class="row" style="display: flex; flex-wrap: wrap">
-                        <!-- Single Post -->
-                        <div class="col-12 col-md-6 col-lg-4">
-                            <div class="single-post wow fadeInUp" data-wow-delay="0.1s">
-                                <!-- Post Thumb -->
-                                <div class="post-thumb">
-                                    <img src="yummy-master/img/blog-img/2.jpg" alt="">
-                                </div>
-                                <!-- Post Content -->
-                                <div class="post-content">
-                                    <div class="post-meta d-flex">
-                                        <div class="post-author-date-area d-flex">
-                                            <!-- Post Author -->
-                                            <div class="post-author">
-                                                <a href="#">By Marian</a>
+                        <c:forEach items="${posts}" var="element">
+                            <div class="col-12 col-md-6 col-lg-4">
+                                <div class="single-post wow fadeInUp" data-wow-delay="0.1s">
+                                    <!-- Post Thumb -->
+                                    <div class="post-thumb">
+                                        <a href="PersonalServlet?action=openSinglePost&id=${element.getPostId()}">
+                                            <img src="yummy-master/img/blog-img/2.jpg" alt="mất ảnh rồi">
+                                        </a>
+                                    </div>
+                                    <!-- Post Content -->
+                                    <div class="post-content">
+                                        <div class="post-meta d-flex">
+                                            <div class="post-author-date-area d-flex">
+                                                <!-- Post Author -->
+                                                <div class="post-author">
+                                                    <a href="PersonalServlet?action=openSinglePost&id=${element.getPostId()}">${userName}</a>
+                                                </div>
+                                                <!-- Post Date -->
+                                                <div class="post-date">
+                                                    <a href="PersonalServlet?action=openSinglePost&id=${element.getPostId()}">${element.getPostCreateAt()}</a>
+                                                </div>
                                             </div>
-                                            <!-- Post Date -->
-                                            <div class="post-date">
-                                                <a href="#">May 19, 2017</a>
+                                            <!-- Post Comment & Share Area -->
+                                            <div class="post-comment-share-area d-flex">
+                                                <!-- Post Favourite -->
+                                                <div class="post-favourite">
+                                                    <a href="#"><i class="fa fa-heart-o"
+                                                                   aria-hidden="true"></i>${element.getPostLikes()}
+                                                    </a>
+                                                </div>
+                                                <!-- Post Comments -->
+                                                <div class="post-comments">
+                                                    <a href="#"><i class="fa fa-comment-o"
+                                                                   aria-hidden="true"></i>${element.getPostComment()}
+                                                    </a>
+                                                </div>
                                             </div>
                                         </div>
-                                        <!-- Post Comment & Share Area -->
-                                        <div class="post-comment-share-area d-flex">
-                                            <!-- Post Favourite -->
-                                            <div class="post-favourite">
-                                                <a href="#"><i class="fa fa-heart-o" aria-hidden="true"></i> 10</a>
-                                            </div>
-                                            <!-- Post Comments -->
-                                            <div class="post-comments">
-                                                <a href="#"><i class="fa fa-comment-o" aria-hidden="true"></i> 12</a>
-                                            </div>
-                                            <!-- Post Share -->
-                                            <div class="post-share">
-                                                <a href="#"><i class="fa fa-share-alt" aria-hidden="true"></i></a>
-                                            </div>
+                                        <h4 class="post-headline">${element.getPostTitle()}</h4>
+                                        <div class="table-data-feature">
+                                            <button class="item" data-toggle="modal" data-placement="top"
+                                                    title="Edit" type="button" style="background: green;">
+                                                <a href="PersonalServlet?action=openFormEdit&id=${element.getPostId()}">
+                                                    <i class="fa fa-edit" style="color: white"></i>
+                                                </a>
+                                            </button>
+                                            <button class="item" data-toggle="modal" data-placement="top"
+                                                    title="Edit" type="button" style="background: red;">
+                                                <a href="PersonalServlet?action=openFormDelete&id=${element.getPostId()}">
+                                                    <i class="fa fa-close" style="color: white"></i>
+                                                </a>
+                                            </button>
                                         </div>
                                     </div>
-                                    <a href="#">
-                                        <h4 class="post-headline">Where To Get The Best Sunday Roast In The Cotswolds</h4>
-                                    </a>
+
                                 </div>
                             </div>
-                        </div>
+                        </c:forEach>
                         <!-- Single Post -->
-                        <div class="col-12 col-md-6 col-lg-4">
-                            <div class="single-post wow fadeInUp" data-wow-delay="0.2s">
-                                <!-- Post Thumb -->
-                                <div class="post-thumb">
-                                    <img src="yummy-master/img/blog-img/3.jpg" alt="">
-                                </div>
-                                <!-- Post Content -->
-                                <div class="post-content">
-                                    <div class="post-meta d-flex">
-                                        <div class="post-author-date-area d-flex">
-                                            <!-- Post Author -->
-                                            <div class="post-author">
-                                                <a href="#">By Marian</a>
-                                            </div>
-                                            <!-- Post Date -->
-                                            <div class="post-date">
-                                                <a href="#">May 19, 2017</a>
-                                            </div>
-                                        </div>
-                                        <!-- Post Comment & Share Area -->
-                                        <div class="post-comment-share-area d-flex">
-                                            <!-- Post Favourite -->
-                                            <div class="post-favourite">
-                                                <a href="#"><i class="fa fa-heart-o" aria-hidden="true"></i> 10</a>
-                                            </div>
-                                            <!-- Post Comments -->
-                                            <div class="post-comments">
-                                                <a href="#"><i class="fa fa-comment-o" aria-hidden="true"></i> 12</a>
-                                            </div>
-                                            <!-- Post Share -->
-                                            <div class="post-share">
-                                                <a href="#"><i class="fa fa-share-alt" aria-hidden="true"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <a href="#">
-                                        <h4 class="post-headline">The Top Breakfast And Brunch Spots In Hove, Brighton</h4>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Single Post -->
-                        <div class="col-12 col-md-6 col-lg-4">
-                            <div class="single-post wow fadeInUp" data-wow-delay="0.3s">
-                                <!-- Post Thumb -->
-                                <div class="post-thumb">
-                                    <img src="yummy-master/img/blog-img/4.jpg" alt="">
-                                </div>
-                                <!-- Post Content -->
-                                <div class="post-content">
-                                    <div class="post-meta d-flex">
-                                        <div class="post-author-date-area d-flex">
-                                            <!-- Post Author -->
-                                            <div class="post-author">
-                                                <a href="#">By Marian</a>
-                                            </div>
-                                            <!-- Post Date -->
-                                            <div class="post-date">
-                                                <a href="#">May 19, 2017</a>
-                                            </div>
-                                        </div>
-                                        <!-- Post Comment & Share Area -->
-                                        <div class="post-comment-share-area d-flex">
-                                            <!-- Post Favourite -->
-                                            <div class="post-favourite">
-                                                <a href="#"><i class="fa fa-heart-o" aria-hidden="true"></i> 10</a>
-                                            </div>
-                                            <!-- Post Comments -->
-                                            <div class="post-comments">
-                                                <a href="#"><i class="fa fa-comment-o" aria-hidden="true"></i> 12</a>
-                                            </div>
-                                            <!-- Post Share -->
-                                            <div class="post-share">
-                                                <a href="#"><i class="fa fa-share-alt" aria-hidden="true"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <a href="#">
-                                        <h4 class="post-headline">The 10 Best Pubs In The Lake District, Cumbria</h4>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Single Post -->
-                        <div class="col-12 col-md-6 col-lg-4">
-                            <div class="single-post wow fadeInUp" data-wow-delay="0.4s">
-                                <!-- Post Thumb -->
-                                <div class="post-thumb">
-                                    <img src="yummy-master/img/blog-img/5.jpg" alt="">
-                                </div>
-                                <!-- Post Content -->
-                                <div class="post-content">
-                                    <div class="post-meta d-flex">
-                                        <div class="post-author-date-area d-flex">
-                                            <!-- Post Author -->
-                                            <div class="post-author">
-                                                <a href="#">By Marian</a>
-                                            </div>
-                                            <!-- Post Date -->
-                                            <div class="post-date">
-                                                <a href="#">May 19, 2017</a>
-                                            </div>
-                                        </div>
-                                        <!-- Post Comment & Share Area -->
-                                        <div class="post-comment-share-area d-flex">
-                                            <!-- Post Favourite -->
-                                            <div class="post-favourite">
-                                                <a href="#"><i class="fa fa-heart-o" aria-hidden="true"></i> 10</a>
-                                            </div>
-                                            <!-- Post Comments -->
-                                            <div class="post-comments">
-                                                <a href="#"><i class="fa fa-comment-o" aria-hidden="true"></i> 12</a>
-                                            </div>
-                                            <!-- Post Share -->
-                                            <div class="post-share">
-                                                <a href="#"><i class="fa fa-share-alt" aria-hidden="true"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <a href="#">
-                                        <h4 class="post-headline">The 10 Best Brunch Spots In Newcastle, England</h4>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
                         <div class="col-12">
                             <div class="pagination-area d-sm-flex mt-15">
-                                <nav aria-label="#">
-                                    <ul class="pagination">
-                                        <li class="page-item active">
-                                            <a class="page-link" href="#">1 <span class="sr-only">(current)</span></a>
-                                        </li>
-                                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                        <li class="page-item">
-                                            <a class="page-link" href="#">Next <i class="fa fa-angle-double-right"
-                                                                                  aria-hidden="true"></i></a>
-                                        </li>
-                                    </ul>
-                                </nav>
                                 <div class="page-status">
-                                    <p>Page 1 of 60 results</p>
+                                    <p>${posts.size()} results</p>
                                 </div>
                             </div>
                         </div>
                     </div>
-
                 </div>
-                <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+                <div class="tab-pane fade" id="v-pills-profile" role="tabpanel"
+                     aria-labelledby="v-pills-profile-tab">
                     <div class="col-md-4" style="max-width: 80%">
                         <div class="card">
                             <div class="card-header">
@@ -360,19 +243,59 @@
                             </div>
                             <div class="card-body">
                                 <div class="mx-auto d-block">
-                                    <img class="rounded-circle mx-auto d-block" src="resource/images/icon/avatar-01.jpg" alt="Card image cap">
-                                    <h5 class="text-sm-center mt-2 mb-1">Steven Lee</h5>
+                                    <img class="rounded-circle mx-auto d-block" style="height: 300px;width: 300px"
+                                         src="${userAvatar}" alt="Card image cap">
+                                    <h5 class="text-sm-center mt-2 mb-1">${userName}</h5>
                                     <div class="location text-sm-center">
-                                        <i class="fa fa-map-marker"></i> California, United States</div>
+                                        <i class="fa fa-map-marker"></i>${userAddress}
+                                    </div>
                                 </div>
                                 <hr>
                                 <div class="card-text text-sm-center">
                                     <div class="row form-group">
                                         <div class="col col-md-3">
-                                            <label class=" form-control-label">Static</label>
+                                            <label class=" form-control-label">Name</label>
                                         </div>
                                         <div class="col-12 col-md-9">
-                                            <p class="form-control-static">Username</p>
+                                            <p class="form-control-static">${userName}</p>
+                                        </div>
+                                        <div class="col col-md-3">
+                                            <label class=" form-control-label">Email</label>
+                                        </div>
+                                        <div class="col-12 col-md-9">
+                                            <p class="form-control-static">${userEmail}</p>
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div class="col col-md-3">
+                                            <label class=" form-control-label">Address</label>
+                                        </div>
+                                        <div class="col-12 col-md-9">
+                                            <p class="form-control-static">${userAddress}</p>
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div class="col col-md-3">
+                                            <label class=" form-control-label">Phone</label>
+                                        </div>
+                                        <div class="col-12 col-md-9">
+                                            <p class="form-control-static">${userPhone}</p>
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div class="col col-md-3">
+                                            <label class=" form-control-label">DOB</label>
+                                        </div>
+                                        <div class="col-12 col-md-9">
+                                            <p class="form-control-static">${userDOB}</p>
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div class="col col-md-3">
+                                            <label class=" form-control-label">RegisterDate</label>
+                                        </div>
+                                        <div class="col-12 col-md-9">
+                                            <p class="form-control-static">${userRegisterDate}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -380,21 +303,24 @@
                         </div>
                     </div>
                 </div>
-                <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab"
-                    >
+                <div class="tab-pane fade" id="v-pills-messages" role="tabpanel"
+                     aria-labelledby="v-pills-messages-tab">
                     <div class="col-12" style="max-width: 100%;">
                         <div class="card">
                             <div class="card-header">
                                 <strong>Basic Form</strong> Elements
                             </div>
                             <div class="card-body card-block">
-                                <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
+                                <form action="/ServletHome?action=creatPost" method="get" id="formCreatPost"
+                                      enctype="multipart/form-data" class="form-horizontal">
                                     <div class="row form-group">
                                         <div class="col col-md-3">
-                                            <label for="title-input" class=" form-control-label">Titile</label>
+                                            <label for="title-input" class=" form-control-label">Title</label>
                                         </div>
                                         <div class="col-12 col-md-9">
-                                            <input type="text" id="title-input" name="text-input" placeholder="Text" class="form-control">
+                                            <input type="text" id="title-input" name="title-input"
+                                                   placeholder="Text"
+                                                   class="form-control">
                                             <small class="form-text text-muted">This is a help text</small>
                                         </div>
                                     </div>
@@ -403,7 +329,8 @@
                                             <label for="content-input" class=" form-control-label">Content</label>
                                         </div>
                                         <div class="col-12 col-md-9">
-                                            <textarea name="textarea-input" id="content-input" rows="9" placeholder="Content..." class="form-control"></textarea>
+                                                <textarea name="textarea-input" id="content-input" rows="9"
+                                                          placeholder="Content..." class="form-control"></textarea>
                                         </div>
                                     </div>
                                     <div class="row form-group">
@@ -411,13 +338,15 @@
                                             <label for="file-input" class=" form-control-label">Image</label>
                                         </div>
                                         <div class="col-12 col-md-9">
-                                            <input type="file" id="picture-input" name="file-input" class="form-control-file">
+                                            <input type="file" id="picture-input" name="file-input"
+                                                   class="form-control-file">
                                         </div>
                                     </div>
                                 </form>
                             </div>
                             <div class="card-footer">
-                                <button type="submit" class="btn btn-primary btn-sm">
+                                <button type="submit" value="submit" class="btn btn-primary btn-sm"
+                                        form="formCreatPost">
                                     <i class="fa fa-dot-circle-o"></i> Submit
                                 </button>
                                 <button type="reset" class="btn btn-danger btn-sm">
@@ -427,46 +356,57 @@
                         </div>
                     </div>
                 </div>
-                <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
+                <div class="tab-pane fade" id="v-pills-settings" role="tabpanel"
+                     aria-labelledby="v-pills-settings-tab">
                     <div class="col-lg-6" style="max-width: 80%;">
-                        <div class="card" >
+                        <div class="card">
                             <div class="card-header">
                                 <strong>Edit Profile Form</strong>
+
                             </div>
                             <div class="card-body card-block">
-                                <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
+                                <form enctype="multipart/form-data" class="form-horizontal" id="EditForm"
+                                      data-action="edit">
+                                    <div class="row form-group">
+                                        <div class="col col-md-3">
+                                            <input type="text" name="action" value="edit" style="display: none">
+                                            <label for="file-input" class=" form-control-label">Avatar input</label>
+                                        </div>
+                                        <div class="col-12 col-md-9">
+                                            <input type="file" id="file-input" name="post-picture-input"
+                                                   class="form-control" accept="image/*">
+                                        </div>
+                                        <img src="${userAvatar}" class="rounded-circle mx-auto d-block"
+                                             style="height: 300px;width: 300px;">
+                                    </div>
                                     <div class="row form-group">
                                         <div class="col col-md-3">
                                             <label class=" form-control-label">UserName</label>
                                         </div>
                                         <div class="col-12 col-md-9">
-                                            <p class="form-control-static">Username</p>
+                                            <input type="text" id="userName-input" name="user-name-input"
+                                                   placeholder="Enter Email" class="form-control"
+                                                   value="${userName}">
+                                            <small class="help-block form-text">Please enter your Name</small>
                                         </div>
                                     </div>
                                     <div class="row form-group">
                                         <div class="col col-md-3">
-                                            <label for="email-input" class=" form-control-label">Email Input</label>
+                                            <label class=" form-control-label">Email</label>
                                         </div>
                                         <div class="col-12 col-md-9">
-                                            <input type="email" id="email-input" name="email-input" placeholder="Enter Email" class="form-control">
-                                            <small class="help-block form-text">Please enter your email</small>
+                                            <p class="form-control-static" name="user-email">${userEmail}</p>
                                         </div>
                                     </div>
                                     <div class="row form-group">
                                         <div class="col col-md-3">
-                                            <label for="password-input" class=" form-control-label">Password</label>
+                                            <label for="address-input" class=" form-control-label">Address
+                                                Input</label>
                                         </div>
                                         <div class="col-12 col-md-9">
-                                            <input type="password" id="password-input" name="password-input" placeholder="Password" class="form-control">
-                                            <small class="help-block form-text">Please enter a complex password</small>
-                                        </div>
-                                    </div>
-                                    <div class="row form-group">
-                                        <div class="col col-md-3">
-                                            <label for="address-input" class=" form-control-label">Address Input</label>
-                                        </div>
-                                        <div class="col-12 col-md-9">
-                                            <input type="text" id="address-input" name="address-input" placeholder="Enter Address" class="form-control">
+                                            <input type="text" id="address-input" name="user-address-input"
+                                                   placeholder="Enter Address" class="form-control"
+                                                   value="${userAddress}">
                                             <small class="help-block form-text">Please enter your address</small>
                                         </div>
                                     </div>
@@ -475,7 +415,9 @@
                                             <label for="phone-input" class=" form-control-label">Phone Input</label>
                                         </div>
                                         <div class="col-12 col-md-9">
-                                            <input type="" id="phone-input" name="phone-input" placeholder="Enter Phone" class="form-control">
+                                            <input type="" id="phone-input" name="user-phone-input"
+                                                   placeholder="Enter Phone"
+                                                   class="form-control" value="${userPhone}">
                                             <small class="help-block form-text">Please enter your phone</small>
                                         </div>
                                     </div>
@@ -484,19 +426,74 @@
                                             <label for="DOB-input" class=" form-control-label">DOB Input</label>
                                         </div>
                                         <div class="col-12 col-md-9">
-                                            <input type="date" id="DOB-input" name="DOB-input" placeholder="Enter date of birth" class="form-control">
+                                            <input type="date" id="DOB-input" name="user-DOB-input"
+                                                   placeholder="Enter date of birth" class="form-control"
+                                                   value="${userDOB}">
                                             <small class="help-block form-text">Please enter your DOB</small>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="card-footer">
+                                <button type="submit" class="btn btn-primary btn-sm" form="EditForm"
+                                        formmethod="get" formaction="PersonalServlet?action=edit"
+                                        data-action="PersonalServlet?action=edit">
+                                    <i class="fa fa-dot-circle-o"></i> Submit
+                                </button>
+                                <button type="reset" class="btn btn-danger btn-sm" form="EditForm">
+                                    <i class="fa fa-ban"></i> Reset
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="v-pills-reset" role="tabpanel"
+                     aria-labelledby="v-pills-reset-password-tab">
+                    <div class="col-lg-6" style="max-width: 80%;">
+                        <div class="card">
+                            <div class="card-header">
+                                <strong>Edit Profile Form</strong>
+                            </div>
+                            <div class="card-body card-block">
+                                <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
+                                    <div class="row form-group">
+                                        <div class="col col-md-3">
+                                            <label for="old-password-input" class=" form-control-label">Old
+                                                Password</label>
+                                        </div>
+                                        <div class="col-12 col-md-9">
+                                            <input type="password" id="old-password-input" name="password-input"
+                                                   placeholder="Password" class="form-control">
+                                            <small class="help-block form-text">Please enter a old password
+                                                password</small>
                                         </div>
                                     </div>
                                     <div class="row form-group">
                                         <div class="col col-md-3">
-                                            <label for="file-input" class=" form-control-label">Avatar input</label>
+                                            <label for="new-password-input" class=" form-control-label">New
+                                                Password</label>
                                         </div>
                                         <div class="col-12 col-md-9">
-                                            <input type="file" id="file-input" name="file-input" class="form-control-file">
+                                            <input type="password" id="new-password-input" name="password-input"
+                                                   placeholder="Password" class="form-control">
+                                            <small class="help-block form-text">Please enter a new password
+                                                password</small>
                                         </div>
-                                    </div>
 
+                                    </div>
+                                    <div class="row form-group">
+                                        <div class="col col-md-3">
+                                            <label for="repeat-password-input" class=" form-control-label">Repeat
+                                                Password</label>
+                                        </div>
+                                        <div class="col-12 col-md-9">
+                                            <input type="password" id="repeat-password-input" name="password-input"
+                                                   placeholder="Password" class="form-control">
+                                            <small class="help-block form-text">Please enter a repeat password
+                                                password</small>
+                                        </div>
+
+                                    </div>
                                 </form>
                             </div>
                             <div class="card-footer">
@@ -507,14 +504,13 @@
                                     <i class="fa fa-ban"></i> Reset
                                 </button>
                             </div>
+
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-
 </section>
 <!-- ****** Archive Area End ****** -->
 
@@ -539,23 +535,15 @@
                         <div class="collapse navbar-collapse justify-content-center" id="yummyfood-footer-nav">
                             <ul class="navbar-nav">
                                 <li class="nav-item active">
-                                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                                    <a class="nav-link" href="ServletHome?action=home">Home <span class="sr-only">(current)</span></a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">Features</a>
+                                    <a class="nav-link" href="ServletHome?action=personal">Personal</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">Categories</a>
+                                    <a class="nav-link" href="ServletHome?action=category">Category</a>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">Archive</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">About</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">Contact</a>
-                                </li>
+
                             </ul>
                         </div>
                     </nav>
@@ -570,8 +558,9 @@
                 <!-- Copywrite Text -->
                 <div class="copy_right_text text-center">
                     <p>Copyright @2018 All rights reserved | This template is made with <i class="fa fa-heart-o"
-                                                                                           aria-hidden="true"></i> by <a
-                            href="https://colorlib.com" target="_blank">Colorlib</a></p>
+                                                                                           aria-hidden="true"></i>
+                        by <a
+                                href="https://colorlib.com" target="_blank">Colorlib</a></p>
                 </div>
             </div>
         </div>
@@ -579,6 +568,128 @@
 </footer>
 <!-- ****** Footer Menu Area End ****** -->
 
+
+<%--  ***** Modal Area *******--%>
+<c:if test="${requestScope['post'] != null}">
+    <!-- modal edit -->
+    <div class="modal fade" id="modalEdit" tabindex="-1" role="dialog"
+         aria-labelledby="largeModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="form">
+            <div class="card modal-content">
+                <div class="card-header modal-header">
+                    <div class="table-data-feature">
+                        <strong>Edit Post Form</strong>
+                    </div>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="editTitleForm" action="PersonalServlet?action=edit" method="get">
+                        <div class="row form-group">
+                            <div class="col col-md-3">
+                                <label for="file-picture-input" class=" form-control-label">Avatar input</label>
+                            </div>
+                            <div class="col-12 col-md-9">
+                                <input type="file" id="file-picture-input" name="post-picture-input"
+                                       class="form-control-file">
+                            </div>
+                            <img src="${userAvatar}" class="rounded-circle mx-auto d-block"
+                                 style="height: 300px;width: 300px;">
+                        </div>
+                        <div class="row form-group">
+                            <div class="col col-md-3">
+                                <label class=" form-control-label">Author</label>
+                            </div>
+                            <div class="col-12 col-md-9">
+                                <p class="form-control-static">${userName}</p>
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col col-md-3">
+                                <label for="post-edit" class=" form-control-label">Title
+                                    Input</label>
+                            </div>
+                            <div class="col-12 col-md-9">
+                                <input type="text" id="post-edit" name="post-title-input"
+                                       placeholder="Enter title" class="form-control" value="${post.getPostTitle()}">
+                                <small class="help-block form-text">Please enter your title</small>
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col col-md-3">
+                                <label for="content-edit" class=" form-control-label">Title
+                                    Input</label>
+                            </div>
+                            <div class="col-12 col-md-9">
+                                <textarea id="content-edit" name="post-content-input"
+                                          placeholder="Enter title" class="form-control">
+                                        ${post.getPostContent()}
+                                </textarea>
+                                <small class="help-block form-text">Please enter your title</small>
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col col-md-3">
+                                <label class=" form-control-label">Author</label>
+                            </div>
+                            <div class="col-12 col-md-9">
+                                <p class="form-control-static">${post.getPostCreateAt()}</p>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="card-footer modal-footer">
+                    <button type="submit" form="editTitleForm" class="btn btn-primary">
+                        <i class="fa fa-dot-circle-o" style="color: white;"></i>
+                        Submit
+                    </button>
+                    <button type="button" class="btn btn-danger">
+                        <a href="PersonalServlet?confirm=no">
+                            <i class="fa fa-ban" data-dismiss="modal" style="color: white;"></i>
+                        </a>Denied
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end modal edit -->
+</c:if>
+<c:if test="${requestScope['post'] != null}">
+    <!-- modal delete -->
+    <div class="modal fade" id="modalDelete" tabindex="-1" role="dialog"
+         aria-labelledby="largeModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="form">
+            <div class="card modal-content">
+                <div class="card-header modal-header">
+                    <div class="table-data-feature">
+                        <strong>Confirm</strong>
+                    </div>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Are you sure to delete this post ?!</p>
+                </div>
+                <div class="card-footer modal-footer">
+                    <a href="" role="button" class="btn btn-primary">
+                        <i class="fa fa-dot-circle-o" style="color: white;"></i>
+                        Confirm
+                    </a>
+                    <a role="button" class="btn btn-danger" data-dismiss="modal">
+                        <i class="fa fa-dot-circle-o" style="color: white;"></i>
+                        Denied
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end modal delete -->
+</c:if>
+<%--  ***** End Modal Area *******--%>
 <!-- Jquery-2.2.4 js -->
 <script src="yummy-master/js/jquery/jquery-2.2.4.min.js"></script>
 <!-- Popper js -->
@@ -589,4 +700,20 @@
 <script src="yummy-master/js/others/plugins.js"></script>
 <!-- Active JS -->
 <script src="yummy-master/js/active.js"></script>
+<c:if test="${confirmEdit}">
+    <script type="text/javascript">
+        $(window).on('load', function () {
+            $('#modalEdit').modal('show');
+        });
+    </script>
+</c:if>
+<c:if test="${confirmDelete}">
+    <script type="text/javascript">
+        $(window).on('load', function () {
+            $('#modalDelete').modal('show');
+        });
+    </script>
+</c:if>
+
 </body>
+</html>

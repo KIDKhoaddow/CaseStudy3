@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -36,7 +37,7 @@
 
 </head>
 
-<body class="animsition" data-animsition-in-duration="100"data-animsition-out-duration="100">
+<body class="animsition" data-animsition-in-duration="100" data-animsition-out-duration="100">
 <div class="page-wrapper">
     <!-- HEADER MOBILE-->
     <header class="header-mobile d-block d-lg-none">
@@ -44,7 +45,7 @@
             <div class="container-fluid">
                 <div class="header-mobile-inner">
                     <a class="logo" href="resource/index.html">
-                        <img src="resource/images/icon/logo.png" alt="CoolAdmin" />
+                        <img src="resource/images/icon/logo.png" alt="CoolAdmin"/>
                     </a>
                     <button class="hamburger hamburger--slider" type="button">
                             <span class="hamburger-box">
@@ -58,19 +59,19 @@
             <div class="container-fluid">
                 <ul class="navbar-mobile__list list-unstyled">
                     <li class="active has-sub">
-                        <a class="js-arrow" href="CommonServlet?action=dashboard">
+                        <a class="js-arrow" href="AdminViewServlet?action=dashboard">
                             <i class="fas fa-tachometer-alt"></i>Dashboard</a>
                     </li>
                     <li>
-                        <a href="CommonServlet?action=users">
+                        <a href="AdminViewServlet?action=users">
                             <i class="fas fa-user"></i>User</a>
                     </li>
                     <li>
-                        <a href="CommonServlet?action=category">
+                        <a href="AdminViewServlet?action=category">
                             <i class="fas fa-list"></i>Category</a>
                     </li>
                     <li>
-                        <a href="CommonServlet?action=posts">
+                        <a href="AdminViewServlet?action=posts">
                             <i class="far fa-file"></i>Blog</a>
                     </li>
                 </ul>
@@ -90,19 +91,19 @@
             <nav class="navbar-sidebar">
                 <ul class="list-unstyled navbar__list">
                     <li class="active has-sub">
-                        <a class="js-arrow" href="CommonServlet?action=dashboard">
+                        <a class="js-arrow" href="AdminViewServlet?action=dashboard">
                             <i class="fas fa-tachometer-alt"></i>Dashboard</a>
                     </li>
                     <li>
-                        <a href="CommonServlet?action=users">
+                        <a href="AdminViewServlet?action=users">
                             <i class="fas fa-user"></i>User</a>
                     </li>
                     <li>
-                        <a href="CommonServlet?action=category">
+                        <a href="AdminViewServlet?action=category">
                             <i class="fas fa-list"></i>Category</a>
                     </li>
                     <li>
-                        <a href="CommonServlet?action=posts">
+                        <a href="AdminViewServlet?action=posts">
                             <i class="far fa-file"></i>Blog</a>
                     </li>
                 </ul>
@@ -118,11 +119,7 @@
             <div class="section__content section__content--p30">
                 <div class="container-fluid">
                     <div class="header-wrap">
-                        <form class="form-header" action="" method="POST" >
-<%--                            <input class="au-input au-input--xl" type="text" name="search" placeholder="Search for datas &amp; reports..." />--%>
-<%--                            <button class="au-btn--submit" type="submit">--%>
-<%--                                <i class="zmdi zmdi-search"></i>--%>
-<%--                            </button>--%>
+                        <form class="form-header" action="" method="POST">
                         </form>
                         <div class="header-button">
                             <div class="noti-wrap">
@@ -148,7 +145,7 @@
                             <div class="account-wrap">
                                 <div class="account-item clearfix js-item-menu">
                                     <div class="image">
-                                        <img src="resource/images/icon/avatar-01.jpg" alt="John Doe" />
+                                        <img src="resource/images/icon/avatar-01.jpg" alt="John Doe"/>
                                     </div>
                                     <div class="content">
                                         <a class="js-acc-btn" href="#">Admin</a>
@@ -157,18 +154,18 @@
                                         <div class="info clearfix">
                                             <div class="image">
                                                 <a href="#">
-                                                    <img src="resource/images/icon/avatar-01.jpg" alt="Admin" />
+                                                    <img src="resource/images/icon/avatar-01.jpg" alt="Admin"/>
                                                 </a>
                                             </div>
                                             <div class="content">
                                                 <h5 class="name">
-                                                    <a href="#">Admin</a>
+                                                    <a href="AdminViewServlet?action=dashboard">Admin</a>
                                                 </h5>
 
                                             </div>
                                         </div>
                                         <div class="account-dropdown__footer">
-                                            <a href="#">
+                                            <a href="login?action=logout">
                                                 <i class="zmdi zmdi-power"></i>Logout</a>
                                         </div>
                                     </div>
@@ -188,9 +185,6 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="overview-wrap">
-<%--                                <h2 class="title-1">overview</h2>--%>
-<%--                                <button class="au-btn au-btn-icon au-btn--blue">--%>
-<%--                                    <i class="zmdi zmdi-plus"></i>add item</button>--%>
                             </div>
                         </div>
                     </div>
@@ -203,7 +197,7 @@
                                             <i class="zmdi zmdi-account-o"></i>
                                         </div>
                                         <div class="text">
-                                            <h2>10368</h2>
+                                            <h2>${memberOnline}</h2>
                                             <span>members online</span>
                                         </div>
                                     </div>
@@ -221,7 +215,7 @@
                                             <i class="zmdi zmdi-blogger"></i>
                                         </div>
                                         <div class="text">
-                                            <h2>388,688</h2>
+                                            <h2>${numberPost}</h2>
                                             <span>posts</span>
                                         </div>
                                     </div>
@@ -239,8 +233,8 @@
                                             <i class="zmdi zmdi-calendar-note"></i>
                                         </div>
                                         <div class="text">
-                                            <h2>1,086</h2>
-                                            <span>this week</span>
+                                            <h2>${postsThisYear}</h2>
+                                            <span>This Year</span>
                                         </div>
                                     </div>
                                     <div class="overview-chart">
@@ -257,7 +251,7 @@
                                             <i class="zmdi zmdi-account-circle"></i>
                                         </div>
                                         <div class="text">
-                                            <h2>$1,060,386</h2>
+                                            <h2>${numberUser}</h2>
                                             <span>number user</span>
                                         </div>
                                     </div>
@@ -268,68 +262,6 @@
                             </div>
                         </div>
                     </div>
-<%--                    <div class="row">--%>
-<%--                        <div class="col-lg-6">--%>
-<%--                            <div class="au-card recent-report">--%>
-<%--                                <div class="au-card-inner">--%>
-<%--                                    <h3 class="title-2">recent reports</h3>--%>
-<%--                                    <div class="chart-info">--%>
-<%--                                        <div class="chart-info__left">--%>
-<%--                                            <div class="chart-note">--%>
-<%--                                                <span class="dot dot--blue"></span>--%>
-<%--                                                <span>products</span>--%>
-<%--                                            </div>--%>
-<%--                                            <div class="chart-note mr-0">--%>
-<%--                                                <span class="dot dot--green"></span>--%>
-<%--                                                <span>services</span>--%>
-<%--                                            </div>--%>
-<%--                                        </div>--%>
-<%--                                        <div class="chart-info__right">--%>
-<%--                                            <div class="chart-statis">--%>
-<%--                                                    <span class="index incre">--%>
-<%--                                                        <i class="zmdi zmdi-long-arrow-up"></i>25%</span>--%>
-<%--                                                <span class="label">products</span>--%>
-<%--                                            </div>--%>
-<%--                                            <div class="chart-statis mr-0">--%>
-<%--                                                    <span class="index decre">--%>
-<%--                                                        <i class="zmdi zmdi-long-arrow-down"></i>10%</span>--%>
-<%--                                                <span class="label">services</span>--%>
-<%--                                            </div>--%>
-<%--                                        </div>--%>
-<%--                                    </div>--%>
-<%--                                    <div class="recent-report__chart">--%>
-<%--                                        <canvas id="recent-rep-chart"></canvas>--%>
-<%--                                    </div>--%>
-<%--                                </div>--%>
-<%--                            </div>--%>
-<%--                        </div>--%>
-<%--                        <div class="col-lg-6">--%>
-<%--                            <div class="au-card chart-percent-card">--%>
-<%--                                <div class="au-card-inner">--%>
-<%--                                    <h3 class="title-2 tm-b-5">char by %</h3>--%>
-<%--                                    <div class="row no-gutters">--%>
-<%--                                        <div class="col-xl-6">--%>
-<%--                                            <div class="chart-note-wrap">--%>
-<%--                                                <div class="chart-note mr-0 d-block">--%>
-<%--                                                    <span class="dot dot--blue"></span>--%>
-<%--                                                    <span>products</span>--%>
-<%--                                                </div>--%>
-<%--                                                <div class="chart-note mr-0 d-block">--%>
-<%--                                                    <span class="dot dot--red"></span>--%>
-<%--                                                    <span>services</span>--%>
-<%--                                                </div>--%>
-<%--                                            </div>--%>
-<%--                                        </div>--%>
-<%--                                        <div class="col-xl-6">--%>
-<%--                                            <div class="percent-chart">--%>
-<%--                                                <canvas id="percent-chart"></canvas>--%>
-<%--                                            </div>--%>
-<%--                                        </div>--%>
-<%--                                    </div>--%>
-<%--                                </div>--%>
-<%--                            </div>--%>
-<%--                        </div>--%>
-<%--                    </div>--%>
                     <div class="row">
                         <div class="col-lg-9">
                             <h2 class="title-1 m-b-25">Posts with lots of likes</h2>
@@ -337,122 +269,46 @@
                                 <table class="table table-borderless table-striped table-earning">
                                     <thead>
                                     <tr>
-                                        <th>date</th>
-                                        <th>order ID</th>
-                                        <th>name</th>
-                                        <th class="text-right">price</th>
-                                        <th class="text-right">quantity</th>
-                                        <th class="text-right">total</th>
+                                        <th>Id</th>
+                                        <th>Title</th>
+                                        <th>Category</th>
+                                        <th>Author</th>
+                                        <th>Create at</th>
+                                        <th>Likes</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr>
-                                        <td>2018-09-29 05:57</td>
-                                        <td>100398</td>
-                                        <td>iPhone X 64Gb Grey</td>
-                                        <td class="text-right">$999.00</td>
-                                        <td class="text-right">1</td>
-                                        <td class="text-right">$999.00</td>
-                                    </tr>
-                                    <tr>
-                                        <td>2018-09-28 01:22</td>
-                                        <td>100397</td>
-                                        <td>Samsung S8 Black</td>
-                                        <td class="text-right">$756.00</td>
-                                        <td class="text-right">1</td>
-                                        <td class="text-right">$756.00</td>
-                                    </tr>
-                                    <tr>
-                                        <td>2018-09-27 02:12</td>
-                                        <td>100396</td>
-                                        <td>Game Console controller</td>
-                                        <td class="text-right">$22.00</td>
-                                        <td class="text-right">2</td>
-                                        <td class="text-right">$44.00</td>
-                                    </tr>
-                                    <tr>
-                                        <td>2018-09-26 23:06</td>
-                                        <td>100395</td>
-                                        <td>iPhone X 256Gb Black</td>
-                                        <td class="text-right">$1199.00</td>
-                                        <td class="text-right">1</td>
-                                        <td class="text-right">$1199.00</td>
-                                    </tr>
-                                    <tr>
-                                        <td>2018-09-25 19:03</td>
-                                        <td>100393</td>
-                                        <td>USB 3.0 Cable</td>
-                                        <td class="text-right">$10.00</td>
-                                        <td class="text-right">3</td>
-                                        <td class="text-right">$30.00</td>
-                                    </tr>
-                                    <tr>
-                                        <td>2018-09-29 05:57</td>
-                                        <td>100392</td>
-                                        <td>Smartwatch 4.0 LTE Wifi</td>
-                                        <td class="text-right">$199.00</td>
-                                        <td class="text-right">6</td>
-                                        <td class="text-right">$1494.00</td>
-                                    </tr>
-                                    <tr>
-                                        <td>2018-09-24 19:10</td>
-                                        <td>100391</td>
-                                        <td>Camera C430W 4k</td>
-                                        <td class="text-right">$699.00</td>
-                                        <td class="text-right">1</td>
-                                        <td class="text-right">$699.00</td>
-                                    </tr>
-                                    <tr>
-                                        <td>2018-09-22 00:43</td>
-                                        <td>100393</td>
-                                        <td>USB 3.0 Cable</td>
-                                        <td class="text-right">$10.00</td>
-                                        <td class="text-right">3</td>
-                                        <td class="text-right">$30.00</td>
-                                    </tr>
+                                    <c:forEach items="${postLikeList}" var="element">
+
+                                            <tr>
+                                                <th class="text-center">${element.get(0)}</th>
+                                                <th class="text-left">${element.get(1)}</th>
+                                                <th class="text-left">${element.get(2)}</th>
+                                                <th class="text-left">${element.get(3)}</th>
+                                                <th class="text-center">${element.get(4)}</th>
+                                                <th class="text-center">${element.get(5)}</th>
+                                            </tr>
+
+
+                                    </c:forEach>
                                     </tbody>
                                 </table>
                             </div>
                         </div>
                         <div class="col-lg-3">
-                            <h2 class="title-1 m-b-25">Top posts per month</h2>
+                            <h2 class="title-1 m-b-25">Top Ten Author </h2>
                             <div class="au-card au-card--bg-blue au-card-top-countries m-b-40">
-                                <div class="au-card-inner">
+                                <div class="au-card-infner">
                                     <div class="table-responsive">
                                         <table class="table table-top-countries">
                                             <tbody>
-                                            <tr>
-                                                <td>United States</td>
-                                                <td class="text-right">$119,366.96</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Australia</td>
-                                                <td class="text-right">$70,261.65</td>
-                                            </tr>
-                                            <tr>
-                                                <td>United Kingdom</td>
-                                                <td class="text-right">$46,399.22</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Turkey</td>
-                                                <td class="text-right">$35,364.90</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Germany</td>
-                                                <td class="text-right">$20,366.96</td>
-                                            </tr>
-                                            <tr>
-                                                <td>France</td>
-                                                <td class="text-right">$10,366.96</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Australia</td>
-                                                <td class="text-right">$5,366.96</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Italy</td>
-                                                <td class="text-right">$1639.32</td>
-                                            </tr>
+                                            <c:forEach items="${topTenAuthor}" var="element" >
+                                                <tr>
+                                                    <td>${element.get(0)}</td>
+                                                    <td>${element.get(1)}</td>
+                                                    <td>${element.get(2)}</td>
+                                                </tr>
+                                            </c:forEach>
                                             </tbody>
                                         </table>
                                     </div>

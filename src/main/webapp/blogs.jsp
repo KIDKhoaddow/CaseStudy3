@@ -59,19 +59,19 @@
             <div class="container-fluid">
                 <ul class="navbar-mobile__list list-unstyled">
                     <li class="active has-sub">
-                        <a class="js-arrow" href="CommonServlet?action=dashboard">
+                        <a class="js-arrow" href="AdminViewServlet?action=dashboard">
                             <i class="fas fa-tachometer-alt"></i>Dashboard</a>
                     </li>
                     <li>
-                        <a href="CommonServlet?action=users">
+                        <a href="AdminViewServlet?action=users">
                             <i class="fas fa-user"></i>User</a>
                     </li>
                     <li>
-                        <a href="CommonServlet?action=category">
+                        <a href="AdminViewServlet?action=category">
                             <i class="fas fa-list"></i>Category</a>
                     </li>
                     <li>
-                        <a href="CommonServlet?action=posts">
+                        <a href="AdminViewServlet?action=posts">
                             <i class="far fa-file"></i>Blog</a>
                     </li>
                 </ul>
@@ -91,19 +91,19 @@
             <nav class="navbar-sidebar">
                 <ul class="list-unstyled navbar__list">
                     <li class="has-sub">
-                        <a class="js-arrow" href="CommonServlet?action=dashboard">
+                        <a class="js-arrow" href="AdminViewServlet?action=dashboard">
                             <i class="fas fa-tachometer-alt"></i>Dashboard</a>
                     </li>
                     <li>
-                        <a href="CommonServlet?action=users">
+                        <a href="AdminViewServlet?action=users">
                             <i class="fas fa-user"></i>User</a>
                     </li>
                     <li>
-                        <a href="CommonServlet?action=category">
+                        <a href="AdminViewServlet?action=category">
                             <i class="fas fa-list"></i>Category</a>
                     </li>
                     <li>
-                        <a href="CommonServlet?action=posts">
+                        <a href="AdminViewServlet?action=posts">
                             <i class="far fa-file"></i>Blog</a>
                     </li>
                 </ul>
@@ -169,7 +169,7 @@
                                             </div>
                                         </div>
                                         <div class="account-dropdown__footer">
-                                            <a href="#">
+                                            <a href="login?action=logout">
                                                 <i class="zmdi zmdi-power"></i>Logout</a>
                                         </div>
                                     </div>

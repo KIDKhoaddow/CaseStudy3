@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -46,16 +47,24 @@
                             <a href="#">
                                 <img src="resource/images/icon/logo.png" alt="CoolAdmin">
                             </a>
+                            <div>
+                                <%
+                                    String message = (String) request.getAttribute("message");
+                                    if(message !=null){
+                                       out.print(message);
+                                    }
+                                %>
+                            </div>
                         </div>
                         <div class="login-form">
-                            <form action="/ServletLogin?action=login" method="post">
+                            <form action="login?action=login" method="post">
                                 <div class="form-group">
                                     <label>Email Address</label>
-                                    <input class="au-input au-input--full" type="text" name="user-login" placeholder="Email or UserName">
+                                    <input class="au-input au-input--full" type="text" name="userEmail" placeholder="Email">
                                 </div>
                                 <div class="form-group">
                                     <label>Password</label>
-                                    <input class="au-input au-input--full" type="password" name="password" placeholder="Password">
+                                    <input class="au-input au-input--full" type="password" name="userPassword" placeholder="Password">
                                 </div>
                                 <div class="login-checkbox">
                                     <label>

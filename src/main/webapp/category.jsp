@@ -59,19 +59,19 @@
                 <div class="container-fluid">
                     <ul class="navbar-mobile__list list-unstyled">
                         <li class="active has-sub">
-                            <a class="js-arrow" href="CommonServlet?action=dashboard">
+                            <a class="js-arrow" href="AdminViewServlet?action=dashboard">
                                 <i class="fas fa-tachometer-alt"></i>Dashboard</a>
                         </li>
                         <li>
-                            <a href="CommonServlet?action=users">
+                            <a href="AdminViewServlet?action=users">
                                 <i class="fas fa-user"></i>User</a>
                         </li>
                         <li>
-                            <a href="CommonServlet?action=category">
+                            <a href="AdminViewServlet?action=category">
                                 <i class="fas fa-list"></i>Category</a>
                         </li>
                         <li>
-                            <a href="CommonServlet?action=posts">
+                            <a href="AdminViewServlet?action=posts">
                                 <i class="far fa-file"></i>Blog</a>
                         </li>
                     </ul>
@@ -91,19 +91,19 @@
                 <nav class="navbar-sidebar">
                     <ul class="list-unstyled navbar__list">
                         <li class="has-sub">
-                            <a class="js-arrow" href="CommonServlet?action=dashboard">
+                            <a class="js-arrow" href="AdminViewServlet?action=dashboard">
                                 <i class="fas fa-tachometer-alt"></i>Dashboard</a>
                         </li>
                         <li>
-                            <a href="CommonServlet?action=users">
+                            <a href="AdminViewServlet?action=users">
                                 <i class="fas fa-user"></i>User</a>
                         </li>
                         <li>
-                            <a href="CommonServlet?action=category">
+                            <a href="AdminViewServlet?action=category">
                                 <i class="fas fa-list"></i>Category</a>
                         </li>
                         <li>
-                            <a href="CommonServlet?action=posts">
+                            <a href="AdminViewServlet?action=posts">
                                 <i class="far fa-file"></i>Blog</a>
                         </li>
                     </ul>
@@ -120,10 +120,6 @@
                     <div class="container-fluid">
                         <div class="header-wrap">
                             <form class="form-header" action="" method="POST">
-                                <%--                            <input class="au-input au-input--xl" type="text" name="search" placeholder="Search for datas &amp; reports..." />--%>
-                                <%--                            <button class="au-btn--submit" type="submit">--%>
-                                <%--                                <i class="zmdi zmdi-search"></i>--%>
-                                <%--                            </button>--%>
                             </form>
                             <div class="header-button">
                                 <div class="noti-wrap">
@@ -141,7 +137,7 @@
                                                 </div>
                                             </div>
                                             <div class="notifi__footer">
-                                                <a href="#">All notifications</a>
+                                                <a href="login?action=logout">All notifications</a>
                                             </div>
                                         </div>
                                     </div>
@@ -169,7 +165,7 @@
                                                 </div>
                                             </div>
                                             <div class="account-dropdown__footer">
-                                                <a href="#">
+                                                <a href="login?action=logout">
                                                     <i class="zmdi zmdi-power"></i>Logout</a>
                                             </div>
                                         </div>
@@ -239,23 +235,17 @@
                                         <c:forEach items="${categoryList}" var="element">
                                             <tr class="tr-shadow">
                                                 <td class="name">${element.getCategoryId()}</td>
-                                                <td class="name">${element.getTitle()}</td>
+                                                <td class="name">${element.getCategoryTitle()}</td>
                                                 <td class="name">${element.getCategoryContent()}</td>
                                                 <td>
                                                     <div class="table-data-feature">
                                                         <button class="item" data-toggle="modal" data-placement="top"
                                                                 title="Edit" type="button" style="background: green;">
-                                                            <a href="UsersServlet?action=active&id=${element.getCategoryId()}">
-                                                                <i class="fas fa-check" style="color: white"></i>
+                                                            <a href="CategoryServlet?action=openFormEdit&id=${element.getCategoryId()}&title=${element.getCategoryTitle()}">
+                                                                <i class="fas fa-edit" style="color: white"></i>
                                                             </a>
                                                         </button>
-                                                        <button class="item" data-toggle="modal" data-placement="top"
-                                                                title="Disable" type="button" data-target="#smallModal"
-                                                                style="background: orangered;">
-                                                            <a href="UsersServlet?action=disable&id=${element.getCategoryId()}">
-                                                                <i class="fas fa-ban" style="color: white"></i>
-                                                            </a>
-                                                        </button>
+
                                                     </div>
                                                 </td>
                                             </tr>
@@ -280,8 +270,56 @@
             </div>
         </div>
         <!--END PAGE CONTAINER -->
-
     </div>
+    <c:if test="${requestScope['confirm'] != null}">
+        <!-- modal large -->
+        <div class="modal fade" id="smallModal" tabindex="-1" role="dialog"
+             aria-labelledby="largeModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="form">
+                <div class="card modal-content">
+                    <div class="card-header modal-header">
+                        <div class="table-data-feature">
+                            <strong>Confirm</strong>
+                        </div>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="editTitleForm" action="CategoryServlet" method="get">
+                            <input type="text"  name="action"
+                                   placeholder="Enter title" class="form-control" value="edit" style="display:none">
+
+                            <div class="row form-group">
+                                <div class="col col-md-3">
+                                    <label for="title-input" class=" form-control-label">Title
+                                        Input</label>
+                                </div>
+                                <div class="col-12 col-md-9">
+                                    <input type="text" id="title-input" name="title_input"
+                                           placeholder="Enter title" class="form-control" >
+                                    <small class="help-block form-text" >Please enter your title</small>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="card-footer modal-footer">
+                        <button type="submit" form="editTitleForm" class="btn btn-primary" formmethod="get">
+                                <i class="fa fa-dot-circle-o" style="color: white;"></i>
+                           Submit
+                        </button>
+                        <button type="reset" form="editTitleForm" class="btn btn-danger" >
+                                <i class="fa fa-ban" data-dismiss="modal" style="color: white;" ></i>
+                            Denied
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end modal large -->
+    </c:if>
+
 
     <!-- Jquery JS-->
     <script src="resource/vendor/jquery-3.2.1.min.js"></script>
@@ -303,10 +341,17 @@
     <script src="resource/vendor/chartjs/Chart.bundle.min.js"></script>
     <script src="resource/vendor/select2/select2.min.js">
     </script>
+    
 
     <!-- Main JS-->
     <script src="resource/js/main.js"></script>
-
+    <c:if test="${confirm}">
+        <script type="text/javascript">
+            $(window).on('load', function () {
+                $('#smallModal').modal('show');
+            });
+        </script>
+    </c:if>
 </body>
 
 </html>

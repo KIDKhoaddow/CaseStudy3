@@ -1,45 +1,55 @@
 package model;
 
-import javax.xml.soap.Text;
+
+import DAO.PostRepo;
 
 public class Post {
-    private   int postId;
-    private int authorId;
+    private int postId;
+    private String postCategory;
+    private String postAuthor;
     private String postTitle;
-    private String postSummary;
-    private  String postContent;
+    private String postContent;
     private String postPicture;
     private String postCreateAt;
     private String postUpdateAt;
-    private  Status postStatus;
+    private Status postStatus;
 
-    public Post(int postId, int authorId, String postTitle, String postSummary, String postContent,
-                String postPicture, String postCreateAt, String postUpdateAt) {
-        this.postId = postId;
-        this.authorId = authorId;
+    public Post(String postTitle, String postContent, String postPicture, String postCreateAt) {
         this.postTitle = postTitle;
-        this.postSummary = postSummary;
+        this.postContent = postContent;
+        this.postPicture = postPicture;
+        this.postCreateAt = postCreateAt;
+    }
+
+    public Post(int postId, String postTitle, String postContent, String postPicture, String postCreateAt) {
+        this.postId = postId;
+        this.postTitle = postTitle;
+        this.postContent = postContent;
+        this.postPicture = postPicture;
+        this.postCreateAt = postCreateAt;
+        this.postStatus = Status.PENDING;
+    }
+
+    public Post(int postId, String postTitle, String postContent,
+                String postPicture, String postCreateAt, String postUpdateAt,Status status) {
+        this.postId = postId;
+        this.postTitle = postTitle;
         this.postContent = postContent;
         this.postPicture = postPicture;
         this.postCreateAt = postCreateAt;
         this.postUpdateAt = postUpdateAt;
-        this.postStatus=Status.PENDING;
+        this.postStatus = status;
     }
+
+
 
     public int getPostId() {
         return postId;
     }
 
-    public int getAuthorId() {
-        return authorId;
-    }
 
     public String getPostTitle() {
         return postTitle;
-    }
-
-    public String getPostSummary() {
-        return postSummary;
     }
 
     public String getPostContent() {
@@ -62,16 +72,9 @@ public class Post {
         this.postId = postId;
     }
 
-    public void setAuthorId(int authorId) {
-        this.authorId = authorId;
-    }
 
     public void setPostTitle(String postTitle) {
         this.postTitle = postTitle;
-    }
-
-    public void setPostSummary(String postSummary) {
-        this.postSummary = postSummary;
     }
 
     public void setPostContent(String postContent) {
@@ -97,4 +100,13 @@ public class Post {
     public void setPostStatus(Status postStatus) {
         this.postStatus = postStatus;
     }
+
+    public int getPostLikes() {
+        return PostRepo.countLikeOfPostById(postId);
+    }
+
+    public int getPostComment() {
+        return 0;
+    }
+
 }

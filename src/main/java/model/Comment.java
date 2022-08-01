@@ -1,15 +1,22 @@
 package model;
 
-import javax.xml.soap.Text;
+
 
 public class Comment {
     private int commentId;
     private int postId;
-    private Text commentContent;
+    private String commentContent;
     private String createAt;
 
-    public Comment(int commentId, int postId, Text commentContent, String createAt) {
+
+    public Comment(int commentId, int postId, String commentContent, String createAt) {
         this.commentId = commentId;
+        this.postId = postId;
+        this.commentContent = commentContent;
+        this.createAt = createAt;
+    }
+
+    public Comment(int postId, String commentContent, String createAt) {
         this.postId = postId;
         this.commentContent = commentContent;
         this.createAt = createAt;
@@ -23,7 +30,7 @@ public class Comment {
         return postId;
     }
 
-    public Text getCommentContent() {
+    public String getCommentContent() {
         return commentContent;
     }
 
@@ -39,7 +46,7 @@ public class Comment {
         this.postId = postId;
     }
 
-    public void setCommentContent(Text commentContent) {
+    public void setCommentContent(String commentContent) {
         this.commentContent = commentContent;
     }
 
