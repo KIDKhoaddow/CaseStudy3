@@ -59,7 +59,16 @@ public class PersonalServlet extends HttpServlet {
                     page="singlePost.jsp";
                     break;
                 case "resetPassword":
+                    String oldPassword = request.getParameter("old-password-input");
+                    String newPassword = request.getParameter("new-password-input");
+                    String rePassword = request.getParameter("re-password-input");
+                    if (userService.changePassword(oldPassword ,newPassword ,rePassword)){
+                        request.setAttribute("message" , "change password success");
+                        page="login.jsp";
+                    }else {
 
+                        System.err.println("");
+                    }
 
             }
 
@@ -67,7 +76,9 @@ public class PersonalServlet extends HttpServlet {
             setUser(request);
         } catch (Exception e) {
             System.out.println(e.getMessage());
-
+            request.setAttribute("posts", postService.findAllBYUser(authorId));
+            setUser(request);
+            page = "personal.jsp";
         }
         doPost(request, response);
 

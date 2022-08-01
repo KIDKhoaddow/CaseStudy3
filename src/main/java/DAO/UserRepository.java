@@ -26,7 +26,7 @@ public class UserRepository {
     private  final String SELECT_USERS="SELECT * FROM blogs.count_user;";
     private  final String UPDATE_LAST_LOGIN="update blogs.user set last_login=? where(user_id = ?);";
 
-    private final String UPDATE_PASSWORD = "update blogs.user set user_password = ? where (user_id = ?)";
+    private  final  String UPDATE_PASSWORD = "update blogs.user set user_password =? where (user_id = ?)";
     private final ConnectionMySQL connectionMySQL = new ConnectionMySQL();
     public  int getUsers(){
         int count=0;
@@ -232,17 +232,19 @@ public class UserRepository {
         }
     }
 
-
-    public void editPassword (int id , String password){
+    public boolean editPassword(int id ,String password){
         try {
             Connection connection = connectionMySQL.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_PASSWORD);
-            preparedStatement.setInt();
-
-
+            preparedStatement.setString(1,password);
+            preparedStatement.setInt(2,id);
+            preparedStatement.executeUpdate();
+            return true;
         } catch (SQLException e) {
             System.err.println(e.getMessage());
+            return false;
         }
+
     }
 
 }
