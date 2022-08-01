@@ -18,7 +18,7 @@ import java.time.format.DateTimeFormatter;
 public class PersonalServlet extends HttpServlet {
     PostService postService = PostService.getInstance();
     UserService userService=UserService.Instance();
-    private int id;
+    private int postId;
     private String action;
     String page = "personal.jsp";
     String avatar;
@@ -32,14 +32,14 @@ public class PersonalServlet extends HttpServlet {
 
             switch (action) {
                 case "openFormEdit":
-                    id = Integer.parseInt(request.getParameter("id"));
-                    request.setAttribute("post", postService.findPostById(id));
+                    postId = Integer.parseInt(request.getParameter("id"));
+                    request.setAttribute("post", postService.findPostById(postId));
                     request.setAttribute("confirmEdit", true);
                     page = "personal.jsp";
                     break;
                 case "openFormDelete":
-                    id = Integer.parseInt(request.getParameter("id"));
-                    request.setAttribute("post", postService.findPostById(id));
+                    postId = Integer.parseInt(request.getParameter("id"));
+                    request.setAttribute("post", postService.findPostById(postId));
                     request.setAttribute("confirmDelete", true);
                     page = "personal.jsp";
                     break;
@@ -47,10 +47,13 @@ public class PersonalServlet extends HttpServlet {
                     getUser(request);
                     break;
                 case"openSinglePost":
-                    id = Integer.parseInt(request.getParameter("id"));
-                    request.setAttribute("post", postService.findPostById(id));
+                    postId = Integer.parseInt(request.getParameter("id"));
+                    request.setAttribute("post", postService.findPostById(postId));
                     page="singlePost.jsp";
                     break;
+                case "resetPassword":
+
+
             }
 
             request.setAttribute("posts", postService.findAllBYUser(authorId));

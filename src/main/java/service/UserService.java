@@ -67,4 +67,11 @@ public class UserService {
     public  boolean updateVerifyBan(int id){
         return userRepository.updateVerify(id,"banned");
     }
+
+    public User changePassword(int id , String password){
+        return userRepository.;
+
+
+    }
+
 }
