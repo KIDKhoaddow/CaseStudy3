@@ -45,17 +45,7 @@ public class User {
         this.verify = verify;
     }
 
-    public User(int userId, String userEmail, String userPassword) {
-        this.userId = userId;
-        this.userEmail = userEmail;
-        this.userPassword = userPassword;
-    }
 
-    public User(String userEmail, String userName, String userPassword) {
-        this.userEmail = userEmail;
-        this.userName = userName;
-        this.userPassword = userPassword;
-    }
 
     public User(int userId, String userEmail, String userName, String userPassword, String userAddress, String userPhone, String userDOB, String userRegisDate, String userLastLogin, boolean status) {
         this.userId = userId;
