@@ -1,7 +1,5 @@
 package model;
 
-import javax.print.DocFlavor;
-
 public class User {
    private int userId;
     private String userEmail;
@@ -19,6 +17,18 @@ public class User {
 
     public User(String userName) {
         this.userName = userName;
+    }
+
+    public User(int userId, String userEmail, String userPassword) {
+        this.userId = userId;
+        this.userEmail = userEmail;
+        this.userPassword = userPassword;
+    }
+
+    public User(String userEmail, String userName, String userPassword) {
+        this.userEmail = userEmail;
+        this.userName = userName;
+        this.userPassword = userPassword;
     }
 
     public User(int userId, String userEmail, String userName, String userPassword, String userAddress, String userPhone, String userDOB, String userRegisDate, String userLastLogin, boolean status) {

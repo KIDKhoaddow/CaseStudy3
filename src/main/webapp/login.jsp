@@ -48,7 +48,7 @@
                             </a>
                         </div>
                         <div class="login-form">
-                            <form action="" method="post">
+                            <form action="/ServletLogin?action=login" method="post">
                                 <div class="form-group">
                                     <label>Email Address</label>
                                     <input class="au-input au-input--full" type="text" name="user-login" placeholder="Email or UserName">
