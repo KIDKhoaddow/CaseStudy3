@@ -308,11 +308,11 @@
                     <div class="col-12" style="max-width: 100%;">
                         <div class="card">
                             <div class="card-header">
-                                <strong>Basic Form</strong> Elements
+                                <strong>Create Post Form</strong> Elements
                             </div>
                             <div class="card-body card-block">
                                 <form action="/ServletHome?action=creatPost" method="get" id="formCreatPost"
-                                      enctype="multipart/form-data" class="form-horizontal">
+                                      class="form-horizontal">
                                     <div class="row form-group">
                                         <div class="col col-md-3">
                                             <label for="title-input" class=" form-control-label">Title</label>
@@ -365,7 +365,7 @@
 
                             </div>
                             <div class="card-body card-block">
-                                <form enctype="multipart/form-data" class="form-horizontal" id="EditForm"
+                                <form  class="form-horizontal" id="EditForm"
                                       data-action="edit">
                                     <div class="row form-group">
                                         <div class="col col-md-3">
@@ -373,7 +373,7 @@
                                             <label for="file-input" class=" form-control-label">Avatar input</label>
                                         </div>
                                         <div class="col-12 col-md-9">
-                                            <input type="file" id="file-input" name="post-picture-input"
+                                            <input type="file" id="file-input" name="user-picture-input"
                                                    class="form-control" accept="image/*">
                                         </div>
                                         <img src="${userAvatar}" class="rounded-circle mx-auto d-block"
@@ -455,14 +455,15 @@
                                 <strong>Edit Profile Form</strong>
                             </div>
                             <div class="card-body card-block">
-                                <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
+                                <form action="" method="post" class="form-horizontal" id="resetPasswordForm">
+                                    <input name="action" value="resetPassword" style="display: none">
                                     <div class="row form-group">
                                         <div class="col col-md-3">
                                             <label for="old-password-input" class=" form-control-label">Old
                                                 Password</label>
                                         </div>
                                         <div class="col-12 col-md-9">
-                                            <input type="password" id="old-password-input" name="password-input"
+                                            <input type="password" id="old-password-input" name="old-password-input"
                                                    placeholder="Password" class="form-control">
                                             <small class="help-block form-text">Please enter a old password
                                                 password</small>
@@ -474,7 +475,7 @@
                                                 Password</label>
                                         </div>
                                         <div class="col-12 col-md-9">
-                                            <input type="password" id="new-password-input" name="password-input"
+                                            <input type="password" id="new-password-input" name="new-password-input"
                                                    placeholder="Password" class="form-control">
                                             <small class="help-block form-text">Please enter a new password
                                                 password</small>
@@ -487,7 +488,7 @@
                                                 Password</label>
                                         </div>
                                         <div class="col-12 col-md-9">
-                                            <input type="password" id="repeat-password-input" name="password-input"
+                                            <input type="password" id="repeat-password-input" name="re-password-input"
                                                    placeholder="Password" class="form-control">
                                             <small class="help-block form-text">Please enter a repeat password
                                                 password</small>
@@ -497,10 +498,10 @@
                                 </form>
                             </div>
                             <div class="card-footer">
-                                <button type="submit" class="btn btn-primary btn-sm">
+                                <button type="submit" class="btn btn-primary btn-sm" form="resetPasswordForm">
                                     <i class="fa fa-dot-circle-o"></i> Submit
                                 </button>
-                                <button type="reset" class="btn btn-danger btn-sm">
+                                <button type="reset" class="btn btn-danger btn-sm" form="resetPasswordForm">
                                     <i class="fa fa-ban"></i> Reset
                                 </button>
                             </div>

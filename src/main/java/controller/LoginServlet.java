@@ -1,7 +1,6 @@
 package controller;
 
 
-import DAO.UserRepo;
 import DAO.UserRepository;
 import controller.Filter.FilterAdmin;
 import controller.Filter.FilterUser;
@@ -15,9 +14,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.sql.Date;
-import java.sql.SQLException;
-import java.util.ArrayList;
 
 
 @WebServlet(urlPatterns = "/login")
