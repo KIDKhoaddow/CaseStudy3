@@ -2,8 +2,6 @@ package DAO;
 
 import connect.ConnectionMySQL;
 import model.User;
-import org.omg.CORBA.PUBLIC_MEMBER;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.sql.Connection;

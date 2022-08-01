@@ -9,7 +9,7 @@ import java.io.IOException;
 @WebFilter(urlPatterns = "/viewUser")
 public class FilterUser implements Filter {
 
-    static  public  User userLogin;
+    static public  User userLogin;
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
