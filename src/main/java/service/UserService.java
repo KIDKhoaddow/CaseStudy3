@@ -67,4 +67,13 @@ public class UserService {
     public  boolean updateVerifyBan(int id){
         return userRepository.updateVerify(id,"banned");
     }
+
+    public boolean changePassword(String oldPassword , String newPassword , String rePassword){
+        int id  = FilterUser.userLogin.getUserId();
+        String password = FilterUser.userLogin.getUserPassword();
+        if (oldPassword.equals(password) && !newPassword.equals(oldPassword) && newPassword.equals(rePassword)){
+            return userRepository.editPassword(id ,newPassword);
+        }
+        return  false;
+    }
 }

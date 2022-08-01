@@ -15,10 +15,17 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 @WebServlet(name = "PersonalServlet", value = "/PersonalServlet")
+@MultipartConfig(fileSizeThreshold = 1024 * 1024 * 2, // 2MB
+        maxFileSize = 1024 * 1024 * 10, // 10MB
+        maxRequestSize = 1024 * 1024 * 50) // 50MB
 public class PersonalServlet extends HttpServlet {
+    private static final long serialVersionUID = 1L;
+
+    public static final String SAVE_DIRECTORY = "uploadDir";
+
     PostService postService = PostService.getInstance();
     UserService userService=UserService.Instance();
-    private int id;
+    private int postId;
     private String action;
     String page = "personal.jsp";
     String avatar;
@@ -32,14 +39,14 @@ public class PersonalServlet extends HttpServlet {
 
             switch (action) {
                 case "openFormEdit":
-                    id = Integer.parseInt(request.getParameter("id"));
-                    request.setAttribute("post", postService.findPostById(id));
+                    postId = Integer.parseInt(request.getParameter("id"));
+                    request.setAttribute("post", postService.findPostById(postId));
                     request.setAttribute("confirmEdit", true);
                     page = "personal.jsp";
                     break;
                 case "openFormDelete":
-                    id = Integer.parseInt(request.getParameter("id"));
-                    request.setAttribute("post", postService.findPostById(id));
+                    postId = Integer.parseInt(request.getParameter("id"));
+                    request.setAttribute("post", postService.findPostById(postId));
                     request.setAttribute("confirmDelete", true);
                     page = "personal.jsp";
                     break;
@@ -47,17 +54,31 @@ public class PersonalServlet extends HttpServlet {
                     getUser(request);
                     break;
                 case"openSinglePost":
-                    id = Integer.parseInt(request.getParameter("id"));
-                    request.setAttribute("post", postService.findPostById(id));
+                    postId = Integer.parseInt(request.getParameter("id"));
+                    request.setAttribute("post", postService.findPostById(postId));
                     page="singlePost.jsp";
                     break;
+                case "resetPassword":
+                    String oldPassword = request.getParameter("old-password-input");
+                    String newPassword = request.getParameter("new-password-input");
+                    String rePassword = request.getParameter("re-password-input");
+                    if (userService.changePassword(oldPassword ,newPassword ,rePassword)){
+                        request.setAttribute("message" , "change password success");
+                        page="login.jsp";
+                    }else {
+
+                        System.err.println("");
+                    }
+
             }
 
             request.setAttribute("posts", postService.findAllBYUser(authorId));
             setUser(request);
         } catch (Exception e) {
             System.out.println(e.getMessage());
-
+            request.setAttribute("posts", postService.findAllBYUser(authorId));
+            setUser(request);
+            page = "personal.jsp";
         }
         doPost(request, response);
 
