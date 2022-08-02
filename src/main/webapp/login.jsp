@@ -47,14 +47,24 @@
                             <a href="#">
                                 <img src="resource/images/icon/logo.png" alt="CoolAdmin">
                             </a>
-                            <div>
-                                <%
-                                    String message = (String) request.getAttribute("message");
-                                    if(message !=null){
-                                       out.print(message);
-                                    }
-                                %>
-                            </div>
+                            <c:if test="${message==1}">
+                                <div>
+                                    <h1 style="color: deeppink"> Change password success</h1>
+                                </div>
+                            </c:if>
+                            <c:if test="${message==0}">
+                                <div>
+                                    <h1 style="color: red"> Change password fail</h1>
+                                </div>
+                            </c:if>
+<%--                            <div>--%>
+<%--                                <%--%>
+<%--                                    String message = (String) request.getAttribute("message");--%>
+<%--                                    if(message !=null){--%>
+<%--                                       out.print(message);--%>
+<%--                                    }--%>
+<%--                                %>--%>
+<%--                            </div>--%>
                         </div>
                         <div class="login-form">
                             <form action="login?action=login" method="post">
