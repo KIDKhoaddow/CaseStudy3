@@ -12,7 +12,9 @@ import java.io.IOException;
 import java.time.LocalDateTime;
 
 @WebServlet(name = "ServletHome", value = "/ServletHome")
-public class HomeServlet extends HttpServlet {
+public class
+
+HomeServlet extends HttpServlet {
     private final PostService postService =PostService.getInstance();
     String action="";
     String page="personal.jsp";

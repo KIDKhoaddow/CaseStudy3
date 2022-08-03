@@ -70,4 +70,12 @@ public class UserService {
     public  boolean updateUser(User user){
         return userRepository.updateUser(user);
     }
+    public boolean changePassword(String oldPassword , String newPassword , String rePassword){
+        int id  = FilterUser.userLogin.getUserId();
+        String password = FilterUser.userLogin.getUserPassword();
+        if (oldPassword.equals(password) && !newPassword.equals(oldPassword) && newPassword.equals(rePassword)){
+            return userRepository.editPassword(id ,newPassword);
+        }
+        return  false;
+    }
 }

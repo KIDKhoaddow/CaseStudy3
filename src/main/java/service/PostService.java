@@ -25,6 +25,9 @@ public class PostService {
     public List<Post> findAllBYUser(int authorId) {
         return postRepo.findAllByUser(authorId);
     }
+    public ArrayList<Post> findAllBlogs(){
+        return postRepo.finAllBlogs();
+    }
     public Post findPostById(int postID){
         return postRepo.findPostById(postID);
     }

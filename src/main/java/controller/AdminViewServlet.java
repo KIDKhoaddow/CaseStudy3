@@ -41,7 +41,7 @@ public class AdminViewServlet extends HttpServlet {
                     page= "/category.jsp";
                     break;
                 case "posts":
-//                    request.setAttribute("blogList",postList);
+                    request.setAttribute("blogList",PostService.getInstance().findAllBlogs());
                     page="/blogs.jsp";
                     break;
                 default:

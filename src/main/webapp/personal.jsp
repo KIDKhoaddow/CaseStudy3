@@ -470,7 +470,7 @@
                                 <strong>Edit Profile Form</strong>
                             </div>
                             <div class="card-body card-block">
-                                <form action="" method="post" class="form-horizontal" id="resetPasswordForm">
+                                <form action="PersonalServlet" method="get" class="form-horizontal" id="resetPasswordForm">
                                     <input name="action" value="resetPassword" style="display: none">
                                     <div class="row form-group">
                                         <div class="col col-md-3">
