@@ -37,7 +37,7 @@
 
 </head>
 
-<body class="animsition" data-animsition-in-duration="2000" data-animsition-out-duration="2000">
+<body class="animsition" data-animsition-in-duration="100" data-animsition-out-duration="100">
 <div class="page-wrapper">
     <!-- HEADER MOBILE-->
     <header class="header-mobile d-block d-lg-none">
@@ -233,7 +233,9 @@
                                         <th>Id</th>
                                         <th>Title</th>
                                         <th>Author</th>
-                                        <th>Content</th>
+                                        <th>Category</th>
+                                        <th>Creat_at</th>
+                                        <th>Update_at</th>
                                         <th>Status</th>
                                     </tr>
                                     </thead>
@@ -242,8 +244,10 @@
                                         <tr class="tr-shadow">
                                         <td class="name">${element.getPostId()}</td>
                                         <td class="name">${element.getPostTitle()}</td>
-                                        <td class="name">${element.getAuthorId()}</td>
-                                        <td class="name">${element.getPostContent()}</td>
+                                        <td class="name">${element.getPostAuthor()}</td>
+                                        <td class="name">${element.getPostCategory()}</td>
+                                        <td class="name">${element.getPostCreateAt()}</td>
+                                        <td class="name">${element.getPostUpdateAt()}</td>
                                         <td class="name">${element.getPostStatus()}</td>
                                         <td>
                                             <div class="table-data-feature">

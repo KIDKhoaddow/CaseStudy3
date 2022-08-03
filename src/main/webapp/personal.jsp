@@ -154,7 +154,7 @@
                    aria-controls="v-pills-home" aria-selected="true">Posts</a>
                 <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab"
                    aria-controls="v-pills-profile" aria-selected="false">Profile</a>
-                <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab"
+                <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-new-post" role="tab"
                    aria-controls="v-pills-messages" aria-selected="false">New Post</a>
                 <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab"
                    aria-controls="v-pills-settings" aria-selected="false">Setting Profile</a>
@@ -166,12 +166,12 @@
                      aria-labelledby="v-pills-home-tab">
                     <div class="row" style="display: flex; flex-wrap: wrap">
                         <c:forEach items="${posts}" var="element">
-                            <div class="col-12 col-md-6 col-lg-4">
-                                <div class="single-post wow fadeInUp" data-wow-delay="0.1s">
+                            <div class="col-12 col-md-6 col-lg-4" >
+                                <div class="single-post wow fadeInUp" data-wow-delay="0.1s" >
                                     <!-- Post Thumb -->
-                                    <div class="post-thumb">
-                                        <a href="PersonalServlet?action=openSinglePost&id=${element.getPostId()}">
-                                            <img src="yummy-master/img/blog-img/2.jpg" alt="mất ảnh rồi">
+                                    <div class="post" style="width:400px;height: 300px">
+                                        <a href="PersonalServlet?action=openSinglePost&id=${element.getPostId()}" >
+                                            <img class="img-thumbnail" src="${element.getPostPicture()}" alt="mất ảnh rồi" style="width:400px;height: 300px">
                                         </a>
                                     </div>
                                     <!-- Post Content -->
@@ -212,7 +212,7 @@
                                                 </a>
                                             </button>
                                             <button class="item" data-toggle="modal" data-placement="top"
-                                                    title="Edit" type="button" style="background: red;">
+                                                    title="Delete" type="button" style="background: red;">
                                                 <a href="PersonalServlet?action=openFormDelete&id=${element.getPostId()}">
                                                     <i class="fa fa-close" style="color: white"></i>
                                                 </a>
@@ -303,7 +303,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="tab-pane fade" id="v-pills-messages" role="tabpanel"
+                <div class="tab-pane fade" id="v-pills-new-post" role="tabpanel"
                      aria-labelledby="v-pills-messages-tab">
                     <div class="col-12" style="max-width: 100%;">
                         <div class="card">
@@ -311,10 +311,11 @@
                                 <strong>Create Post Form</strong> Elements
                             </div>
                             <div class="card-body card-block">
-                                <form action="/ServletHome?action=creatPost" method="get" id="formCreatPost"
+                                <form action="PersonalServlet?action=createPost" method="get" id="formCreatPost"
                                       class="form-horizontal">
                                     <div class="row form-group">
                                         <div class="col col-md-3">
+                                            <input name="action" value="createPost" style="display: none;">
                                             <label for="title-input" class=" form-control-label">Title</label>
                                         </div>
                                         <div class="col-12 col-md-9">
@@ -339,14 +340,27 @@
                                         </div>
                                         <div class="col-12 col-md-9">
                                             <input type="file" id="picture-input" name="file-input"
-                                                   class="form-control-file">
+                                                   class="form-control-file" >
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div class="col col-md-3">
+                                            <label for="select" class=" form-control-label">Select</label>
+                                        </div>
+                                        <div class="col-12 col-md-9">
+                                            <select name="select" id="select" class="form-control">
+                                                <option value="0">Please select</option>
+                                                <option value="1">Option #1</option>
+                                                <option value="2">Option #2</option>
+                                                <option value="3">Option #3</option>
+                                            </select>
                                         </div>
                                     </div>
                                 </form>
                             </div>
                             <div class="card-footer">
                                 <button type="submit" value="submit" class="btn btn-primary btn-sm"
-                                        form="formCreatPost">
+                                        form="formCreatPost" formaction="PersonalServlet" formmethod="get">
                                     <i class="fa fa-dot-circle-o"></i> Submit
                                 </button>
                                 <button type="reset" class="btn btn-danger btn-sm">
@@ -365,16 +379,17 @@
 
                             </div>
                             <div class="card-body card-block">
-                                <form  class="form-horizontal" id="EditForm"
-                                      data-action="edit">
+                                <form id="EditForm"
+                                      data-action="edit" enctype="multipart/form-data">
                                     <div class="row form-group">
                                         <div class="col col-md-3">
-                                            <input type="text" name="action" value="edit" style="display: none">
+                                            <input class="form-control" type="text" name="action" value="edit"
+                                                   style="display: none">
                                             <label for="file-input" class=" form-control-label">Avatar input</label>
                                         </div>
                                         <div class="col-12 col-md-9">
                                             <input type="file" id="file-input" name="user-picture-input"
-                                                   class="form-control" accept="image/*">
+                                                   class="form-control-file" accept="image/*" >
                                         </div>
                                         <img src="${userAvatar}" class="rounded-circle mx-auto d-block"
                                              style="height: 300px;width: 300px;">
@@ -437,7 +452,7 @@
                             <div class="card-footer">
                                 <button type="submit" class="btn btn-primary btn-sm" form="EditForm"
                                         formmethod="get" formaction="PersonalServlet?action=edit"
-                                        data-action="PersonalServlet?action=edit">
+                                        formenctype="multipart/form-data" >
                                     <i class="fa fa-dot-circle-o"></i> Submit
                                 </button>
                                 <button type="reset" class="btn btn-danger btn-sm" form="EditForm">
@@ -587,16 +602,18 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form id="editTitleForm" action="PersonalServlet?action=edit" method="get">
+                    <form id="editPostForm" method="get" enctype="multipart/form-data">
                         <div class="row form-group">
                             <div class="col col-md-3">
-                                <label for="file-picture-input" class=" form-control-label">Avatar input</label>
+                                <input name="action" value="editPost" style="display: none">
+                                <input name="id" value="${post.getPostId()}" style="display: none">
+                                <label for="file-picture-input-edit" class=" form-control-label">Avatar input</label>
                             </div>
                             <div class="col-12 col-md-9">
-                                <input type="file" id="file-picture-input" name="post-picture-input"
-                                       class="form-control-file">
+                                <input class="form-control" type="file" id="file-picture-input-edit" name="file-picture-input-edit"
+                                        accept="image/*"  >
                             </div>
-                            <img src="${userAvatar}" class="rounded-circle mx-auto d-block"
+                            <img src="${post.getPostPicture()}" class="rounded-circle mx-auto d-block"
                                  style="height: 300px;width: 300px;">
                         </div>
                         <div class="row form-group">
@@ -613,7 +630,7 @@
                                     Input</label>
                             </div>
                             <div class="col-12 col-md-9">
-                                <input type="text" id="post-edit" name="post-title-input"
+                                <input type="text" id="post-edit" name="post-title-input-edit"
                                        placeholder="Enter title" class="form-control" value="${post.getPostTitle()}">
                                 <small class="help-block form-text">Please enter your title</small>
                             </div>
@@ -621,19 +638,19 @@
                         <div class="row form-group">
                             <div class="col col-md-3">
                                 <label for="content-edit" class=" form-control-label">Title
-                                    Input</label>
+                                    Content</label>
                             </div>
                             <div class="col-12 col-md-9">
-                                <textarea id="content-edit" name="post-content-input"
+                                <textarea id="content-edit" name="post-content-input-edit"
                                           placeholder="Enter title" class="form-control">
                                         ${post.getPostContent()}
                                 </textarea>
-                                <small class="help-block form-text">Please enter your title</small>
+                                <small class="help-block form-text">Please enter your content</small>
                             </div>
                         </div>
                         <div class="row form-group">
                             <div class="col col-md-3">
-                                <label class=" form-control-label">Author</label>
+                                <label class=" form-control-label">Create At</label>
                             </div>
                             <div class="col-12 col-md-9">
                                 <p class="form-control-static">${post.getPostCreateAt()}</p>
@@ -642,14 +659,14 @@
                     </form>
                 </div>
                 <div class="card-footer modal-footer">
-                    <button type="submit" form="editTitleForm" class="btn btn-primary">
+                    <button type="submit" form="editPostForm" class="btn btn-primary" formmethod="get"
+                            formaction="PersonalServlet?action=editPost&id=${post.getPostId()}">
                         <i class="fa fa-dot-circle-o" style="color: white;"></i>
                         Submit
                     </button>
-                    <button type="button" class="btn btn-danger">
-                        <a href="PersonalServlet?confirm=no">
+                    <button type="reset" form="editPostForm" class="btn btn-danger">
                             <i class="fa fa-ban" data-dismiss="modal" style="color: white;"></i>
-                        </a>Denied
+                        Denied
                     </button>
                 </div>
             </div>

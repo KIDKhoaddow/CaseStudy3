@@ -1,6 +1,7 @@
 package controller.Filter;
 
 
+import controller.LoginServlet;
 import model.User;
 
 import javax.servlet.*;
@@ -9,7 +10,7 @@ import java.io.IOException;
 @WebFilter(urlPatterns = "/viewUser")
 public class FilterUser implements Filter {
 
-    static  public  User userLogin;
+    static public  User userLogin;
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
@@ -19,17 +20,11 @@ public class FilterUser implements Filter {
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
            if(userLogin ==null){
-               RequestDispatcher requestDispatcher = request.getRequestDispatcher("userView.jsp");
+               RequestDispatcher requestDispatcher = request.getRequestDispatcher("login.jsp");
                requestDispatcher.forward(request,response);
            }else {
-               if(userLogin.isVerify()){
-                   chain.doFilter(request,response);
-               }else {
-                   String message = "Your account hac been banned by admin!";
-                   request.setAttribute("message", message);
-                   RequestDispatcher requestDispatcher = request.getRequestDispatcher("login.jsp");
-                   requestDispatcher.forward(request, response);
-               }
+               chain.doFilter(request,response);
+
            }
 
     }

@@ -70,7 +70,9 @@ public class UserService {
     public  boolean updateVerifyBan(int id){
         return userRepository.updateVerify(id,"banned");
     }
-
+    public  boolean updateUser(User user){
+        return userRepository.updateUser(user);
+    }
     public boolean changePassword(String oldPassword , String newPassword , String rePassword){
         MyValidation myValidation = new MyValidation();
         int id  = FilterUser.userLogin.getUserId();

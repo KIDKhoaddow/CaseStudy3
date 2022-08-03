@@ -20,13 +20,10 @@ import java.util.ArrayList;
 
 
 @WebServlet(urlPatterns = "/login")
-public class
-
-
-
-LoginServlet extends HttpServlet {
-    UserRepository userRepository = new UserRepository();
+public class LoginServlet extends HttpServlet {
     UserService userService = UserService.Instance();
+
+
 
 
     @Override
@@ -65,7 +62,7 @@ LoginServlet extends HttpServlet {
         String userEmail = req.getParameter("userEmail");
         String userPassword = req.getParameter("userPassword");
         if (userEmail.equals("admin") && userPassword.equals("admin")) {
-            FilterAdmin.user=new User(userEmail,userPassword);
+            FilterAdmin.userAdmin=new User(userEmail,userPassword);
             resp.sendRedirect("viewAdmin");
         } else {
             if (checkAccountExit(userEmail,userPassword)) {
