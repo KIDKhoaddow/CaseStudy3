@@ -18,53 +18,79 @@ public class UserRepository {
     private final String SElECT_USER = "select * from user where user_email=? and user_password =? ;";
     private final String SELECT_USER_BY_EMAIL = "select user_id from user where user_email=?;";
     private final String INSERT_USER = "insert into blogs.user (user_email,user_password,regis_date) values (? , ? , ?);";
-    private  final String CHANGE_STATUS_USER="UPDATE blogs.user SET user_status = ? WHERE (user_id = ?);";
-    private final String  CHANGE_VERIFY_USER="update user set user_verify=? where user_id=? ;";
-    private  final String SELECT_USER_ONLINE="SELECT * FROM blogs.user_online;";
-    private  final String SELECT_POSTS="SELECT * FROM blogs.count_post;";
-    private  final String SELECT_POST_THIS_YEAR="SELECT * FROM blogs.count_post_year;";
-    private  final String SELECT_USERS="SELECT * FROM blogs.count_user;";
-    private  final String UPDATE_LAST_LOGIN="update blogs.user set last_login=? where(user_id = ?);";
+    private final String CHANGE_STATUS_USER = "UPDATE blogs.user SET user_status = ? WHERE (user_id = ?);";
+    private final String CHANGE_VERIFY_USER = "update user set user_verify=? where user_id=? ;";
+    private final String SELECT_USER_ONLINE = "SELECT * FROM blogs.user_online;";
+    private final String SELECT_POSTS = "SELECT * FROM blogs.count_post;";
+    private final String SELECT_POST_THIS_YEAR = "SELECT * FROM blogs.count_post_year;";
+    private final String SELECT_USERS = "SELECT * FROM blogs.count_user;";
+    private final String UPDATE_LAST_LOGIN = "update blogs.user set last_login=? where(user_id = ?);";
+    private final String UPDATE_USER = "update user set  user_name=?, user_address=?, user_birthday=?,user_phone=?,user_avatar=?, last_login=? where user_id=?;";
     private final ConnectionMySQL connectionMySQL = new ConnectionMySQL();
-    public  int getUsers(){
-        int count=0;
-        try{
-            Connection connection= connectionMySQL.getConnection();
-            PreparedStatement preparedStatement =connection.prepareStatement(SELECT_USERS);
-            ResultSet resultSet= preparedStatement.executeQuery();
+
+
+    public boolean updateUser(User user) {
+        try {
+            Connection connection = connectionMySQL.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_USER);
+            preparedStatement.setString(1, user.getUserName());
+            preparedStatement.setString(2, user.getUserAddress());
+            preparedStatement.setString(3, user.getUserDOB());
+            preparedStatement.setString(4, user.getUserPhone());
+            preparedStatement.setString(5, user.getUserAvatar());
+            preparedStatement.setString(6, user.getUserLastLogin());
+            preparedStatement.setInt(7,user.getUserId());
+            preparedStatement.executeUpdate();
+            return true;
+
+        }catch (Exception e ){
+            System.out.println(e.getMessage());
+            return false;
+        }
+    }
+
+    public int getUsers() {
+        int count = 0;
+        try {
+            Connection connection = connectionMySQL.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(SELECT_USERS);
+            ResultSet resultSet = preparedStatement.executeQuery();
             resultSet.next();
-            count= resultSet.getInt("count(user_id)");
+            count = resultSet.getInt("count(user_id)");
             return count;
-        }catch (Exception e){
+        } catch (Exception e) {
             return count;
         }
     }
-    public  int getPostsThisYear(){
-        int count=0;
-        try{
-            Connection connection= connectionMySQL.getConnection();
-            PreparedStatement preparedStatement =connection.prepareStatement(SELECT_POST_THIS_YEAR);
-            ResultSet resultSet= preparedStatement.executeQuery();
+
+    public int getPostsThisYear() {
+        int count = 0;
+        try {
+            Connection connection = connectionMySQL.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(SELECT_POST_THIS_YEAR);
+            ResultSet resultSet = preparedStatement.executeQuery();
             resultSet.next();
-            count= resultSet.getInt("count(post_id)");
+            count = resultSet.getInt("count(post_id)");
             return count;
-        }catch (Exception e){
+        } catch (Exception e) {
             return count;
         }
     }
-    public  int getNumberPost(){
-        int count=0;
-        try{
-            Connection connection= connectionMySQL.getConnection();
-            PreparedStatement preparedStatement =connection.prepareStatement(SELECT_POSTS);
-            ResultSet resultSet= preparedStatement.executeQuery();
+
+    public int getNumberPost() {
+        int count = 0;
+        try {
+            Connection connection = connectionMySQL.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(SELECT_POSTS);
+            ResultSet resultSet = preparedStatement.executeQuery();
             resultSet.next();
-            count= resultSet.getInt("count(post_id)");
+            count = resultSet.getInt("count(post_id)");
             return count;
-        }catch (Exception e){
+        } catch (Exception e) {
             return count;
         }
     }
+
     public User getUser(int id, ResultSet resultSet) throws SQLException {
         String userEmail = resultSet.getString("user_email");
         String userName = resultSet.getString("user_name");
@@ -74,12 +100,12 @@ public class UserRepository {
         String userDOB = resultSet.getString("user_birthday");
         String userRegisDate = resultSet.getString("regis_date");
         String userLastLogin = resultSet.getString("last_login");
-        String userAvatar=resultSet.getString("user_avatar");
+        String userAvatar = resultSet.getString("user_avatar");
         String userStatus = resultSet.getString("user_status");
-        String userVerify=resultSet.getString("user_verify");
+        String userVerify = resultSet.getString("user_verify");
         boolean status = userStatus.equals("online");
-        boolean verify= userVerify.equals("active");
-        return new User(id, userEmail, userName, userPassword, userAddress, userPhone, userDOB, userRegisDate, userLastLogin,userAvatar, status,verify);
+        boolean verify = userVerify.equals("active");
+        return new User(id, userEmail, userName, userPassword, userAddress, userPhone, userDOB, userRegisDate, userLastLogin, userAvatar, status, verify);
 
     }
 
@@ -125,15 +151,15 @@ public class UserRepository {
     public boolean addUser(User user) {
         String userEmail = user.getUserEmail();
         String userPassword = user.getUserPassword();
-        String userRegisDate=user.getUserRegisDate();
+        String userRegisDate = user.getUserRegisDate();
         int id = 0;
         try {
-            if(!checkUserExist(userEmail)){
+            if (!checkUserExist(userEmail)) {
                 Connection connection = connectionMySQL.getConnection();
                 PreparedStatement preparedStatement = connection.prepareStatement(INSERT_USER);
                 preparedStatement.setString(1, userEmail);
                 preparedStatement.setString(2, userPassword);
-                preparedStatement.setString(3,userRegisDate);
+                preparedStatement.setString(3, userRegisDate);
                 preparedStatement.executeUpdate();
                 return true;
             }
@@ -142,17 +168,18 @@ public class UserRepository {
         }
         return false;
     }
-    public int getUserOnline(){
-        int count=0;
+
+    public int getUserOnline() {
+        int count = 0;
         try {
 
-            Connection connection= connectionMySQL.getConnection();
-            PreparedStatement preparedStatement=connection.prepareStatement(SELECT_USER_ONLINE);
-            ResultSet resultSet= preparedStatement.executeQuery();
+            Connection connection = connectionMySQL.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(SELECT_USER_ONLINE);
+            ResultSet resultSet = preparedStatement.executeQuery();
             resultSet.next();
-            count= resultSet.getInt("count(user_id)");
+            count = resultSet.getInt("count(user_id)");
             return count;
-        }catch (Exception e){
+        } catch (Exception e) {
             return count;
         }
     }
@@ -172,59 +199,62 @@ public class UserRepository {
         return false;
     }
 
-    public boolean changeStatusUserOnline(User user){
-       String status="online";
+    public boolean changeStatusUserOnline(User user) {
+        String status = "online";
         try {
-            Connection connection= connectionMySQL.getConnection();
-            PreparedStatement preparedStatement=connection.prepareStatement(CHANGE_STATUS_USER);
-            preparedStatement.setString(1,status);
-            preparedStatement.setInt(2,user.getUserId());
+            Connection connection = connectionMySQL.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(CHANGE_STATUS_USER);
+            preparedStatement.setString(1, status);
+            preparedStatement.setInt(2, user.getUserId());
             preparedStatement.executeUpdate();
             user.setStatus(true);
             return true;
-        }catch (Exception e){
+        } catch (Exception e) {
             System.err.println(e.getMessage());
             return false;
         }
 
     }
-    public boolean changeStatusUserOffline(User user){
-        String status="offline";
+
+    public boolean changeStatusUserOffline(User user) {
+        String status = "offline";
         try {
-            Connection connection= connectionMySQL.getConnection();
-            PreparedStatement preparedStatement=connection.prepareStatement(CHANGE_STATUS_USER);
-            preparedStatement.setString(1,status);
-            preparedStatement.setInt(2,user.getUserId());
+            Connection connection = connectionMySQL.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(CHANGE_STATUS_USER);
+            preparedStatement.setString(1, status);
+            preparedStatement.setInt(2, user.getUserId());
             preparedStatement.executeUpdate();
             user.setStatus(false);
             return true;
-        }catch (Exception e){
+        } catch (Exception e) {
             System.err.println(e.getMessage());
             return false;
         }
     }
-    public boolean updateLastLogin(User user){
-        try{
-            Connection connection= connectionMySQL.getConnection();
-            PreparedStatement preparedStatement= connection.prepareStatement(UPDATE_LAST_LOGIN);
+
+    public boolean updateLastLogin(User user) {
+        try {
+            Connection connection = connectionMySQL.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_LAST_LOGIN);
             preparedStatement.setString(1, user.getUserLastLogin());
-            preparedStatement.setInt(2,user.getUserId());
+            preparedStatement.setInt(2, user.getUserId());
             preparedStatement.executeUpdate();
             return true;
-        }catch (Exception e){
+        } catch (Exception e) {
             System.out.println(e.getMessage());
             return false;
         }
     }
-    public  boolean updateVerify(int id,String verify){
-        try{
-            Connection connection= connectionMySQL.getConnection();
-            PreparedStatement preparedStatement= connection.prepareStatement(CHANGE_VERIFY_USER);
+
+    public boolean updateVerify(int id, String verify) {
+        try {
+            Connection connection = connectionMySQL.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(CHANGE_VERIFY_USER);
             preparedStatement.setString(1, verify);
-            preparedStatement.setInt(2,id);
+            preparedStatement.setInt(2, id);
             preparedStatement.executeUpdate();
             return true;
-        }catch (Exception e){
+        } catch (Exception e) {
             System.out.println(e.getMessage());
             return false;
         }

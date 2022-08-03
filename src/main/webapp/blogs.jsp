@@ -37,7 +37,7 @@
 
 </head>
 
-<body class="animsition" data-animsition-in-duration="2000" data-animsition-out-duration="2000">
+<body class="animsition" data-animsition-in-duration="100" data-animsition-out-duration="100">
 <div class="page-wrapper">
     <!-- HEADER MOBILE-->
     <header class="header-mobile d-block d-lg-none">

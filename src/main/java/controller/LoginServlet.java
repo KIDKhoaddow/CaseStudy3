@@ -18,8 +18,9 @@ import java.io.IOException;
 
 @WebServlet(urlPatterns = "/login")
 public class LoginServlet extends HttpServlet {
-    UserRepository userRepository = new UserRepository();
     UserService userService = UserService.Instance();
+
+
 
 
     @Override
@@ -42,7 +43,7 @@ public class LoginServlet extends HttpServlet {
                     System.out.println(e.getMessage());
                 }
                 FilterUser.userLogin = null;
-                FilterAdmin.user=null;
+                FilterAdmin.userAdmin = null;
                 requestDispatcher = req.getRequestDispatcher("login.jsp");
                 requestDispatcher.forward(req, resp);
                 break;
@@ -58,10 +59,11 @@ public class LoginServlet extends HttpServlet {
         String userEmail = req.getParameter("userEmail");
         String userPassword = req.getParameter("userPassword");
         if (userEmail.equals("admin") && userPassword.equals("admin")) {
-            FilterAdmin.user=new User(userEmail,userPassword);
+            FilterAdmin.userAdmin=new User(userEmail,userPassword);
             resp.sendRedirect("viewAdmin");
         } else {
             if (checkAccountExit(userEmail,userPassword)) {
+
                 resp.sendRedirect("viewUser");
             } else {
                 String message = "Check password again !";

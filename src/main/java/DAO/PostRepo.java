@@ -18,6 +18,24 @@ public class PostRepo {
     private final  String VIEW_TABLE_LIKE_OF_POST=" select* from table_like_of_post;";
     private  final  String VIEW_TABLE_TOP_TEN_AUTHOR="select* from top_ten_post_user;";
     private  final static String VIEW_POST_LIKE_BY_ID="SELECT count_like FROM blogs.like_of_post where post_id=?;";
+    private final  String UPDATE_POST_BY_ID="update post set post_title=?,post_content=?,post_picture=? where post_id=?;";
+
+
+    public  boolean updatePost(Post post){
+        try{
+            Connection connection = connectionMySQL.getConnection();
+            PreparedStatement preparedStatement =connection.prepareStatement(UPDATE_POST_BY_ID);
+            preparedStatement.setString(1,post.getPostTitle());
+            preparedStatement.setString(2, post.getPostContent());
+            preparedStatement.setString(3, post.getPostPicture());
+            preparedStatement.setInt(4,post.getPostId());
+            preparedStatement.executeUpdate();
+            return true;
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+            return false;
+        }
+    }
 
     public static int countLikeOfPostById(int idPost){
         try {

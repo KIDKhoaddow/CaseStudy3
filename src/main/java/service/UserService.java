@@ -67,4 +67,7 @@ public class UserService {
     public  boolean updateVerifyBan(int id){
         return userRepository.updateVerify(id,"banned");
     }
+    public  boolean updateUser(User user){
+        return userRepository.updateUser(user);
+    }
 }
