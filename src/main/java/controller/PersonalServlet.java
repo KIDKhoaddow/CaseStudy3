@@ -63,11 +63,12 @@ public class PersonalServlet extends HttpServlet {
                     String newPassword = request.getParameter("new-password-input");
                     String rePassword = request.getParameter("re-password-input");
                     if (userService.changePassword(oldPassword ,newPassword ,rePassword)){
-                        request.setAttribute("message" , "change password success");
+                        request.setAttribute("message" , 1);
                         page="login.jsp";
+                        break;
                     }else {
-
-                        System.err.println("");
+                        request.setAttribute("message" , 0);
+                        System.err.println("change password not success");
                     }
 
             }

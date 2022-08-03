@@ -1,6 +1,7 @@
 package service;
 
 import DAO.UserRepository;
+import Validation.MyValidation;
 import controller.Filter.FilterUser;
 import model.User;
 
@@ -11,6 +12,8 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class UserService {
     UserRepository userRepository = new UserRepository();
@@ -69,11 +72,19 @@ public class UserService {
     }
 
     public boolean changePassword(String oldPassword , String newPassword , String rePassword){
+        MyValidation myValidation = new MyValidation();
         int id  = FilterUser.userLogin.getUserId();
         String password = FilterUser.userLogin.getUserPassword();
-        if (oldPassword.equals(password) && !newPassword.equals(oldPassword) && newPassword.equals(rePassword)){
-            return userRepository.editPassword(id ,newPassword);
+        if (myValidation.validatePassword(newPassword)){
+            if (oldPassword.equals(password) && !newPassword.equals(oldPassword) && newPassword.equals(rePassword)){
+                return userRepository.editPassword(id ,newPassword);
+        } return  false;
+        } else {
+            
+
         }
-        return  false;
+        return  true;
+
     }
+
 }
