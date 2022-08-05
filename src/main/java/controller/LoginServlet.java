@@ -63,7 +63,6 @@ public class LoginServlet extends HttpServlet {
             resp.sendRedirect("viewAdmin");
         } else {
             if (checkAccountExit(userEmail,userPassword)) {
-
                 resp.sendRedirect("viewUser");
             } else {
                 String message = "Check password again !";
@@ -78,7 +77,7 @@ public class LoginServlet extends HttpServlet {
     public boolean checkAccountExit(String userEmail,String userPassword)  {
        try {
            User user = userService.findUserByEmailAndPassword(userEmail, userPassword);
-           if (user != null) {
+           if (user != null && user.isVerify()) {
                FilterUser.userLogin = user;
                return true;
            }
