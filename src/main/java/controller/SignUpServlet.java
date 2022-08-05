@@ -39,7 +39,6 @@ public class SignUpServlet extends HttpServlet {
         String userRegisDate=String.valueOf(localDate);
 
         if (!userRePassword.equals(userPassword)) {
-
             return false;
         }
         try {

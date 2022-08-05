@@ -48,12 +48,7 @@
                                 <img src="resource/images/icon/logo.png" alt="CoolAdmin">
                             </a>
                             <div>
-                                <%
-                                    String message = (String) request.getAttribute("message");
-                                    if(message !=null){
-                                       out.print(message);
-                                    }
-                                %>
+                                <p>${message}</p>
                             </div>
                         </div>
                         <div class="login-form">

@@ -5,6 +5,7 @@ import model.Post;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Pattern;
 
 public class PostService {
     private static   PostService instance=new PostService();
